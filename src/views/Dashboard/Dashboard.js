@@ -6,11 +6,9 @@ import ChartistGraph from "react-chartist";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
-import Store from "@material-ui/icons/Store";
 // import InfoOutline from "@material-ui/icons/InfoOutline";
 import Warning from "@material-ui/icons/Warning";
 import DateRange from "@material-ui/icons/DateRange";
@@ -47,6 +45,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/dashboardStyle
 import priceImage1 from "assets/img/card-2.jpeg";
 import priceImage2 from "assets/img/card-3.jpeg";
 import priceImage3 from "assets/img/card-1.jpeg";
+import Panels from "views/Components/PanelsII";
 
 const us_flag = require("assets/img/flags/US.png");
 const de_flag = require("assets/img/flags/DE.png");
@@ -62,11 +61,11 @@ export default function Dashboard() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
-                <Icon>content_copy</Icon>
+                <h1>L1</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Used Space</p>
               <h3 className={classes.cardTitle}>
@@ -85,11 +84,11 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
             <CardHeader color="success" stats icon>
               <CardIcon color="success">
-                <Store />
+                <h1>L2</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Revenue</p>
               <h3 className={classes.cardTitle}>$34,245</h3>
@@ -102,11 +101,11 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
             <CardHeader color="danger" stats icon>
               <CardIcon color="danger">
-                <Icon>info_outline</Icon>
+                <h1>L3</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Fixed Issues</p>
               <h3 className={classes.cardTitle}>75</h3>
@@ -119,11 +118,11 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
-                <i className="fab fa-twitter" />
+                <h1>L4</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Followers</p>
               <h3 className={classes.cardTitle}>+245</h3>
@@ -136,11 +135,11 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
-                <i className="fab fa-twitter" />
+                <h1>L5</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Followers</p>
               <h3 className={classes.cardTitle}>+245</h3>
@@ -153,11 +152,11 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={3} sm={6} md={6} lg={6}>
+        <GridItem xs={4} sm={4} md={4} lg={4}>
           <Card>
-            <CardHeader color="info" stats icon>
+            <CardHeader color="Info" stats icon>
               <CardIcon color="info">
-                <i className="fab fa-twitter" />
+                <h1>L6</h1>
               </CardIcon>
               <p className={classes.cardCategory}>Followers</p>
               <h3 className={classes.cardTitle}>+245</h3>
@@ -171,6 +170,7 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
+      <Panels />
       <GridContainer>
         <GridItem xs={12} sm={12} md={12} lg={12}>
           <Card>
