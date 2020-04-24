@@ -2,7 +2,6 @@ import React from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // react plugin for creating vector maps
-import { VectorMap } from "react-jvectormap";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -56,20 +55,6 @@ const gb_flag = require("assets/img/flags/GB.png");
 const ro_flag = require("assets/img/flags/RO.png");
 const br_flag = require("assets/img/flags/BR.png");
 
-var mapData = {
-  AU: 760,
-  BR: 550,
-  CA: 120,
-  DE: 1300,
-  FR: 540,
-  GB: 690,
-  GE: 200,
-  IN: 200,
-  RO: 600,
-  RU: 300,
-  US: 2920
-};
-
 const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
@@ -77,7 +62,7 @@ export default function Dashboard() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={12} sm={6} md={6} lg={3}>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
@@ -94,13 +79,13 @@ export default function Dashboard() {
                   <Warning />
                 </Danger>
                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                  Get more space
+                  Linea 1
                 </a>
               </div>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={6} lg={3}>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
           <Card>
             <CardHeader color="success" stats icon>
               <CardIcon color="success">
@@ -112,12 +97,12 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <DateRange />
-                Last 24 Hours
+                Linea 2
               </div>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={6} lg={3}>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
           <Card>
             <CardHeader color="danger" stats icon>
               <CardIcon color="danger">
@@ -129,12 +114,12 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <LocalOffer />
-                Tracked from Github
+                Linea 3
               </div>
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={6} md={6} lg={3}>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
@@ -146,98 +131,154 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <Update />
-                Just Updated
+                Linea 4
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
+          <Card>
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <i className="fab fa-twitter" />
+              </CardIcon>
+              <p className={classes.cardCategory}>Followers</p>
+              <h3 className={classes.cardTitle}>+245</h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <Update />
+                Linea 5
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={3} sm={6} md={6} lg={6}>
+          <Card>
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <i className="fab fa-twitter" />
+              </CardIcon>
+              <p className={classes.cardCategory}>Followers</p>
+              <h3 className={classes.cardTitle}>+245</h3>
+            </CardHeader>
+            <CardFooter stats>
+              <div className={classes.stats}>
+                <Update />
+                Linea 6
               </div>
             </CardFooter>
           </Card>
         </GridItem>
       </GridContainer>
       <GridContainer>
-        <GridItem xs={12}>
+        <GridItem xs={12} sm={12} md={12} lg={12}>
           <Card>
             <CardHeader color="success" icon>
               <CardIcon color="success">
                 <Language />
               </CardIcon>
               <h4 className={classes.cardIconTitle}>
-                Global Sales by Top Locations
+                Corte - Programas de corte Criticos
               </h4>
             </CardHeader>
             <CardBody>
-              <GridContainer justify="space-between">
-                <GridItem xs={12} sm={12} md={5}>
-                  <Table
-                    tableData={[
-                      [
-                        <img src={us_flag} alt="us_flag" key={"flag"} />,
-                        "USA",
-                        "2.920",
-                        "53.23%"
-                      ],
-                      [
-                        <img src={de_flag} alt="us_flag" key={"flag"} />,
-                        "Germany",
-                        "1.300",
-                        "20.43%"
-                      ],
-                      [
-                        <img src={au_flag} alt="us_flag" key={"flag"} />,
-                        "Australia",
-                        "760",
-                        "10.35%"
-                      ],
-                      [
-                        <img src={gb_flag} alt="us_flag" key={"flag"} />,
-                        "United Kingdom",
-                        "690",
-                        "7.87%"
-                      ],
-                      [
-                        <img src={ro_flag} alt="us_flag" key={"flag"} />,
-                        "Romania",
-                        "600",
-                        "5.94%"
-                      ],
-                      [
-                        <img src={br_flag} alt="us_flag" key={"flag"} />,
-                        "Brasil",
-                        "550",
-                        "4.34%"
-                      ]
-                    ]}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <VectorMap
-                    map={"world_mill"}
-                    backgroundColor="transparent"
-                    zoomOnScroll={false}
-                    containerStyle={{
-                      width: "100%",
-                      height: "280px"
-                    }}
-                    containerClassName="map"
-                    regionStyle={{
-                      initial: {
-                        fill: "#e4e4e4",
-                        "fill-opacity": 0.9,
-                        stroke: "none",
-                        "stroke-width": 0,
-                        "stroke-opacity": 0
-                      }
-                    }}
-                    series={{
-                      regions: [
-                        {
-                          values: mapData,
-                          scale: ["#AAAAAA", "#444444"],
-                          normalizeFunction: "polynomial"
-                        }
-                      ]
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
+              <Table
+                tableData={[
+                  [
+                    <img src={us_flag} alt="us_flag" key={"flag"} />,
+                    "USA",
+                    "2.920",
+                    "53.23%"
+                  ],
+                  [
+                    <img src={de_flag} alt="us_flag" key={"flag"} />,
+                    "Germany",
+                    "1.300",
+                    "20.43%"
+                  ],
+                  [
+                    <img src={au_flag} alt="us_flag" key={"flag"} />,
+                    "Australia",
+                    "760",
+                    "10.35%"
+                  ],
+                  [
+                    <img src={gb_flag} alt="us_flag" key={"flag"} />,
+                    "United Kingdom",
+                    "690",
+                    "7.87%"
+                  ],
+                  [
+                    <img src={ro_flag} alt="us_flag" key={"flag"} />,
+                    "Romania",
+                    "600",
+                    "5.94%"
+                  ],
+                  [
+                    <img src={br_flag} alt="us_flag" key={"flag"} />,
+                    "Brasil",
+                    "550",
+                    "4.34%"
+                  ]
+                ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={12} lg={12}>
+          <Card>
+            <CardHeader color="success" icon>
+              <CardIcon color="success">
+                <Language />
+              </CardIcon>
+              <h4 className={classes.cardIconTitle}>
+                Plegado - Piezas Criticas
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <Table
+                tableData={[
+                  [
+                    <img src={us_flag} alt="us_flag" key={"flag"} />,
+                    "USA",
+                    "2.920",
+                    "53.23%"
+                  ],
+                  [
+                    <img src={de_flag} alt="us_flag" key={"flag"} />,
+                    "Germany",
+                    "1.300",
+                    "20.43%"
+                  ],
+                  [
+                    <img src={au_flag} alt="us_flag" key={"flag"} />,
+                    "Australia",
+                    "760",
+                    "10.35%"
+                  ],
+                  [
+                    <img src={gb_flag} alt="us_flag" key={"flag"} />,
+                    "United Kingdom",
+                    "690",
+                    "7.87%"
+                  ],
+                  [
+                    <img src={ro_flag} alt="us_flag" key={"flag"} />,
+                    "Romania",
+                    "600",
+                    "5.94%"
+                  ],
+                  [
+                    <img src={br_flag} alt="us_flag" key={"flag"} />,
+                    "Brasil",
+                    "550",
+                    "4.34%"
+                  ]
+                ]}
+              />
             </CardBody>
           </Card>
         </GridItem>
@@ -277,17 +318,17 @@ export default function Dashboard() {
                   </Button>
                 </Tooltip>
               </div>
-              <h4 className={classes.cardTitle}>Daily Sales</h4>
+              <h4 className={classes.cardTitle}>Porcentaje Total Diario</h4>
               <p className={classes.cardCategory}>
                 <span className={classes.successText}>
                   <ArrowUpward className={classes.upArrowCardCategory} /> 55%
                 </span>{" "}
-                increase in today sales.
+                Incremento Diario
               </p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> updated 4 minutes ago
+                <AccessTime /> Actualizado diariamente
               </div>
             </CardFooter>
           </Card>

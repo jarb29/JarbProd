@@ -10,9 +10,7 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardFooter from "components/Card/CardFooter.js";
-
 import avatar from "assets/img/faces/avatar.jpg";
-
 import styles from "assets/jss/material-dashboard-pro-react/views/lockScreenPageStyle.js";
 
 const useStyles = makeStyles(styles);
