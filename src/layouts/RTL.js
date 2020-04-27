@@ -139,7 +139,6 @@ export default function RTL(props) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"توقيت الإبداعية"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}

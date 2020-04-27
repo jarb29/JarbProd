@@ -3,14 +3,6 @@
 // #############################
 var Chartist = require("chartist");
 
-// ##############################
-// // // Charts used in Dahsboard view
-// #############################
-
-// ##############################
-// // // variables used to create animation on charts
-// #############################
-
 var delays = 80,
   durations = 500;
 var delays2 = 80,

@@ -11,83 +11,6 @@ import Build from "@material-ui/icons/Build";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 
 // ##############################
-// // // stories for RTLSupport view
-// #############################
-
-const rtlStories = [
-  {
-    // First story
-    inverted: true,
-    badgeColor: "danger",
-    badgeIcon: CardTravel,
-    title: "جهة أي",
-    titleColor: "danger",
-    body: (
-      <p>
-        قام كل ماذا العصبة اوروبا. أي جورج العالمي أخر, كان تم أطراف القوى
-        استبدال. أسر ميناء تكتيكاً الجديدة، كل. جُل اللا التكاليف بـ, عرفها
-        النزاع لليابان بـ أضف. انتهت المدن الثالث من وقد.وقبل قادة إحتار عن أخر.
-        حين ونتج أخرى قد. بالعمل بالمطالبة فقد قد. عن جنوب ومضى الشتاء.
-      </p>
-    ),
-    footerTitle: "مدن أن هُزم سكان, مكن."
-  },
-  {
-    // Second story
-    inverted: true,
-    badgeColor: "success",
-    badgeIcon: Extension,
-    title: "جُل حكومة",
-    titleColor: "success",
-    body: (
-      <p>
-        عل فكانت الثقيلة بلا. شيء بخطوط بالرّغم التبرعات عن, يطول بأيدي لم كلّ.
-        معقل الغالي واتّجه لم وتم, أن الصفحة بالمحور حول, بال مرمى الصفحات
-        قُدُماً و. الأخذ سبتمبر العالم من ذلك. ان يبق شدّت الأبرياء, الى الربيع،
-        والمانيا كل. ودول الأهداف التقليدي عل أضف, كلا يقوم الأخذ الآلاف بل.
-      </p>
-    )
-  },
-  {
-    // Third story
-    inverted: true,
-    badgeColor: "info",
-    badgeIcon: Fingerprint,
-    title: "هذا غينيا",
-    titleColor: "info",
-    body: (
-      <p>
-        جهة المارق والديون التقليدية في, هو وترك المجتمع بريطانيا ذلك, لمّ ما
-        العالم، اليابان،. ٣٠ فقامت أوروبا مشاركة بعد, ٢٠٠٤ الجو مساعدة ما حدى.
-        في عليها وبحلول معارضة بعض. عن الأرض وبداية العمليات ولم. الجو جديداً
-        الأوروبيّون أم به،. ثم التي نتيجة الآلاف جعل, عن المارق السادس قام. ما
-        أخر فقامت الأجل الشرق،, فصل كل وسوء الأرواح. ثم بعد وشعار بأيدي. قبل
-        وكسبت الغالي الولايات بل, ٣٠ أمّا أخرى لأداء أضف. هو منتصف معزّزة على.
-        بـ أفريقيا التغييرات مما, أثره،.
-      </p>
-    ),
-    footer: (
-      <CustomDropdown
-        rtlActive
-        buttonIcon={Build}
-        buttonProps={{
-          round: true,
-          style: { marginBottom: "0" },
-          color: "info"
-        }}
-        dropdownList={[
-          "ان",
-          "إجلاء لفرنسا",
-          "أواخر الأرض بل",
-          { divider: true },
-          "عل اليها"
-        ]}
-      />
-    )
-  }
-];
-
-// ##############################
 // // // stories for Widgets view
 // #############################
 
@@ -307,7 +230,7 @@ const events = [
     color: "azure"
   },
   {
-    title: "Click for Creative Tim",
+    title: "Jarb29",
     start: new Date(y, m, 21),
     end: new Date(y, m, 22),
     color: "orange"
@@ -338,26 +261,6 @@ var server = [
   "Lines From Great Russian Literature? Or E-mails From My Boss?",
   "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
   'Sign contract for "What are conference organizers afraid of?"'
-];
-
-// ##############################
-// // // Tasks for TasksCard - see RTLSupport view
-// #############################
-
-var rtlBugs = [
-  "فقد لمحاكم الاندونيسية, بلاده بالتوقيع تم يبق. جعل السبب وفرنسا الصينية أي.",
-  "بحث. كل مما ٢٠٠٤ شاسعة العسكري جعل السبب وفرنسا الصينية أي.",
-  "تسبب أفريقيا ضرب عن, عن إنطلاق جعل السبب وفرنسا الصينية أي.",
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي."
-];
-var rtlWebsite = [
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي.",
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي."
-];
-var rtlServer = [
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي.",
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي.",
-  "قدما مليون بين عن, مرجع منتصف الأمريكية جعل السبب وفرنسا الصينية أي."
 ];
 
 // ##############################
@@ -416,8 +319,6 @@ const dataTable = {
 export {
   // data for React Big Calendar in Calendar view
   events,
-  // stories for RTLSupport view
-  rtlStories,
   // stories for Widgets view
   widgetStories,
   // stories for Timeline view
@@ -426,10 +327,6 @@ export {
   bugs,
   website,
   server,
-  // these 3 are used to create the tasks lists in TasksCard - RTLSupport view
-  rtlBugs,
-  rtlWebsite,
-  rtlServer,
   // data for datatables.net in DataTables view
   dataTable
 };

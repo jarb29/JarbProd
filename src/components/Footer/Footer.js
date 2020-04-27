@@ -63,7 +63,7 @@ export default function Footer(props) {
             className={anchor}
             target="_blank"
           >
-            {rtlActive ? "توقيت الإبداعية" : "Creative Tim"}
+            {rtlActive ? "توقيت الإبداعية" : "Jarb29"}
           </a>
           {rtlActive
             ? ", مصنوعة مع الحب لشبكة الإنترنت أفضل"

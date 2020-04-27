@@ -18,9 +18,7 @@ import ViewList from "@material-ui/icons/ViewList";
 import AdminNavbarLinks from "./AdminNavbarLinks";
 import Button from "components/CustomButtons/Button.js";
 import styles from "assets/jss/material-dashboard-pro-react/components/adminNavbarStyle.js";
-
 const useStyles = makeStyles(styles);
-
 export default function AdminNavbar(props) {
   const classes = useStyles();
   const { color, rtlActive, brandText } = props;
