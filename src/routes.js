@@ -22,6 +22,7 @@ import UserProfile from "views/Pages/UserProfile.js";
 import ValidationForms from "views/Forms/ValidationForms.js";
 import Widgets from "views/Widgets/Widgets.js";
 import Wizard from "views/Forms/Wizard.js";
+import CargarDatos from "views/Corte/CargarDatos";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -39,6 +40,64 @@ var dashRoutes = [
     icon: DashboardIcon,
     component: Dashboard,
     layout: "/admin"
+  },
+  {
+    collapse: true,
+    name: "Corte",
+    icon: WidgetsIcon,
+    state: "cortetablesCollapse",
+    views: [
+      {
+        path: "/corte",
+        name: "Corte - General",
+        mini: "CV",
+        component: CargarDatos,
+        layout: "/admin"
+      },
+      {
+        path: "/corteModelo",
+        name: "Corte Por Modelo",
+        mini: "CPM",
+        component: ExtendedTables,
+        layout: "/admin"
+      },
+      {
+        path: "/corteNestis",
+        name: "Corte Detalle",
+        mini: "CDN",
+        component: ReactTables,
+        layout: "/admin"
+      }
+    ]
+  },
+  {
+    collapse: true,
+    name: "Plegado",
+    icon: WidgetsIcon,
+    state: "plegadotablesCollapse",
+    views: [
+      {
+        path: "/plegado",
+        name: "Plegado- General",
+        mini: "PL",
+        component: CargarDatos,
+        layout: "/admin"
+      },
+      {
+        path: "/plegadotablas",
+        name: "Extended Tables",
+        mini: "PT",
+        component: ExtendedTables,
+        layout: "/admin"
+      },
+      {
+        path: "/plegadoreacttablas",
+        name: "React Tables",
+        mini: "PRT",
+        component: ReactTables,
+        layout: "/admin"
+      }
+    ]
   },
   {
     collapse: true,
