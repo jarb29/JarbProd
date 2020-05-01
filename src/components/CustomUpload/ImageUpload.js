@@ -29,7 +29,6 @@ export default function ImageUpload(props) {
     e.preventDefault();
     // file is the file/image uploaded
     // in this function you can save the image (file) on form submit
-    // you have to call it yourself
   };
   const handleClick = () => {
     fileInput.current.click();
