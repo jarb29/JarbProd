@@ -33,6 +33,7 @@ import Image from "@material-ui/icons/Image";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import CargarPrograma from "views/Corte/CargarProgramas";
+import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
 
 var dashRoutes = [
   {
@@ -63,17 +64,10 @@ var dashRoutes = [
         layout: "/admin"
       },
       {
-        path: "/corteModelo",
-        name: "Corte Por Modelo",
-        mini: "CPM",
-        component: ExtendedTables,
-        layout: "/admin"
-      },
-      {
-        path: "/corteNestis",
+        path: "/piezasnestic",
         name: "Corte Detalle",
         mini: "CDN",
-        component: ReactTables,
+        component: CorteDetalleNesti,
         layout: "/admin"
       }
     ]
