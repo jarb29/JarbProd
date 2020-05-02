@@ -201,6 +201,7 @@ export default function CorteCargarProgramas() {
               disableTypography
               className={classes.modalHeader}
             >
+              
               <Button
                 justIcon
                 className={classes.modalCloseButton}
@@ -209,8 +210,10 @@ export default function CorteCargarProgramas() {
                 color="transparent"
                 onClick={() => setSmallModal(false)}
               >
-                <Close className={classes.modalClose} />
+               
+                <Close className={classes.modalClose} /> 
               </Button>
+              <h4 className={classes.modalTitle}>Nestic</h4>
             </DialogTitle>
             <CorteFormularioNestic />
           </Dialog>
