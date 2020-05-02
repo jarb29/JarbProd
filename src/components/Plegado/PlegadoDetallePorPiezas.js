@@ -36,7 +36,7 @@ export default function PlegadoDetallePorPiezas() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader>
-              <h4 className={classes.cardTitle}>Collapsible Accordion</h4>
+              <h4 className={classes.cardTitle}>Piezas por Modelo</h4>
             </CardHeader>
             <CardBody>
               <Accordion
@@ -62,7 +62,7 @@ export default function PlegadoDetallePorPiezas() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader>
-              <h4 className={classes.cardTitle}>Collapsible Accordion</h4>
+              <h4 className={classes.cardTitle}>Piezas por Modelo</h4>
             </CardHeader>
             <CardBody>
               <Accordion

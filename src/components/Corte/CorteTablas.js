@@ -83,71 +83,13 @@ export default function CorteTablas() {
   });
   return (
     <GridContainer>
-      <GridItem xs={12}>
+       <GridItem xs={12}>
         <Card>
           <CardHeader color="rose" icon>
             <CardIcon color="rose">
               <Assignment />
             </CardIcon>
-            <h4 className={classes.cardIconTitle}>Simple Table</h4>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHead={[
-                "#",
-                "Name",
-                "Job Position",
-                "Since",
-                "Salary",
-                "Actions"
-              ]}
-              tableData={[
-                [
-                  "1",
-                  "Andrew Mike",
-                  "Develop",
-                  "2013",
-                  "€ 99,225",
-                  fillButtons
-                ],
-                ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
-                ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons],
-                [
-                  "4",
-                  "Mike Monday",
-                  "Marketing",
-                  "2013",
-                  "€ 49,990",
-                  roundButtons
-                ],
-                [
-                  "5",
-                  "Paul Dickens",
-                  "Communication",
-                  "2015",
-                  "€ 69,201",
-                  fillButtons
-                ]
-              ]}
-              customCellClasses={[classes.center, classes.right, classes.right]}
-              customClassesForCells={[0, 4, 5]}
-              customHeadCellClasses={[
-                classes.center,
-                classes.right,
-                classes.right
-              ]}
-              customHeadClassesForCells={[0, 4, 5]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem xs={12}>
-        <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
-              <Assignment />
-            </CardIcon>
-            <h4 className={classes.cardIconTitle}>Striped Table</h4>
+            <h4 className={classes.cardIconTitle}>Programas Disponibles</h4>
           </CardHeader>
           <CardBody>
             <Table
@@ -272,6 +214,65 @@ export default function CorteTablas() {
                 classes.right
               ]}
               customHeadClassesForCells={[0, 5, 6]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+
+      <GridItem xs={12}>
+        <Card>
+          <CardHeader color="rose" icon>
+            <CardIcon color="rose">
+              <Assignment />
+            </CardIcon>
+            <h4 className={classes.cardIconTitle}>Programas en Uso</h4>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHead={[
+                "#",
+                "Name",
+                "Job Position",
+                "Since",
+                "Salary",
+                "Actions"
+              ]}
+              tableData={[
+                [
+                  "1",
+                  "Andrew Mike",
+                  "Develop",
+                  "2013",
+                  "€ 99,225",
+                  fillButtons
+                ],
+                ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
+                ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons],
+                [
+                  "4",
+                  "Mike Monday",
+                  "Marketing",
+                  "2013",
+                  "€ 49,990",
+                  roundButtons
+                ],
+                [
+                  "5",
+                  "Paul Dickens",
+                  "Communication",
+                  "2015",
+                  "€ 69,201",
+                  fillButtons
+                ]
+              ]}
+              customCellClasses={[classes.center, classes.right, classes.right]}
+              customClassesForCells={[0, 4, 5]}
+              customHeadCellClasses={[
+                classes.center,
+                classes.right,
+                classes.right
+              ]}
+              customHeadClassesForCells={[0, 4, 5]}
             />
           </CardBody>
         </Card>

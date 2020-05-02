@@ -34,7 +34,6 @@ import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import CargarProgramas from "views/Corte/CargarProgramas";
 import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
-import PlegadoCargarPiezas from "views/Plegado/PlegadoCargarPiezas";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 
@@ -89,15 +88,8 @@ var dashRoutes = [
         layout: "/admin"
       },
       {
-        path: "/cargadatosplegado",
-        name: "Cargar Datos",
-        mini: "PT",
-        component: PlegadoCargarPiezas,
-        layout: "/admin"
-      },
-      {
         path: "/piezasporplegado",
-        name: "Piezas por Modelo",
+        name: "Cargar Piezas",
         mini: "PM",
         component: PlegadoDetallePiezas,
         layout: "/admin"
