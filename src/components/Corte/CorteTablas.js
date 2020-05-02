@@ -83,7 +83,7 @@ export default function CorteTablas() {
   });
   return (
     <GridContainer>
-       <GridItem xs={12}>
+      <GridItem xs={12}>
         <Card>
           <CardHeader color="rose" icon>
             <CardIcon color="rose">

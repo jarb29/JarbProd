@@ -34,7 +34,7 @@ export default function LockScreenPage() {
             </a>
           </CardAvatar>
           <CardBody profile>
-            <h4 className={classes.cardTitle}>Tania Andrew</h4>
+            <h4 className={classes.cardTitle}>Jose Rubio</h4>
             <CustomInput
               labelText="Enter Password"
               id="company-disabled"

@@ -14,7 +14,6 @@ import GridItem from "components/Grid/GridItem.js";
 import Table from "components/Table/Table.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
-
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 
 const useStyles = makeStyles(styles);

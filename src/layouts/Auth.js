@@ -7,11 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footer/Footer.js";
-
 import routes from "routes.js";
-
 import styles from "assets/jss/material-dashboard-pro-react/layouts/authStyle.js";
-
 import register from "assets/img/register.jpeg";
 import login from "assets/img/login.jpeg";
 import lock from "assets/img/lock.jpeg";
