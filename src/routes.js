@@ -32,6 +32,7 @@ import GridOn from "@material-ui/icons/GridOn";
 import Image from "@material-ui/icons/Image";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
+import CargarPrograma from "views/Corte/CargarProgramas";
 
 var dashRoutes = [
   {
@@ -52,6 +53,13 @@ var dashRoutes = [
         name: "Corte - General",
         mini: "CV",
         component: CargarDatos,
+        layout: "/admin"
+      },
+      {
+        path: "/cargarprograma",
+        name: "Cargar Programas",
+        mini: "CP",
+        component: CargarPrograma,
         layout: "/admin"
       },
       {
