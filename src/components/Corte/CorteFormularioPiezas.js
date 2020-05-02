@@ -30,7 +30,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/validationForm
 
 const useStyles = makeStyles(styles);
 
-export default function CorteFormularioModelo() {
+export default function CorteFormularioPiezas() {
   // register form
   const [registerEmail, setregisterEmail] = React.useState("");
   const [registerEmailState, setregisterEmailState] = React.useState("");
@@ -171,7 +171,7 @@ export default function CorteFormularioModelo() {
               <CustomInput
                 success={registerEmailState === "success"}
                 error={registerEmailState === "error"}
-                labelText="Nombre de Modelo *"
+                labelText="Nombre de la Pieza *"
                 id="registeremail"
                 formControlProps={{
                   fullWidth: true
@@ -191,7 +191,7 @@ export default function CorteFormularioModelo() {
               <CustomInput
                 success={registerPasswordState === "success"}
                 error={registerPasswordState === "error"}
-                labelText="Password *"
+                labelText="Cantidad *"
                 id="registerpassword"
                 formControlProps={{
                   fullWidth: true

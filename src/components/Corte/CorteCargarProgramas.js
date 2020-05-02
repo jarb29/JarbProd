@@ -26,10 +26,10 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
-
-import noticeModal1 from "assets/img/card-1.jpeg";
-import noticeModal2 from "assets/img/card-2.jpeg";
 import CorteFormularioModelo from "./CorteFormularioModelo";
+import CorteFormularioNestic from "./CorteFormularioNestic";
+import CorteFormularioPiezas from "./CorteFormularioPiezas";
+
 
 const useStyles = makeStyles(styles);
 
@@ -125,7 +125,7 @@ export default function CorteCargarProgramas() {
               classes.modalSectionTitle
             }
           >
-            <h4 className={classes.cardTitle}>Modal</h4>
+            <h4 className={classes.cardTitle}>Elija una de las Opciones</h4>
           </div>
           <Button
             color="primary"
@@ -133,7 +133,7 @@ export default function CorteCargarProgramas() {
             className={classes.marginRight}
             onClick={() => setClassicModal(true)}
           >
-            Classic modal
+            Crear Modelo
           </Button>
           <Dialog
             classes={{
@@ -152,10 +152,6 @@ export default function CorteCargarProgramas() {
               disableTypography
               className={classes.modalHeader}
             >
-            <CardIcon color="rose">
-              <MailOutline />
-            </CardIcon>
-
               <Button
                 justIcon
                 className={classes.modalCloseButton}
@@ -166,7 +162,7 @@ export default function CorteCargarProgramas() {
               >
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Modal title</h4>
+              <h4 className={classes.modalTitle}>Modelo</h4>
             </DialogTitle>
             <DialogContent
               id="classic-modal-slide-description"
@@ -175,107 +171,19 @@ export default function CorteCargarProgramas() {
               <CorteFormularioModelo />
             </DialogContent>
           </Dialog>
-          <Button
-            color="info"
-            round
-            className={classes.marginRight}
-            onClick={() => setNoticeModal(true)}
-          >
-            Notice Modal
-                    </Button>
-          <Dialog
-            classes={{
-              root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal
-            }}
-            open={noticeModal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => setNoticeModal(false)}
-            aria-labelledby="notice-modal-slide-title"
-            aria-describedby="notice-modal-slide-description"
-          >
-            <DialogTitle
-              id="notice-modal-slide-title"
-              disableTypography
-              className={classes.modalHeader}
-            >
-              <Button
-                justIcon
-                className={classes.modalCloseButton}
-                key="close"
-                aria-label="Close"
-                color="transparent"
-                onClick={() => setNoticeModal(false)}
-              >
-                <Close className={classes.modalClose} />
-              </Button>
-              <h4 className={classes.modalTitle}>Notice Modal</h4>
-            </DialogTitle>
-            <DialogContent
-              id="notice-modal-slide-description"
-              className={classes.modalBody}
-            >
-              <Instruction
-                title="1. Register"
-                text={
-                  <span>
-                    The first step is to create an account at{" "}
-                    <a href="https://www.creative-tim.com/?ref=mdpr-notifications-page">
-                      Creative Tim
-                              </a>
-                              . You can choose a social network or go for the
-                              classic version, whatever works best for you.
-                            </span>
-                }
-                image={noticeModal1}
-                className={classes.instructionNoticeModal}
-                imageClassName={classes.imageNoticeModal}
-              />
-              <Instruction
-                title="2. Apply"
-                text={
-                  <span>
-                    The first step is to create an account at{" "}
-                    <a href="https://www.creative-tim.com/?ref=mdpr-notifications-page">
-                      Creative Tim
-                              </a>
-                              . You can choose a social network or go for the
-                              classic version, whatever works best for you.
-                            </span>
-                }
-                image={noticeModal2}
-                className={classes.instructionNoticeModal}
-                imageClassName={classes.imageNoticeModal}
-              />
-              <p>
-                If you have more questions, don{"'"}t hesitate to
-                          contact us or send us a tweet @creativetim. We{"'"}
-                          re here to help!
-                        </p>
-            </DialogContent>
-            <DialogActions
-              className={
-                classes.modalFooter + " " + classes.modalFooterCenter
-              }
-            >
-              <Button
-                onClick={() => setNoticeModal(false)}
-                color="info"
-                round
-              >
-                Sounds Good
-                        </Button>
-            </DialogActions>
-          </Dialog>
+
+
+
+
+
           <Button
             color="rose"
             round
             className={classes.marginRight}
             onClick={() => setSmallModal(true)}
           >
-            Small alert modal
-                    </Button>
+            Crear Nestic
+          </Button>
           <Dialog
             classes={{
               root: classes.center + " " + classes.modalRoot,
@@ -304,41 +212,63 @@ export default function CorteCargarProgramas() {
                 <Close className={classes.modalClose} />
               </Button>
             </DialogTitle>
-            <DialogContent
-              id="small-modal-slide-description"
-              className={
-                classes.modalBody + " " + classes.modalSmallBody
-              }
+            <CorteFormularioNestic />
+          </Dialog>
+
+
+
+
+
+
+          <Button
+            color="info"
+            round
+            className={classes.marginRight}
+            onClick={() => setNoticeModal(true)}
+          >
+            Crear Piezas
+                    </Button>
+          <Dialog
+            classes={{
+              root: classes.center + " " + classes.modalRoot,
+              paper: classes.modal
+            }}
+            open={noticeModal}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={() => setNoticeModal(false)}
+            aria-labelledby="notice-modal-slide-title"
+            aria-describedby="notice-modal-slide-description"
+          >
+            <DialogTitle
+              id="notice-modal-slide-title"
+              disableTypography
+              className={classes.modalHeader}
             >
-              <h5>Are you sure you want to do this?</h5>
-            </DialogContent>
+              <Button
+                justIcon
+                className={classes.modalCloseButton}
+                key="close"
+                aria-label="Close"
+                color="transparent"
+                onClick={() => setNoticeModal(false)}
+              >
+                <Close className={classes.modalClose} />
+              </Button>
+              <h4 className={classes.modalTitle}>Crear Piezas</h4>
+            </DialogTitle>
+            <CorteFormularioPiezas />
             <DialogActions
               className={
                 classes.modalFooter + " " + classes.modalFooterCenter
               }
             >
-              <Button
-                onClick={() => setSmallModal(false)}
-                color="transparent"
-                className={classes.modalSmallFooterFirstButton}
-              >
-                Never Mind
-                        </Button>
-              <Button
-                onClick={() => setSmallModal(false)}
-                color="success"
-                simple
-                className={
-                  classes.modalSmallFooterFirstButton +
-                  " " +
-                  classes.modalSmallFooterSecondButton
-                }
-              >
-                Yes
-                        </Button>
             </DialogActions>
           </Dialog>
         </GridItem>
+
+
+
       </GridContainer>
     </Card>
   );
