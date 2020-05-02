@@ -45,7 +45,8 @@ import styles from "assets/jss/material-dashboard-pro-react/views/dashboardStyle
 import priceImage1 from "assets/img/card-2.jpeg";
 import priceImage2 from "assets/img/card-3.jpeg";
 import priceImage3 from "assets/img/card-1.jpeg";
-import Panels from "views/Components/PanelsII";
+
+import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
 
 const us_flag = require("assets/img/flags/US.png");
 const de_flag = require("assets/img/flags/DE.png");
@@ -170,7 +171,7 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      <Panels />
+      <VistaGeneralPanels />
       <GridContainer>
         <GridItem xs={12} sm={12} md={12} lg={12}>
           <Card>

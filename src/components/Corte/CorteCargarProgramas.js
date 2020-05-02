@@ -34,7 +34,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function Programas() {
+export default function CorteCargarProgramas() {
   const classes = useStyles();
   const [tl, setTL] = React.useState(false);
   const [tc, setTC] = React.useState(false);

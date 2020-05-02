@@ -31,13 +31,13 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function Panels() {
+export default function CortePanels() {
   const classes = useStyles();
   return (
     <div>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12} stats>
-            <h3 className={classes.pageSubcategoriesTitle}> Material en Proceso </h3>
+          <h3 className={classes.pageSubcategoriesTitle}>Material en Proceso</h3>
           <br />
           <NavPills
             color="warning"

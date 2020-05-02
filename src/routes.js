@@ -22,7 +22,7 @@ import UserProfile from "views/Pages/UserProfile.js";
 import ValidationForms from "views/Forms/ValidationForms.js";
 import Widgets from "views/Widgets/Widgets.js";
 import Wizard from "views/Forms/Wizard.js";
-import CargarDatos from "views/Corte/CargarDatos";
+import VistaGeneralCorte from "views/Corte/VistaGeneralCorte";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -32,13 +32,16 @@ import GridOn from "@material-ui/icons/GridOn";
 import Image from "@material-ui/icons/Image";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
-import CargarPrograma from "views/Corte/CargarProgramas";
+import CargarProgramas from "views/Corte/CargarProgramas";
 import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
+import PlegadoCargarPiezas from "views/Plegado/PlegadoCargarPiezas";
+import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
+import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 
 var dashRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "General",
     icon: DashboardIcon,
     component: Dashboard,
     layout: "/admin"
@@ -53,14 +56,14 @@ var dashRoutes = [
         path: "/corte",
         name: "Corte - General",
         mini: "CV",
-        component: CargarDatos,
+        component: VistaGeneralCorte,
         layout: "/admin"
       },
       {
         path: "/cargarprograma",
         name: "Cargar Programas",
         mini: "CP",
-        component: CargarPrograma,
+        component: CargarProgramas,
         layout: "/admin"
       },
       {
@@ -82,21 +85,21 @@ var dashRoutes = [
         path: "/plegado",
         name: "Plegado- General",
         mini: "PL",
-        component: CargarDatos,
+        component: PlegadoVistaGeneral,
         layout: "/admin"
       },
       {
-        path: "/plegadotablas",
-        name: "Extended Tables",
+        path: "/cargadatosplegado",
+        name: "Cargar Datos",
         mini: "PT",
-        component: ExtendedTables,
+        component: PlegadoCargarPiezas,
         layout: "/admin"
       },
       {
-        path: "/plegadoreacttablas",
-        name: "React Tables",
-        mini: "PRT",
-        component: ReactTables,
+        path: "/piezasporplegado",
+        name: "Piezas por Modelo",
+        mini: "PM",
+        component: PlegadoDetallePiezas,
         layout: "/admin"
       }
     ]

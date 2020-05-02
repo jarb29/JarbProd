@@ -1,11 +1,11 @@
 import React from "react";
-import Programas from "../../components/Corte/Programas";
+import CorteCargarProgramas from "../../components/Corte/CorteCargarProgramas";
 import CorteTablas from "../../components/Corte/CorteTablas";
 
 function CargarPrograma() {
   return (
     <div className="App">
-      <Programas />
+      <CorteCargarProgramas />
       <CorteTablas />
     </div>
   );
