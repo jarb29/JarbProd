@@ -36,6 +36,7 @@ import CargarProgramas from "views/Corte/CargarProgramas";
 import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
+import CorteCargarPlanchasUsadas from "views/Corte/CorteCargarPlanchasUsadas";
 
 var dashRoutes = [
   {
@@ -63,6 +64,13 @@ var dashRoutes = [
         name: "Cargar Programas",
         mini: "CP",
         component: CargarProgramas,
+        layout: "/admin"
+      },
+      {
+        path: "/cargarplanchas",
+        name: "Cargar Planchas Cortadas",
+        mini: "PC",
+        component: CorteCargarPlanchasUsadas,
         layout: "/admin"
       },
       {

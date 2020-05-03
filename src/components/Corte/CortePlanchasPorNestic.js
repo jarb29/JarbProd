@@ -18,7 +18,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/extendedTables
 
 const useStyles = makeStyles(styles);
 
-export default function PlegadoTablasPiezasPersona() {
+export default function CortePlanchasPorNestic() {
   const classes = useStyles();
   const fillButtons = [
     { color: "info", icon: Person },
