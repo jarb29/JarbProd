@@ -3,16 +3,16 @@ const getState = ({ getStore, getActions, setStore }) => {
     // base datos Angel
     store: {
       ///// Alex URL
-      baseURL: ""
-
-     
-	},
-	
+      baseURL: "frrfreerfrfwefefw"
+    },
 
     actions: {
-      /////// Funcion de autenticacion para el login
+      /////// Funcion para crear el modelo
 
-      
+      crearModelo: e => {
+        console.log(e.target.name, "nombre");
+        console.log(e.target.value, "valor");
+      }
     }
   };
 };
