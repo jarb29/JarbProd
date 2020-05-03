@@ -132,7 +132,7 @@ export default function PlegadoCargarDatos() {
             className={classes.marginRight}
             onClick={() => setClassicModal(true)}
           >
-            Cargar Piezas
+            Cargar Planchas
           </Button>
           <Dialog
             classes={{
@@ -162,7 +162,7 @@ export default function PlegadoCargarDatos() {
                 
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Piezas</h4>
+              <h4 className={classes.modalTitle}>Planchas</h4>
             </DialogTitle>
             <CorteFormularioPlanchasPorNestic />
             <DialogContent

@@ -3,12 +3,12 @@ import CorteNesticEnUso from "components/Corte/CorteNesticEnUso";
 import CorteCargarPlanchas from "components/Corte/CorteCargarPlanchas";
 
 function CorteCargarPlanchasUsadas() {
-    return (
+  return (
     <div className="App">
-        <CorteCargarPlanchas />
-        <CorteNesticEnUso />
+      <CorteCargarPlanchas />
+      <CorteNesticEnUso />
     </div>
-    );
+  );
 }
 
 export default CorteCargarPlanchasUsadas;

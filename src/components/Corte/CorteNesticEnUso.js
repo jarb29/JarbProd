@@ -35,7 +35,7 @@ export default function CorteNesticEnUso() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader>
-              <h4 className={classes.cardTitle}>Piezas por Modelo</h4>
+              <h4 className={classes.cardTitle}>Modelo</h4>
             </CardHeader>
             <CardBody>
               <Accordion
@@ -61,7 +61,7 @@ export default function CorteNesticEnUso() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader>
-              <h4 className={classes.cardTitle}>Piezas por Modelo</h4>
+              <h4 className={classes.cardTitle}>Modelo</h4>
             </CardHeader>
             <CardBody>
               <Accordion
