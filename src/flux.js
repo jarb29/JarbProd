@@ -2,10 +2,14 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     // base datos Angel
     store: {
-      ///// Alex URL
+      /////URL
       baseURL: "frrfreerfrfwefefw",
+
+      //Variables para crear el Modelo
       numero_ot: [],
       nombre_programa: []
+
+      //Variables para crear el Nestic
     },
 
     actions: {

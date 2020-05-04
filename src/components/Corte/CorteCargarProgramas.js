@@ -187,7 +187,7 @@ export default function CorteCargarProgramas() {
           <Dialog
             classes={{
               root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal + " " + classes.modalSmall
+              paper: classes.modal
             }}
             open={smallModal}
             TransitionComponent={Transition}
@@ -201,7 +201,7 @@ export default function CorteCargarProgramas() {
               disableTypography
               className={classes.modalHeader}
             >
-              
+
               <Button
                 justIcon
                 className={classes.modalCloseButton}
@@ -210,13 +210,19 @@ export default function CorteCargarProgramas() {
                 color="transparent"
                 onClick={() => setSmallModal(false)}
               >
-               
-                <Close className={classes.modalClose} /> 
+
+                <Close className={classes.modalClose} />
               </Button>
               <h4 className={classes.modalTitle}>Nestic</h4>
             </DialogTitle>
-            <CorteFormularioNestic />
+            <DialogContent
+              id="classic-modal-slide-description"
+              className={classes.modalBody}
+            >
+              <CorteFormularioNestic />
+            </DialogContent>
           </Dialog>
+
 
 
 
@@ -260,15 +266,24 @@ export default function CorteCargarProgramas() {
               </Button>
               <h4 className={classes.modalTitle}>Crear Piezas</h4>
             </DialogTitle>
-            <CorteFormularioPiezas />
-            <DialogActions
-              className={
-                classes.modalFooter + " " + classes.modalFooterCenter
-              }
+            <DialogContent
+              id="classic-modal-slide-description"
+              className={classes.modalBody}
             >
-            </DialogActions>
+              <CorteFormularioPiezas />
+            </DialogContent>
           </Dialog>
         </GridItem>
+
+
+
+
+
+
+
+
+
+
 
 
 

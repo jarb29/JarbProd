@@ -22,16 +22,16 @@ export default function CorteFormularioModelo() {
   const { actions, store } = useContext(Context);
   
   // register form
-  const [registerEmail, setregisterEmail] = React.useState("");
-  const [registerEmailState, setregisterEmailState] = React.useState("");
-  const [registerPassword, setregisterPassword] = React.useState("");
-  const [registerPasswordState, setregisterPasswordState] = React.useState("");
-  const [registerConfirmPassword, setregisterConfirmPassword] = React.useState(
+  const [numeroOt, setNumeroOt] = React.useState("");
+  const [numeroOtState, setNumeroOtState] = React.useState("");
+  const [nombrePrograma, setNombrePrograma] = React.useState("");
+  const [nombreProgramaState, setNombreProgramaState] = React.useState("");
+  const [confirmNombrePrograma, setConfirmNombrePrograma] = React.useState(
     ""
   );
   const [
-    registerConfirmPasswordState,
-    setregisterConfirmPasswordState
+    confirmNombredelProgramaState,
+    setConfirmNombreProgramaState
   ] = React.useState("");
 
 
@@ -54,8 +54,8 @@ export default function CorteFormularioModelo() {
   };
 
   const handleSubmit = () => {
-    actions.crearModelo(registerConfirmPassword)
-    actions.crearOT(registerEmail)
+    actions.crearModelo(nombrePrograma)
+    actions.crearOT(numeroOt)
   };
 
 
@@ -68,8 +68,8 @@ export default function CorteFormularioModelo() {
           <CardBody>
             <form onSubmit={handleSubmit}>
               <CustomInput
-                success={registerEmailState === "success"}
-                error={registerEmailState === "error"}
+                success={numeroOtState === "success"}
+                error={numeroOtState === "error"}
                 labelText="Numero de OT *"
                 id="numero_ot"
                 name="numero_ot"
@@ -79,19 +79,18 @@ export default function CorteFormularioModelo() {
                 inputProps={{
                   onChange: event => {
                     if (verifyNumber(event.target.value)) {
-                      setregisterEmailState("success");
+                      setNumeroOtState("success");
                     } else {
-                      setregisterEmailState("error");
+                      setNumeroOtState("error");
                     }
-                    
-                    setregisterEmail(event.target.value);
+                    setNumeroOt(event.target.value);
                   },
                   type: "numero_ot"
                 }}
               />
               <CustomInput
-                success={registerPasswordState === "success"}
-                error={registerPasswordState === "error"}
+                success={nombreProgramaState === "success"}
+                error={nombreProgramaState === "error"}
                 labelText="Nombre del Programa *"
                 id="nombredelprograma"
                 formControlProps={{
@@ -100,19 +99,19 @@ export default function CorteFormularioModelo() {
                 inputProps={{
                   onChange: event => {
                     if (verifyLength(event.target.value, 1)) {
-                      setregisterPasswordState("success");
+                      setNombreProgramaState("success");
                     } else {
-                      setregisterPasswordState("error");
+                      setNombreProgramaState("error");
                     }
-                    setregisterPassword(event.target.value);
+                    setNombrePrograma(event.target.value);
                   },
                   type: "nombre_programa",
                  
                 }}
               />
               <CustomInput
-                success={registerConfirmPasswordState === "success"}
-                error={registerConfirmPasswordState === "error"}
+                success={confirmNombredelProgramaState === "success"}
+                error={confirmNombredelProgramaState === "error"}
                 labelText="Repetir nombre del Programa *"
                 value = "repetir_nombre_programa"
                 id="repetir_nombre_programa"
@@ -121,12 +120,12 @@ export default function CorteFormularioModelo() {
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (registerPassword === event.target.value) {
-                      setregisterConfirmPasswordState("success");
+                    if (nombrePrograma === event.target.value) {
+                      setConfirmNombreProgramaState("success");
                     } else {
-                      setregisterConfirmPasswordState("error");
+                      setConfirmNombreProgramaState("error");
                     }
-                    setregisterConfirmPassword(event.target.value);
+                    setConfirmNombrePrograma(event.target.value);
                   },
                   type: "nombre_programa",
                   
@@ -136,11 +135,10 @@ export default function CorteFormularioModelo() {
                 <small>*</small> Campos Requeridos
               </div>
               {
-              (registerConfirmPasswordState === "success" && registerEmailState ==="success")?<Button
+              (confirmNombredelProgramaState === "success" && numeroOtState ==="success")?<Button
                 color="rose"
                 className={classes.registerButton}
-                onClick = {handleSubmit}
-                //type='submit'
+                type='submit'
               >
                 Agregar
               </Button>: null }
