@@ -19,7 +19,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/validationForm
 const useStyles = makeStyles(styles);
 
 export default function CorteFormularioModelo() {
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
   
   // register form
   const [registerEmail, setregisterEmail] = React.useState("");
@@ -52,26 +52,12 @@ export default function CorteFormularioModelo() {
     }
     return false;
   };
-  
+
   const handleSubmit = () => {
-
+    actions.crearModelo(registerConfirmPassword)
+    actions.crearOT(registerEmail)
   };
- 
 
-  const registerClick = (e) => {
-    if (registerEmailState === "") {
-      setregisterEmailState("error");
-    }
-    if (registerPasswordState === "") {
-      setregisterPasswordState("error");
-    }
-    if (registerConfirmPasswordState === "") {
-      setregisterConfirmPasswordState("error");
-    } else {
-    e => actions.crearModelo(e, )
-    console.log(e.target.name)}
-    
-  };
 
  
   const classes = useStyles();
@@ -97,6 +83,7 @@ export default function CorteFormularioModelo() {
                     } else {
                       setregisterEmailState("error");
                     }
+                    
                     setregisterEmail(event.target.value);
                   },
                   type: "numero_ot"
@@ -139,7 +126,7 @@ export default function CorteFormularioModelo() {
                     } else {
                       setregisterConfirmPasswordState("error");
                     }
-                   // setregisterConfirmPassword(event.target.value);
+                    setregisterConfirmPassword(event.target.value);
                   },
                   type: "nombre_programa",
                   
@@ -149,15 +136,11 @@ export default function CorteFormularioModelo() {
                 <small>*</small> Campos Requeridos
               </div>
               {
-
-                console.log(registerConfirmPasswordState),
-                console.log(registerPassword),
-
-              (registerConfirmPasswordState === "success"&&registerEmailState ==="success")?<Button
+              (registerConfirmPasswordState === "success" && registerEmailState ==="success")?<Button
                 color="rose"
-                onClick={registerClick}
                 className={classes.registerButton}
-                type='submit'
+                onClick = {handleSubmit}
+                //type='submit'
               >
                 Agregar
               </Button>: null }
