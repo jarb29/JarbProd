@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       //Variables para crear el Modelo
       numero_ot: [],
-      nombre_programa: [],
+      nombre_programa: ["clasica 500", "Itally 7000", "Itally 8100 +"],
 
       //Variables para crear el Nestic
       modelo_elegido: [],

@@ -37,6 +37,7 @@ import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 import CorteCargarPlanchasUsadas from "views/Corte/CorteCargarPlanchasUsadas";
+import PlegadoDetalleLineas from "views/Plegado/PlegadoDetalleLineas";
 
 var dashRoutes = [
   {
@@ -100,6 +101,13 @@ var dashRoutes = [
         name: "Cargar Piezas",
         mini: "PM",
         component: PlegadoDetallePiezas,
+        layout: "/admin"
+      },
+      {
+        path: "/piezasporlinea",
+        name: "Detalle Piezas por Linea",
+        mini: "DPL",
+        component: PlegadoDetalleLineas,
         layout: "/admin"
       }
     ]

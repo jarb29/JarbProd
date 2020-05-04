@@ -138,7 +138,8 @@ export default function CorteFormularioModelo() {
               (confirmNombredelProgramaState === "success" && numeroOtState ==="success")?<Button
                 color="rose"
                 className={classes.registerButton}
-                type='submit'
+                //type='submit'
+                onClick = {handleSubmit}
               >
                 Agregar
               </Button>: null }

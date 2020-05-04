@@ -16,7 +16,9 @@ const useStyles = makeStyles(theme =>
 
 export default function CorteSeleccioneModelo() {
   const classes = useStyles();
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
+
+  console.log(store.nombre_programa);
 
   return (
     <div>
@@ -30,12 +32,13 @@ export default function CorteSeleccioneModelo() {
           onChange={e => actions.crearModeloElegido(e)}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Bebidas</option>
-          <option value="Dulces">Dulces</option>
-          <option value="Charcuteria">Charcuteria</option>
-          <option value="Verduras">Verduras</option>
-          <option value="Frutas">Frutas</option>
-          <option value="Varios">Varios</option>
+          {store.nombre_programa.map((programa, index) => {
+            return (
+              <option value={programa} key={index}>
+                {programa}
+              </option>
+            );
+          })}
         </Select>
       </FormControl>
     </div>
