@@ -52,6 +52,10 @@ export default function CorteFormularioModelo() {
     }
     return false;
   };
+  
+  const handleSubmit = () => {
+
+  };
  
 
   const registerClick = (e) => {
@@ -76,12 +80,13 @@ export default function CorteFormularioModelo() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form>
+            <form onSubmit={handleSubmit}>
               <CustomInput
                 success={registerEmailState === "success"}
                 error={registerEmailState === "error"}
                 labelText="Numero de OT *"
                 id="numero_ot"
+                name="numero_ot"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -122,7 +127,7 @@ export default function CorteFormularioModelo() {
                 success={registerConfirmPasswordState === "success"}
                 error={registerConfirmPasswordState === "error"}
                 labelText="Repetir nombre del Programa *"
-                name = "programa"
+                value = "repetir_nombre_programa"
                 id="repetir_nombre_programa"
                 formControlProps={{
                   fullWidth: true
@@ -134,22 +139,28 @@ export default function CorteFormularioModelo() {
                     } else {
                       setregisterConfirmPasswordState("error");
                     }
-                    setregisterConfirmPassword(event.target.value);
+                   // setregisterConfirmPassword(event.target.value);
                   },
                   type: "nombre_programa",
                   
                 }}
               />
               <div className={classes.formCategory}>
-                <small>*</small> Required fields
+                <small>*</small> Campos Requeridos
               </div>
-              <Button
+              {
+
+                console.log(registerConfirmPasswordState),
+                console.log(registerPassword),
+
+              (registerConfirmPasswordState === "success"&&registerEmailState ==="success")?<Button
                 color="rose"
-                onClick={e => registerClick(e, e.name)}
+                onClick={registerClick}
                 className={classes.registerButton}
+                type='submit'
               >
                 Agregar
-              </Button>
+              </Button>: null }
             </form>
           </CardBody>
         </Card>
