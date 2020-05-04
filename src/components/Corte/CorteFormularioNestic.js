@@ -51,7 +51,6 @@ export default function CorteFormularioNestic() {
   };
  
   const handleSubmit = () => {
-
     actions.crearProgramaNestic(nombrePrograma)
     actions.crearCantidadPiezasCriticas(piezaCritica)
     actions.crearTiempoCorte(tiempoCorte)
@@ -73,7 +72,7 @@ export default function CorteFormularioNestic() {
                 success={nombreProgramaNesticState === "success"}
                 error={nombreProgramaNesticState === "error"}
                 labelText="Nombre del Programa Nestic *"
-                id="registeremail"
+                id="nombre_programa"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -86,7 +85,7 @@ export default function CorteFormularioNestic() {
                     }
                     setNombrePrograma(event.target.value);
                   },
-                  type: "email"
+                  type: "nombre_programa"
                 }}
               />
               <CustomInput
@@ -152,7 +151,7 @@ export default function CorteFormularioNestic() {
                <CustomInput
                 success={longitudState === "success"}
                 error={longitudState === "error"}
-                labelText="Longitud de Corte *"
+                labelText="Longitud de Corte en centimetros *"
                 id="longitud_corte"
                 formControlProps={{
                   fullWidth: true
@@ -176,7 +175,8 @@ export default function CorteFormularioNestic() {
                 (nombreProgramaNesticState === "success" &&
                 piezaCriticaState === "success" &&
                 tiempoCorteState === "success" &&
-                espesorState === "success")? 
+                espesorState === "success"&&
+                longitudState === "success")? 
               <Button
                 color="rose"
                 className={classes.registerButton}

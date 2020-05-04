@@ -29,7 +29,7 @@ export default function CorteSeleccioneNestic() {
           defaultValue=""
           id="grouped-native-select"
           name="categoria"
-          onChange={e => actions.crearModeloElegido(e)}
+          onChange={e => actions.crearNesticElegido(e)}
         >
           <option aria-label="None" value="" />
           <option value="Bebidas">Bebidas</option>

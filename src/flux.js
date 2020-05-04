@@ -15,7 +15,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       numero_piezas_criticas: [],
       tiempo_corte: [],
       espesor: [],
-      longitud_nestic: []
+      longitud_nestic: [],
+
+      //Variables para crear las Piezas
+      nombre_pieza: [],
+      cantidadPiezasPorPlancha: [],
+      crearLongitudCortePieza: [],
+      nesticElegido: []
     },
 
     actions: {
@@ -74,7 +80,37 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           longitud_nestic: e
         });
-      }      
+      },
+
+      /////// Funcion para cargar las piezas
+
+      crearNombrePieza: e => {
+        console.log(e);
+        setStore({
+          nombre_pieza: e
+        });
+      },
+
+      crearCantidadPiezasPorPlancha: e => {
+        console.log(e);
+        setStore({
+          cantidadPiezasPorPlancha: e
+        });
+      },
+
+      crearLongitudCortePieza: e => {
+        console.log(e);
+        setStore({
+          crearLongitudCortePieza: e
+        });
+      },
+
+      crearNesticElegido: e => {
+        console.log(e.target.value);
+        setStore({
+          nesticElegido: e.target.value
+        });
+      }
     }
   };
 };
