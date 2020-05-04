@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-//import { Context } from "../../AppContext";
+import { Context } from "../../AppContext";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme =>
 
 export default function CorteSeleccioneModelo() {
   const classes = useStyles();
-  //const { actions } = useContext(Context);
+  const { actions } = useContext(Context);
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function CorteSeleccioneModelo() {
           defaultValue=""
           id="grouped-native-select"
           name="categoria"
-          //onChange={e => actions.handleChange(e)}
+          onChange={e => actions.crearModeloElegido(e)}
         >
           <option aria-label="None" value="" />
           <option value="Bebidas">Bebidas</option>
