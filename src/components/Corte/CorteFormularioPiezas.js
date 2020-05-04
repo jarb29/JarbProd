@@ -27,22 +27,18 @@ import CardFooter from "components/Card/CardFooter.js";
 
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
+import CorteSeleccioneNestic from "./CorteSeleccioneNestic";
 
 const useStyles = makeStyles(styles);
 
 export default function CorteFormularioPiezas() {
   // register form
-  const [registerEmail, setregisterEmail] = React.useState("");
-  const [registerEmailState, setregisterEmailState] = React.useState("");
-  const [registerPassword, setregisterPassword] = React.useState("");
-  const [registerPasswordState, setregisterPasswordState] = React.useState("");
-  const [registerConfirmPassword, setregisterConfirmPassword] = React.useState(
-    ""
-  );
-  const [
-    registerConfirmPasswordState,
-    setregisterConfirmPasswordState
-  ] = React.useState("");
+  const [nombrePieza, setNombrePieza] = React.useState("");
+  const [nombrePiezaState, setNombrePiezaState] = React.useState("");
+  const [cantidadPiezas, setCantidadPiezas] = React.useState("");
+  const [cantidadPiezasState, setCantidadPiezasState] = React.useState("");
+  const [longitudPieza, setLongitudPieza] = React.useState("");
+  const [longitudPiezaState, setLongitudPiezaState] = React.useState("");
   const [registerCheckbox, setregisterCheckbox] = React.useState(false);
   const [registerCheckboxState, setregisterCheckboxState] = React.useState("");
   // login form
@@ -73,14 +69,7 @@ export default function CorteFormularioPiezas() {
   const [minValueState, setminValueState] = React.useState("");
   const [maxValue, setmaxValue] = React.useState("");
   const [maxValueState, setmaxValueState] = React.useState("");
-  // function that returns true if value is email, false otherwise
-  const verifyEmail = value => {
-    var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emailRex.test(value)) {
-      return true;
-    }
-    return false;
-  };
+ 
   // function that verifies if a string has a given length or not
   const verifyLength = (value, length) => {
     if (value.length >= length) {
@@ -96,71 +85,11 @@ export default function CorteFormularioPiezas() {
     }
     return false;
   };
-  // verifies if value is a valid URL
-  const verifyUrl = value => {
-    try {
-      new URL(value);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  };
-  const registerClick = () => {
-    if (registerEmailState === "") {
-      setregisterEmailState("error");
-    }
-    if (registerPasswordState === "") {
-      setregisterPasswordState("error");
-    }
-    if (registerConfirmPasswordState === "") {
-      setregisterConfirmPasswordState("error");
-    }
-    if (registerCheckboxState === "") {
-      setregisterCheckboxState("error");
-    }
-  };
-  const loginClick = () => {
-    if (loginEmailState === "") {
-      setloginEmailState("error");
-    }
-    if (loginPasswordState === "") {
-      setloginPasswordState("error");
-    }
-  };
-  const typeClick = () => {
-    if (requiredState === "") {
-      setrequiredState("error");
-    }
-    if (typeEmailState === "") {
-      settypeEmailState("error");
-    }
-    if (numberState === "") {
-      setnumberState("error");
-    }
-    if (urlState === "") {
-      seturlState("error");
-    }
-    if (equalToState === "") {
-      setequalToState("error");
-    }
-  };
-  const rangeClick = () => {
-    if (minLengthState === "") {
-      setminLengthState("error");
-    }
-    if (maxLengthState === "") {
-      setmaxLengthState("error");
-    }
-    if (rangeState === "") {
-      setrangeState("error");
-    }
-    if (minValueState === "") {
-      setminValueState("error");
-    }
-    if (maxValueState === "") {
-      setmaxValueState("error");
-    }
-  };
+ 
+
+ 
+
+  
   const classes = useStyles();
   return (
     <GridContainer>
@@ -168,66 +97,65 @@ export default function CorteFormularioPiezas() {
         <Card>
           <CardBody>
             <form>
+              <CorteSeleccioneNestic />
               <CustomInput
-                success={registerEmailState === "success"}
-                error={registerEmailState === "error"}
+                success={nombrePiezaState === "success"}
+                error={nombrePiezaState === "error"}
                 labelText="Nombre de la Pieza *"
-                id="registeremail"
+                id="nombre_pieza"
                 formControlProps={{
                   fullWidth: true
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (verifyEmail(event.target.value)) {
-                      setregisterEmailState("success");
+                    if (verifyLength(event.target.value, 5)) {
+                      setNombrePiezaState("success");
                     } else {
-                      setregisterEmailState("error");
+                      setNombrePiezaState("error");
                     }
-                    setregisterEmail(event.target.value);
+                    setNombrePieza(event.target.value);
                   },
-                  type: "email"
+                  type: "nombre_pieza"
                 }}
               />
               <CustomInput
-                success={registerPasswordState === "success"}
-                error={registerPasswordState === "error"}
-                labelText="Cantidad *"
-                id="registerpassword"
+                success={cantidadPiezasState === "success"}
+                error={cantidadPiezasState === "error"}
+                labelText="Cantidad piezas por Plancha *"
+                id="cantidad"
                 formControlProps={{
                   fullWidth: true
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (verifyLength(event.target.value, 1)) {
-                      setregisterPasswordState("success");
+                    if (verifyNumber(event.target.value)) {
+                      setCantidadPiezasState("success");
                     } else {
-                      setregisterPasswordState("error");
+                      setCantidadPiezasState("error");
                     }
-                    setregisterPassword(event.target.value);
+                    setCantidadPiezas(event.target.value);
                   },
-                  type: "password",
-                  autoComplete: "off"
+                  type: "cantidad"
                 }}
               />
               <CustomInput
-                success={registerConfirmPasswordState === "success"}
-                error={registerConfirmPasswordState === "error"}
-                labelText="Confirm Password *"
-                id="registerconfirmpassword"
+                success={longitudPiezaState === "success"}
+                error={longitudPiezaState === "error"}
+                labelText="Longitud Pieza *"
+                id="longitud_pieza"
                 formControlProps={{
                   fullWidth: true
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (registerPassword === event.target.value) {
-                      setregisterConfirmPasswordState("success");
+                    if (verifyNumber(event.target.value)) {
+                      setLongitudPiezaState("success");
                     } else {
-                      setregisterConfirmPasswordState("error");
+                      setLongitudPiezaState("error");
                     }
-                    setregisterConfirmPassword(event.target.value);
+                    setLongitudPieza(event.target.value);
                   },
-                  type: "password",
-                  autoComplete: "off"
+                  type: "longitudPieza"
                 }}
               />
               <div className={classes.formCategory}>
@@ -235,7 +163,6 @@ export default function CorteFormularioPiezas() {
               </div>
               <Button
                 color="rose"
-                onClick={registerClick}
                 className={classes.registerButton}
               >
                 Register

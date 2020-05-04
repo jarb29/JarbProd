@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       programa_nestic: [],
       numero_piezas_criticas: [],
       tiempo_corte: [],
-      espesor: []
+      espesor: [],
+      longitud_nestic: []
     },
 
     actions: {
@@ -67,7 +68,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           espesor: e
         });
-      }
+      },
+      crearLongitudNestic: e => {
+        console.log(e);
+        setStore({
+          longitud_nestic: e
+        });
+      }      
     }
   };
 };

@@ -29,6 +29,8 @@ export default function CorteFormularioNestic() {
   const [tiempoCorteState, setTiempoCorteState] = React.useState("");
   const [espesor, setEspesor] = React.useState("");
   const [espesorState, setEspesorState] = React.useState("");
+  const [longitudPieza, setLongitud] = React.useState("");
+  const [longitudState, setLongitudState] = React.useState("");
  
   
   
@@ -54,6 +56,7 @@ export default function CorteFormularioNestic() {
     actions.crearCantidadPiezasCriticas(piezaCritica)
     actions.crearTiempoCorte(tiempoCorte)
     actions.crearEspesor(espesor)
+    actions.crearLongitudNestic(longitudPieza)
   };
 
   
@@ -144,6 +147,26 @@ export default function CorteFormularioNestic() {
                     setEspesor(event.target.value);
                   },
                   type: "espesor"
+                }}
+              />
+               <CustomInput
+                success={longitudState === "success"}
+                error={longitudState === "error"}
+                labelText="Longitud de Corte *"
+                id="longitud_corte"
+                formControlProps={{
+                  fullWidth: true
+                }}
+                inputProps={{
+                  onChange: event => {
+                    if (verifyNumber(event.target.value)) {
+                      setLongitudState("success");
+                    } else {
+                      setLongitudState("error");
+                    }
+                    setLongitud(event.target.value);
+                  },
+                  type: "longitud"
                 }}
               />
               <div className={classes.formCategory}>
