@@ -1,17 +1,7 @@
 /*eslint-disable*/
-import React from "react";
+import React, {useContext} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import InputAdornment from "@material-ui/core/InputAdornment";
-
-// material ui icons
-import MailOutline from "@material-ui/icons/MailOutline";
-import Contacts from "@material-ui/icons/Contacts";
-import Check from "@material-ui/icons/Check";
-import Close from "@material-ui/icons/Close";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -19,68 +9,24 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardText from "components/Card/CardText.js";
-import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
 
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
-
+import PlegadoModelosDisponibles from "./PlegadoModelosDisponibles";
+import PlegadoPiezasDisponiblesModelo from "./PlegadoPiezasDisponiblesModelo";
+import PlegadoMaquinasDisponibles from "./PlegadoMaquinasDisponibles";
+import PlegadoraOperadores from "./PlegadoraOperadores";
+import { Context } from '../../AppContext';
 const useStyles = makeStyles(styles);
 
 export default function PlegadoFormularioPiezas() {
+  const { actions, store } = useContext(Context);
   // register form
-  const [registerEmail, setregisterEmail] = React.useState("");
-  const [registerEmailState, setregisterEmailState] = React.useState("");
-  const [registerPassword, setregisterPassword] = React.useState("");
-  const [registerPasswordState, setregisterPasswordState] = React.useState("");
-  const [registerConfirmPassword, setregisterConfirmPassword] = React.useState(
-    ""
-  );
-  const [
-    registerConfirmPasswordState,
-    setregisterConfirmPasswordState
-  ] = React.useState("");
-  const [registerCheckbox, setregisterCheckbox] = React.useState(false);
-  const [registerCheckboxState, setregisterCheckboxState] = React.useState("");
-  // login form
-  const [loginEmail, setloginEmail] = React.useState("");
-  const [loginEmailState, setloginEmailState] = React.useState("");
-  const [loginPassword, setloginPassword] = React.useState("");
-  const [loginPasswordState, setloginPasswordState] = React.useState("");
-  // type validation
-  const [required, setrequired] = React.useState("");
-  const [requiredState, setrequiredState] = React.useState("");
-  const [typeEmail, settypeEmail] = React.useState("");
-  const [typeEmailState, settypeEmailState] = React.useState("");
-  const [number, setnumber] = React.useState("");
-  const [numberState, setnumberState] = React.useState("");
-  const [url, seturl] = React.useState("");
-  const [urlState, seturlState] = React.useState("");
-  const [equalTo, setequalTo] = React.useState("");
-  const [whichEqualTo, setwhichEqualTo] = React.useState("");
-  const [equalToState, setequalToState] = React.useState("");
-  // range validation
-  const [minLength, setminLength] = React.useState("");
-  const [minLengthState, setminLengthState] = React.useState("");
-  const [maxLength, setmaxLength] = React.useState("");
-  const [maxLengthState, setmaxLengthState] = React.useState("");
-  const [range, setrange] = React.useState("");
-  const [rangeState, setrangeState] = React.useState("");
-  const [minValue, setminValue] = React.useState("");
-  const [minValueState, setminValueState] = React.useState("");
-  const [maxValue, setmaxValue] = React.useState("");
-  const [maxValueState, setmaxValueState] = React.useState("");
-  // function that returns true if value is email, false otherwise
-  const verifyEmail = value => {
-    var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emailRex.test(value)) {
-      return true;
-    }
-    return false;
-  };
+  const [piezaPlegada, setPiezaPlegada] = React.useState("");
+  const [piezaPlegadaState, setPiezaPlegadaState] = React.useState("");
+
+
   // function that verifies if a string has a given length or not
   const verifyLength = (value, length) => {
     if (value.length >= length) {
@@ -96,71 +42,21 @@ export default function PlegadoFormularioPiezas() {
     }
     return false;
   };
-  // verifies if value is a valid URL
-  const verifyUrl = value => {
-    try {
-      new URL(value);
-      return true;
-    } catch (_) {
-      return false;
-    }
+
+  console.log(store.plegadoModeloSeleccionado);
+  console.log(store.plegadoPiezaSeleccionada);
+  console.log(store.plegadoMaquinaSeleccionada);
+  console.log(store.plegadoOperadorSeleccionado);
+  console.log(store.plegadoCantidadPiezas);
+
+  const handleSubmit = (e) => {
+    actions.cargarDatosPlegadoformulario(piezaPlegada)
   };
-  const registerClick = () => {
-    if (registerEmailState === "") {
-      setregisterEmailState("error");
-    }
-    if (registerPasswordState === "") {
-      setregisterPasswordState("error");
-    }
-    if (registerConfirmPasswordState === "") {
-      setregisterConfirmPasswordState("error");
-    }
-    if (registerCheckboxState === "") {
-      setregisterCheckboxState("error");
-    }
-  };
-  const loginClick = () => {
-    if (loginEmailState === "") {
-      setloginEmailState("error");
-    }
-    if (loginPasswordState === "") {
-      setloginPasswordState("error");
-    }
-  };
-  const typeClick = () => {
-    if (requiredState === "") {
-      setrequiredState("error");
-    }
-    if (typeEmailState === "") {
-      settypeEmailState("error");
-    }
-    if (numberState === "") {
-      setnumberState("error");
-    }
-    if (urlState === "") {
-      seturlState("error");
-    }
-    if (equalToState === "") {
-      setequalToState("error");
-    }
-  };
-  const rangeClick = () => {
-    if (minLengthState === "") {
-      setminLengthState("error");
-    }
-    if (maxLengthState === "") {
-      setmaxLengthState("error");
-    }
-    if (rangeState === "") {
-      setrangeState("error");
-    }
-    if (minValueState === "") {
-      setminValueState("error");
-    }
-    if (maxValueState === "") {
-      setmaxValueState("error");
-    }
-  };
+
+  
+
+  
+
   const classes = useStyles();
   return (
     <GridContainer>
@@ -168,78 +64,47 @@ export default function PlegadoFormularioPiezas() {
         <Card>
           <CardBody>
             <form>
+              <PlegadoModelosDisponibles />
+              <PlegadoPiezasDisponiblesModelo />
+              <PlegadoMaquinasDisponibles />
+              <PlegadoraOperadores />
               <CustomInput
-                success={registerEmailState === "success"}
-                error={registerEmailState === "error"}
-                labelText="Nombre de Modelo *"
-                id="registeremail"
+                success={piezaPlegadaState === "success"}
+                error={piezaPlegadaState === "error"}
+                labelText="Piezas Plegadas *"
+                id="pieza_plegada"
+                name="plegadoCantidadPiezas"
                 formControlProps={{
                   fullWidth: true
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (verifyEmail(event.target.value)) {
-                      setregisterEmailState("success");
+                    if (verifyNumber(event.target.value)) {
+                      setPiezaPlegadaState("success");
                     } else {
-                      setregisterEmailState("error");
+                      setPiezaPlegadaState("error");
                     }
-                    setregisterEmail(event.target.value);
+                    setPiezaPlegada(event.target.value);
                   },
-                  type: "email"
-                }}
-              />
-              <CustomInput
-                success={registerPasswordState === "success"}
-                error={registerPasswordState === "error"}
-                labelText="Password *"
-                id="registerpassword"
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  onChange: event => {
-                    if (verifyLength(event.target.value, 1)) {
-                      setregisterPasswordState("success");
-                    } else {
-                      setregisterPasswordState("error");
-                    }
-                    setregisterPassword(event.target.value);
-                  },
-                  type: "password",
-                  autoComplete: "off"
-                }}
-              />
-              <CustomInput
-                success={registerConfirmPasswordState === "success"}
-                error={registerConfirmPasswordState === "error"}
-                labelText="Confirm Password *"
-                id="registerconfirmpassword"
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  onChange: event => {
-                    if (registerPassword === event.target.value) {
-                      setregisterConfirmPasswordState("success");
-                    } else {
-                      setregisterConfirmPasswordState("error");
-                    }
-                    setregisterConfirmPassword(event.target.value);
-                  },
-                  type: "password",
-                  autoComplete: "off"
+                  type: "pieza_plegada"
                 }}
               />
               <div className={classes.formCategory}>
-                <small>*</small> Required fields
+                <small>*</small> Campos Requeridos
               </div>
-              <Button
-                color="rose"
-                onClick={registerClick}
-                className={classes.registerButton}
-              >
-                Register
-              </Button>
+              {(piezaPlegadaState === "success" &&
+              store.plegadoModeloSeleccionado &&
+              store.plegadoPiezaSeleccionada&&
+              store.plegadoMaquinaSeleccionada&&
+              store.plegadoOperadorSeleccionado&&
+              store.plegadoCantidadPiezas)?
+                <Button
+                  color="rose"
+                  className={classes.registerButton}
+                  onClick = {handleSubmit}
+                >
+                  Register
+              </Button> : null}
             </form>
           </CardBody>
         </Card>

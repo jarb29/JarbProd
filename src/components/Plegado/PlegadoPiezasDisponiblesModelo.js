@@ -9,36 +9,35 @@ const useStyles = makeStyles(theme =>
   createStyles({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 402
+      minWidth: 420
     }
   })
 );
 
-export default function CorteSeleccioneModelo() {
+export default function PlegadoPiezasDisponiblesModelo() {
   const classes = useStyles();
-  const { actions, store } = useContext(Context);
-
-  console.log(store.nombre_programa);
+  const { actions } = useContext(Context);
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Modelo a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">
+          Seleccione una Pieza
+        </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="categoria"
-          onChange={e => actions.crearModeloElegido(e)}
+          name="plegadoPiezaSeleccionada"
+          onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />
-          {/*store.nombre_programa.map((programa, index) => {
-            return (
-              <option value={programa} key={index}>
-                {programa}
-              </option>
-            );
-          })*/}
+          <option value="Bebidas">Bebidas</option>
+          <option value="Dulces">Dulces</option>
+          <option value="Charcuteria">Charcuteria</option>
+          <option value="Verduras">Verduras</option>
+          <option value="Frutas">Frutas</option>
+          <option value="Varios">Varios</option>
         </Select>
       </FormControl>
     </div>

@@ -3,11 +3,11 @@ const getState = ({ getStore, getActions, setStore }) => {
     // base datos Angel
     store: {
       /////URL
-      baseURL: "frrfreerfrfwefefw",
+      baseURL: "http://127.0.0.1:5000",
 
       //Variables para crear el Modelo
       numero_ot: [],
-      nombre_programa: ["clasica 500", "Itally 7000", "Itally 8100 +"],
+      nombre_programa: [],
 
       //Variables para crear el Nestic
       modelo_elegido: [],
@@ -21,7 +21,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       nombre_pieza: [],
       cantidadPiezasPorPlancha: [],
       crearLongitudCortePieza: [],
-      nesticElegido: []
+      nesticElegido: [],
+
+      // Variables para plegado
+      plegadoModeloSeleccionado: [],
+      plegadoPiezaSeleccionada: [],
+      plegadoMaquinaSeleccionada: [],
+      plegadoOperadorSeleccionado: [],
+      plegadoCantidadPiezas: [],
+
+      // variables de retoro del back
+      errorModelo: [],
+      infoCargandoMoldeo: []
     },
 
     actions: {
@@ -35,6 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       crearOT: e => {
+        console.log(e)
         setStore({
           numero_ot: e
         });
@@ -110,6 +122,57 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           nesticElegido: e.target.value
         });
+      },
+
+      //Plegado
+
+      cargarDatosPlegado: e => {
+        setStore({
+          [e.target.name]: e.target.value
+        });
+      },
+
+      cargarDatosPlegadoformulario: e => {
+        setStore({
+          plegadoCantidadPiezas: e
+        });
+      },
+
+      // fecthing data
+
+      creandoModelo: e => {
+        const store = getStore();
+        console.log(store.numero_ot);
+
+        let data = {
+          numero_ot: store.numero_ot,
+          nombre_programa: store.nombre_programa
+        };
+
+        getActions().registro("/api/cargarprograma", data);
+      },
+
+      registro: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato);
+        if (dato.msg) {
+          setStore({
+            errorModelo: dato
+          });
+        } else {
+          setStore({
+            infoCargandoMoldeo: dato
+          });
+        }
       }
     }
   };

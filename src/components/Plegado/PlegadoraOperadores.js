@@ -9,36 +9,33 @@ const useStyles = makeStyles(theme =>
   createStyles({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 402
+      minWidth: 420
     }
   })
 );
 
-export default function CorteSeleccioneModelo() {
+export default function PlegadoraOperadores() {
   const classes = useStyles();
-  const { actions, store } = useContext(Context);
-
-  console.log(store.nombre_programa);
+  const { actions } = useContext(Context);
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Modelo a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">
+          Seleccione un Operador
+        </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="categoria"
-          onChange={e => actions.crearModeloElegido(e)}
+          name="plegadoOperadorSeleccionado"
+          onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />
-          {/*store.nombre_programa.map((programa, index) => {
-            return (
-              <option value={programa} key={index}>
-                {programa}
-              </option>
-            );
-          })*/}
+          <option value="Bebidas">Luis</option>
+          <option value="Dulces">Lucho</option>
+          <option value="Charcuteria">Francisco</option>
+          <option value="Verduras">Carlos</option>
         </Select>
       </FormControl>
     </div>

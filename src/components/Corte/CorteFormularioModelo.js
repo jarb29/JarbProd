@@ -52,7 +52,7 @@ export default function CorteFormularioModelo() {
     }
     return false;
   };
-
+  
   const handleSubmit = () => {
     actions.crearModelo(nombrePrograma)
     actions.crearOT(numeroOt)
@@ -66,7 +66,7 @@ export default function CorteFormularioModelo() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={e => actions.creandoModelo(e)}>
               <CustomInput
                 success={numeroOtState === "success"}
                 error={numeroOtState === "error"}
@@ -139,7 +139,8 @@ export default function CorteFormularioModelo() {
                 color="rose"
                 className={classes.registerButton}
                 //type='submit'
-                onClick = {handleSubmit}
+                onMouseOver = {handleSubmit}
+                type = "submit"
               >
                 Agregar
               </Button>: null }
