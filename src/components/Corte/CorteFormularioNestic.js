@@ -58,6 +58,7 @@ export default function CorteFormularioNestic() {
     actions.crearLongitudNestic(longitudPieza)
   };
 
+ 
   
 
   const classes = useStyles();
@@ -66,7 +67,7 @@ export default function CorteFormularioNestic() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={e => actions.creandoNestic(e)}>
               <CorteSeleccioneModelo />
               <CustomInput
                 success={nombreProgramaNesticState === "success"}
@@ -181,6 +182,7 @@ export default function CorteFormularioNestic() {
                 color="rose"
                 className={classes.registerButton}
                 type='submit'
+                onMouseOver = {handleSubmit}
               >
                 Ingresar
               </Button>: null}

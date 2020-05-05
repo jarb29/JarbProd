@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -18,7 +18,11 @@ export default function CorteSeleccioneModelo() {
   const classes = useStyles();
   const { actions, store } = useContext(Context);
 
-  console.log(store.nombre_programa);
+  useEffect(() => {
+    actions.obtenerModelosDisponibles();
+  }, [store.nombre_programa]);
+
+  console.log(store.modelosDisponibles);
 
   return (
     <div>
@@ -32,13 +36,13 @@ export default function CorteSeleccioneModelo() {
           onChange={e => actions.crearModeloElegido(e)}
         >
           <option aria-label="None" value="" />
-          {/*store.nombre_programa.map((programa, index) => {
+          {store.modelosDisponibles.map((programa, index) => {
             return (
-              <option value={programa} key={index}>
-                {programa}
+              <option value={programa.nombre_programa} key={index}>
+                {programa.nombre_programa}
               </option>
             );
-          })*/}
+          })}
         </Select>
       </FormControl>
     </div>

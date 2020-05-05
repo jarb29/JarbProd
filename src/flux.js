@@ -30,9 +30,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       plegadoOperadorSeleccionado: [],
       plegadoCantidadPiezas: [],
 
-      // variables de retoro del back
+      // variables de retornodel back
       errorModelo: [],
-      infoCargandoMoldeo: []
+      infoCargandoMoldeo: [],
+      modelosDisponibles: []
     },
 
     actions: {
@@ -46,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       crearOT: e => {
-        console.log(e)
+        console.log(e);
         setStore({
           numero_ot: e
         });
@@ -138,9 +139,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
-      // fecthing data
+      /////// fecthing data (POST, PUT)
 
-      creandoModelo: e => {
+      creandoModelo: () => {
         const store = getStore();
         console.log(store.numero_ot);
 
@@ -171,6 +172,72 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             infoCargandoMoldeo: dato
+          });
+        }
+      },
+
+      creandoNestic: () => {
+        const store = getStore();
+        console.log(store.modelo_elegido);
+
+        let data = {
+          modelo_elegido: store.modelo_elegido,
+          programa_nestic: store.programa_nestic,
+          numero_piezas_criticas: store.numero_piezas_criticas,
+          tiempo_corte: store.tiempo_corte,
+          espesor: store.espesor,
+          longitud_nestic: store.longitud_nestic
+        };
+
+        console.log(data);
+
+        getActions().registroNestic("/api/crearnesctic", data);
+      },
+
+      registroNestic: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato);
+        if (dato.msg) {
+          setStore({
+            errorModelo: dato
+          });
+        } else {
+          setStore({
+            infoCargandoMoldeo: dato
+          });
+        }
+      },
+
+      ////// PARTE PARA OBTENER LA INFORMACION (GET)
+
+      obtenerModelosDisponibles: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/modelodisponibles`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato);
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            modelosDisponibles: [...dato]
           });
         }
       }
