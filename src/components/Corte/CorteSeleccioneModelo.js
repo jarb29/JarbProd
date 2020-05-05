@@ -20,7 +20,8 @@ export default function CorteSeleccioneModelo() {
 
   useEffect(() => {
     actions.obtenerModelosDisponibles();
-  }, [store.nombre_programa]);
+    actions.obtenerNesticsDisponibles();
+  }, [store.nombre_programa, store.modelo_elegido]);
 
   console.log(store.modelosDisponibles);
 

@@ -16,6 +16,7 @@ import { Context } from '../../AppContext';
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import CorteSeleccioneNestic from "./CorteSeleccioneNestic";
+import CorteSeleccioneModelo from "./CorteSeleccioneModelo";
 
 const useStyles = makeStyles(styles);
 
@@ -62,7 +63,8 @@ export default function CorteFormularioPiezas() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={e => actions.creandoPiezas(e)}>
+              <CorteSeleccioneModelo />
               <CorteSeleccioneNestic />
               <CustomInput
                 success={nombrePiezaState === "success"}
@@ -134,7 +136,8 @@ export default function CorteFormularioPiezas() {
               <Button
                 color="rose"
                 className={classes.registerButton}
-                onClick = {handleSubmit}
+                onMouseOver = {handleSubmit}
+                type='submit'
               >
                 Register
               </Button>: null } 

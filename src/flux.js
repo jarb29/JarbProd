@@ -33,7 +33,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       // variables de retornodel back
       errorModelo: [],
       infoCargandoMoldeo: [],
-      modelosDisponibles: []
+      modelosDisponibles: [],
+      nesticsDisponibles: []
     },
 
     actions: {
@@ -189,12 +190,48 @@ const getState = ({ getStore, getActions, setStore }) => {
           longitud_nestic: store.longitud_nestic
         };
 
-        console.log(data);
-
         getActions().registroNestic("/api/crearnesctic", data);
       },
 
       registroNestic: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato);
+        if (dato.msg) {
+          setStore({
+            errorModelo: dato
+          });
+        } else {
+          setStore({
+            infoCargandoMoldeo: dato
+          });
+        }
+      },
+
+      creandoPiezas: () => {
+        const store = getStore();
+        console.log(store.nesticElegido);
+
+        let data = {
+          nombre_pieza: store.nombre_pieza,
+          cantidadPiezasPorPlancha: store.cantidadPiezasPorPlancha,
+          crearLongitudCortePieza: store.crearLongitudCortePieza,
+          nesticElegido: store.nesticElegido
+        };
+        console.log(data);
+
+        getActions().registroNestic("/api/crearpieza", data);
+      },
+
+      registroPiezas: async (url, data) => {
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -238,6 +275,33 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             modelosDisponibles: [...dato]
+          });
+        }
+      },
+
+      obtenerNesticsDisponibles: async () => {
+        const store = getStore();
+
+        const { baseURL, modelo_elegido } = store;
+        console.log(modelo_elegido);
+        const resp = await fetch(
+          baseURL + `/api/Nesticsdisponibles/${modelo_elegido}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+        console.log(dato);
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            nesticsDisponibles: [...dato]
           });
         }
       }

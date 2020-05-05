@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -16,7 +16,14 @@ const useStyles = makeStyles(theme =>
 
 export default function CorteSeleccioneNestic() {
   const classes = useStyles();
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
+
+  useEffect(() => {
+    actions.obtenerModelosDisponibles();
+    actions.obtenerNesticsDisponibles();
+  }, [store.nombre_programa, store.modelo_elegido]);
+
+  console.log(store.modelosDisponibles);
 
   return (
     <div>
@@ -32,12 +39,13 @@ export default function CorteSeleccioneNestic() {
           onChange={e => actions.crearNesticElegido(e)}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Bebidas</option>
-          <option value="Dulces">Dulces</option>
-          <option value="Charcuteria">Charcuteria</option>
-          <option value="Verduras">Verduras</option>
-          <option value="Frutas">Frutas</option>
-          <option value="Varios">Varios</option>
+          {store.nesticsDisponibles.map((nestic, index) => {
+            return (
+              <option value={nestic.programa_nestic} key={index}>
+                {nestic.programa_nestic}
+              </option>
+            );
+          })}
         </Select>
       </FormControl>
     </div>
