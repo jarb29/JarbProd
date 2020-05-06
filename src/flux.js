@@ -32,9 +32,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // variables de retornodel back
       errorModelo: [],
-      infoCargandoMoldeo: [],
+      piezasDisponiles: [],
       modelosDisponibles: [],
-      nesticsDisponibles: []
+      nesticsDisponibles: [],
+
+      //  variables de la logica del toda la aplicacion
+      modeloFiltrado: []
     },
 
     actions: {
@@ -129,11 +132,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
       //Filtro de modelo
-      modeloFiltadro: e => {
-        const store = getStore();
 
+      modeloFiltadroDos: e => {
         console.log(e);
-        let modeloFiltrado = store.infoCargandoMoldeo.filter();
+        const store = getStore();
+        setStore({
+          modeloFiltrado: e
+        });
+        sessionStorage.setItem("modeloFiltrado", store.modeloFiltrado);
       },
 
       /////// fecthing data (POST, PUT)
@@ -167,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            infoCargandoMoldeo: dato
+            piezasDisponiles: dato
           });
         }
       },
@@ -204,7 +210,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            infoCargandoMoldeo: dato
+            piezasDisponiles: dato
           });
         }
       },
@@ -240,7 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            infoCargandoMoldeo: dato
+            piezasDisponiles: dato
           });
         }
       },

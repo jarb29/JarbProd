@@ -24,6 +24,11 @@ export default function CustomTable(props) {
   const classes = useStyles();
   const classesII = useStylesII();
   const [checked, setChecked] = React.useState([]);
+  const [
+    modelosFiltradosComponente,
+    setmodelosFiltradosComponente
+  ] = React.useState([]);
+
   const {
     tableHead,
     tableData,
@@ -40,18 +45,28 @@ export default function CustomTable(props) {
   } = props;
 
   const handleToggle = value => {
-    const currentIndex = checked.indexOf(value);
+    const currentIndex = checked.indexOf(value[1]);
+    const currentIndexModeloSeleccionado = modelosFiltradosComponente.indexOf(
+      value[1]
+    );
     const newChecked = [...checked];
-    actions.modeloFiltadro(newChecked);
+    const newModeloFiltrado = [...modelosFiltradosComponente];
 
-    console.log(newChecked, "new checked array");
+    console.log(newModeloFiltrado);
+
     if (currentIndex === -1) {
-      console.log(value, "value");
-      newChecked.push(value);
+
+      newChecked.push(value[1]);
+      newModeloFiltrado.push(value);
+
     } else {
       newChecked.splice(currentIndex, 1);
+      newModeloFiltrado.splice(currentIndexModeloSeleccionado, 1);
     }
     setChecked(newChecked);
+    setmodelosFiltradosComponente(newModeloFiltrado);
+    actions.modeloFiltadroDos(newModeloFiltrado);
+    console.log(newModeloFiltrado);
   };
 
   return (
@@ -108,7 +123,7 @@ export default function CustomTable(props) {
                   key="key"
                   className={classes.positionAbsolute}
                   tabIndex={-1}
-                  onClick={() => handleToggle(prop[1])}
+                  onClick={() => handleToggle(prop)}
                   checkedIcon={<Check className={classesII.checkedIcon} />}
                   icon={<Check className={classesII.uncheckedIcon} />}
                   classes={{

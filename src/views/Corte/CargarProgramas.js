@@ -1,12 +1,14 @@
 import React from "react";
 import CorteCargarProgramas from "../../components/Corte/CorteCargarProgramas";
-import CorteTablas from "../../components/Corte/CorteTablas";
+import CorteTablasModelosDisponibles from "../../components/Corte/CorteTablasModelosDisponibles";
+import CorteTablasModeloSeleccionados from "components/Corte/CorteTablasModeloSeleccionados";
 
 function CargarPrograma() {
   return (
     <div className="App">
       <CorteCargarProgramas />
-      <CorteTablas />
+      <CorteTablasModelosDisponibles />
+      <CorteTablasModeloSeleccionados />
     </div>
   );
 }
