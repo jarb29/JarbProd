@@ -23,7 +23,6 @@ export default function CorteSeleccioneNestic() {
     actions.obtenerNesticsDisponibles();
   }, [store.nombre_programa, store.modelo_elegido]);
 
-  console.log(store.modelosDisponibles);
 
   return (
     <div>

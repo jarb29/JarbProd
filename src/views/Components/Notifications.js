@@ -119,14 +119,14 @@ export default function Notifications() {
             Handcrafted by our friends from{" "}
             <a
               target="_blank"
-              href="https://material-ui-next.com/?ref=creativetim"
+              href="https://www.amesti.cl/"
             >
               Material UI
             </a>{" "}
             and styled by{" "}
             <a
               target="_blank"
-              href="https://www.creative-tim.com/?ref=mdpr-notifications-page"
+              href="https://www.amesti.cl/"
             >
               Creative Tim
             </a>
@@ -484,7 +484,7 @@ export default function Notifications() {
                           text={
                             <span>
                               The first step is to create an account at{" "}
-                              <a href="https://www.creative-tim.com/?ref=mdpr-notifications-page">
+                              <a href="https://www.amesti.cl/">
                                 Creative Tim
                               </a>
                               . You can choose a social network or go for the

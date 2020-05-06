@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Context } from "../../AppContext";
 
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment";
 import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
-import Check from "@material-ui/icons/Check";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -21,22 +20,23 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
+import CortePruebaTabla from "../Table/CortePruebaTabla";
 
 const useStyles = makeStyles(styles);
 
 export default function CorteTablas() {
-  const [checked, setChecked] = React.useState([]);
-  const handleToggle = value => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  const { store } = useContext(Context);
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
-  };
+  const nueva = store.modelosDisponibles.map(obj => {
+    return Object.values(obj);
+  });
+
+  const reversedItems = nueva
+    .map(function iterateItems(item) {
+      return item;
+    })
+    .reverse();
+
   const classes = useStyles();
   const fillButtons = [
     { color: "info", icon: Person },
@@ -92,120 +92,10 @@ export default function CorteTablas() {
             <h4 className={classes.cardIconTitle}>Programas Disponibles</h4>
           </CardHeader>
           <CardBody>
-            <Table
+            <CortePruebaTabla
               striped
-              tableHead={[
-                "#",
-                "",
-                "Product Name",
-                "Type",
-                "Qty",
-                "Price",
-                "Amount"
-              ]}
-              tableData={[
-                [
-                  "1",
-                  <Checkbox
-                    key="key"
-                    className={classes.positionAbsolute}
-                    tabIndex={-1}
-                    onClick={() => handleToggle(1)}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.checkRoot
-                    }}
-                  />,
-                  "Moleskine Agenda",
-                  "Office",
-                  "25",
-                  "€ 49",
-                  "€ 1,225"
-                ],
-                [
-                  "2",
-                  <Checkbox
-                    key="key"
-                    className={classes.positionAbsolute}
-                    tabIndex={-1}
-                    onClick={() => handleToggle(2)}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.checkRoot
-                    }}
-                  />,
-                  "Stabilo Pen",
-                  "Office",
-                  "30",
-                  "€ 10",
-                  "€ 300"
-                ],
-                [
-                  "3",
-                  <Checkbox
-                    key="key"
-                    className={classes.positionAbsolute}
-                    tabIndex={-1}
-                    onClick={() => handleToggle(3)}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.checkRoot
-                    }}
-                  />,
-                  "A4 Paper Pack",
-                  "Office",
-                  "50",
-                  "€ 10.99",
-                  "€ 109"
-                ],
-                [
-                  "4",
-                  <Checkbox
-                    key="key"
-                    className={classes.positionAbsolute}
-                    tabIndex={-1}
-                    onClick={() => handleToggle(4)}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.checkRoot
-                    }}
-                  />,
-                  "Apple iPad",
-                  "Communication",
-                  "10",
-                  "€ 499.00",
-                  "€ 4,990"
-                ],
-                [
-                  "5",
-                  <Checkbox
-                    key="key"
-                    className={classes.positionAbsolute}
-                    tabIndex={-1}
-                    onClick={() => handleToggle(5)}
-                    checkedIcon={<Check className={classes.checkedIcon} />}
-                    icon={<Check className={classes.uncheckedIcon} />}
-                    classes={{
-                      checked: classes.checked,
-                      root: classes.checkRoot
-                    }}
-                  />,
-                  "Apple iPhone",
-                  "Communication",
-                  "10",
-                  "€ 599.00",
-                  "€ 5,999"
-                ],
-                { total: true, colspan: "5", amount: "€12,999" }
-              ]}
+              tableHead={["#", "Fecha de Creacion", "Modelo", "Numero OT"]}
+              tableData={reversedItems}
               customCellClasses={[classes.center, classes.right, classes.right]}
               customClassesForCells={[0, 5, 6]}
               customHeadCellClasses={[
@@ -218,7 +108,6 @@ export default function CorteTablas() {
           </CardBody>
         </Card>
       </GridItem>
-
       <GridItem xs={12}>
         <Card>
           <CardHeader color="rose" icon>
@@ -237,7 +126,8 @@ export default function CorteTablas() {
                 "Salary",
                 "Actions"
               ]}
-              tableData={[
+              tableData={
+                [
                 [
                   "1",
                   "Andrew Mike",

@@ -41,14 +41,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////// Funcion para crear el modelo
 
       crearModelo: e => {
-        console.log(e, "Nombre del Modelo");
         setStore({
           nombre_programa: e
         });
       },
 
       crearOT: e => {
-        console.log(e);
         setStore({
           numero_ot: e
         });
@@ -56,41 +54,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////// Funcion para crear el programa nestic
       crearModeloElegido: e => {
-        console.log(e.target.value);
         setStore({
           modelo_elegido: e.target.value
         });
       },
 
       crearProgramaNestic: e => {
-        console.log(e);
         setStore({
           programa_nestic: e
         });
       },
 
       crearCantidadPiezasCriticas: e => {
-        console.log(e);
         setStore({
           numero_piezas_criticas: e
         });
       },
 
       crearTiempoCorte: e => {
-        console.log(e);
         setStore({
           tiempo_corte: e
         });
       },
 
       crearEspesor: e => {
-        console.log(e);
         setStore({
           espesor: e
         });
       },
       crearLongitudNestic: e => {
-        console.log(e);
         setStore({
           longitud_nestic: e
         });
@@ -99,21 +91,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////// Funcion para cargar las piezas
 
       crearNombrePieza: e => {
-        console.log(e);
         setStore({
           nombre_pieza: e
         });
       },
 
       crearCantidadPiezasPorPlancha: e => {
-        console.log(e);
         setStore({
           cantidadPiezasPorPlancha: e
         });
       },
 
       crearLongitudCortePieza: e => {
-        console.log(e);
         setStore({
           crearLongitudCortePieza: e
         });
@@ -139,12 +128,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           plegadoCantidadPiezas: e
         });
       },
+      //Filtro de modelo
+      modeloFiltadro: e => {
+        const store = getStore();
+
+        console.log(e);
+        let modeloFiltrado = store.infoCargandoMoldeo.filter();
+      },
 
       /////// fecthing data (POST, PUT)
 
       creandoModelo: () => {
         const store = getStore();
-        console.log(store.numero_ot);
 
         let data = {
           numero_ot: store.numero_ot,
@@ -165,7 +160,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato);
+
         if (dato.msg) {
           setStore({
             errorModelo: dato
@@ -179,7 +174,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       creandoNestic: () => {
         const store = getStore();
-        console.log(store.modelo_elegido);
 
         let data = {
           modelo_elegido: store.modelo_elegido,
@@ -204,7 +198,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato);
         if (dato.msg) {
           setStore({
             errorModelo: dato
@@ -218,7 +211,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       creandoPiezas: () => {
         const store = getStore();
-        console.log(store.nesticElegido);
 
         let data = {
           nombre_pieza: store.nombre_pieza,
@@ -226,7 +218,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           crearLongitudCortePieza: store.crearLongitudCortePieza,
           nesticElegido: store.nesticElegido
         };
-        console.log(data);
 
         getActions().registroNestic("/api/crearpieza", data);
       },
@@ -267,14 +258,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato);
+
         if (dato.msg) {
           setStore({
             error: dato
           });
         } else {
           setStore({
-            modelosDisponibles: [...dato]
+            modelosDisponibles: dato
           });
         }
       },
@@ -283,7 +274,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
 
         const { baseURL, modelo_elegido } = store;
-        console.log(modelo_elegido);
+
         const resp = await fetch(
           baseURL + `/api/Nesticsdisponibles/${modelo_elegido}`,
           {
@@ -294,7 +285,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato);
+
         if (dato.msg) {
           setStore({
             error: dato

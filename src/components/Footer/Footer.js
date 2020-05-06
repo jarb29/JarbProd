@@ -59,7 +59,7 @@ export default function Footer(props) {
         <p className={classes.right}>
           &copy; {1900 + new Date().getYear()}{" "}
           <a
-            href="https://www.creative-tim.com?ref=mdpr-footer"
+            href="https://www.amesti.cl/"
             className={anchor}
             target="_blank"
           >

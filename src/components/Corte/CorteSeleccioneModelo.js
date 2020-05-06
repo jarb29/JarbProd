@@ -23,8 +23,6 @@ export default function CorteSeleccioneModelo() {
     actions.obtenerNesticsDisponibles();
   }, [store.nombre_programa, store.modelo_elegido]);
 
-  console.log(store.modelosDisponibles);
-
   return (
     <div>
       <FormControl className={classes.formControl}>
