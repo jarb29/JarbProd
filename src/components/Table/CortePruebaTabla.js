@@ -51,14 +51,9 @@ export default function CustomTable(props) {
     );
     const newChecked = [...checked];
     const newModeloFiltrado = [...modelosFiltradosComponente];
-
-    console.log(newModeloFiltrado);
-
     if (currentIndex === -1) {
-
       newChecked.push(value[1]);
       newModeloFiltrado.push(value);
-
     } else {
       newChecked.splice(currentIndex, 1);
       newModeloFiltrado.splice(currentIndexModeloSeleccionado, 1);
@@ -66,7 +61,6 @@ export default function CustomTable(props) {
     setChecked(newChecked);
     setmodelosFiltradosComponente(newModeloFiltrado);
     actions.modeloFiltadroDos(newModeloFiltrado);
-    console.log(newModeloFiltrado);
   };
 
   return (
