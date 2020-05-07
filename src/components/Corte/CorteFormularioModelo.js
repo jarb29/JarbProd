@@ -33,6 +33,8 @@ export default function CorteFormularioModelo() {
     confirmNombredelProgramaState,
     setConfirmNombreProgramaState
   ] = React.useState("");
+  const [cantidadOt, setCantidadOt] = React.useState("");
+  const [cantidadOtState, setCantidadOtState] = React.useState("");
 
 
   
@@ -56,6 +58,7 @@ export default function CorteFormularioModelo() {
   const handleSubmit = () => {
     actions.crearModelo(nombrePrograma)
     actions.crearOT(numeroOt)
+    actions.cantidadOT(cantidadOt)
   };
 
 
@@ -131,11 +134,32 @@ export default function CorteFormularioModelo() {
                   
                 }}
               />
+              <CustomInput
+                success={cantidadOtState === "success"}
+                error={cantidadOtState === "error"}
+                labelText="Cantidad a fabricar en la OT *"
+                value = "Cantidad en la Ot"
+                id="COT"
+                formControlProps={{
+                  fullWidth: true
+                }}
+                inputProps={{
+                  onChange: event => {
+                    if (verifyNumber(event.target.value)) {
+                      setCantidadOtState("success");
+                    } else {
+                      setCantidadOtState("error");
+                    }
+                    setCantidadOt(event.target.value);
+                  },
+                  type: "cantidadOt",
+                }}
+              />
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
               {
-              (confirmNombredelProgramaState === "success" && numeroOtState ==="success")?<Button
+              (confirmNombredelProgramaState === "success" && numeroOtState ==="success"&& cantidadOtState === "success")?<Button
                 color="rose"
                 className={classes.registerButton}
                 //type='submit'

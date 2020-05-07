@@ -47,7 +47,13 @@ export default function CorteTablasModelosDisponibles() {
           <CardBody>
             <CortePruebaTabla
               striped
-              tableHead={["#", "Fecha de Creacion", "Modelo", "Numero OT"]}
+              tableHead={[
+                "#",
+                "Unidades en la OT",
+                "Fecha de Creacion",
+                "Modelo",
+                "Numero OT"
+              ]}
               tableData={reversedItems}
               customCellClasses={[classes.center, classes.right, classes.right]}
               customClassesForCells={[0, 5, 6]}

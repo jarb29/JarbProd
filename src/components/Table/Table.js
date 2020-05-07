@@ -73,6 +73,7 @@ export default function CustomTable(props) {
               [classes[rowColor + "Row"]]: rowColored,
               [classes.tableStripedRow]: striped && key % 2 === 0
             });
+
             if (prop.total) {
               return (
                 <TableRow key={key} hover={hover} className={tableRowClasses}>

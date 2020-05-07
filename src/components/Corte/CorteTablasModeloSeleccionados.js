@@ -31,15 +31,16 @@ export default function CorteTablasModeloSeleccionados() {
             <CardIcon color="rose">
               <Assignment />
             </CardIcon>
-            <h4 className={classes.cardIconTitle}>Programas en Uso</h4>
+            <h4 className={classes.cardIconTitle}>Programas a Modelar</h4>
           </CardHeader>
           <CardBody>
             <CortePruebaTablaII
               tableHead={[
-                "Seleccione",
+                "A produccion",
+                "Unidades en OT",
                 "Modelo",
                 "OT",
-                "Cantidad a Fabricar",
+                "Cantidad a Modelar",
                 "Tiempo Requerido"
               ]}
               tableData={store.modeloFiltrado}

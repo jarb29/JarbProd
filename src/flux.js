@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Variables para crear el Modelo
       numero_ot: [],
       nombre_programa: [],
+      cantiadUnidadesFabricarEnLaOt: [],
 
       //Variables para crear el Nestic
       modelo_elegido: [],
@@ -35,6 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       piezasDisponiles: [],
       modelosDisponibles: [],
       nesticsDisponibles: [],
+      nesticsModelar: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: []
@@ -52,6 +54,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       crearOT: e => {
         setStore({
           numero_ot: e
+        });
+      },
+      cantidadOT: e => {
+        setStore({
+          cantiadUnidadesFabricarEnLaOt: e
         });
       },
 
@@ -134,7 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Filtro de modelo
 
       modeloFiltadroDos: e => {
-        console.log(e);
         const store = getStore();
         setStore({
           modeloFiltrado: e
@@ -149,7 +155,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         let data = {
           numero_ot: store.numero_ot,
-          nombre_programa: store.nombre_programa
+          nombre_programa: store.nombre_programa,
+          cantiadUnidadesFabricarEnLaOt: store.cantiadUnidadesFabricarEnLaOt
         };
 
         getActions().registro("/api/cargarprograma", data);
@@ -300,6 +307,34 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             nesticsDisponibles: [...dato]
           });
+        }
+      },
+
+      obtenerNesticsFiltrados: async e => {
+        const store = getStore();
+        console.log(e, "lo que pasa directo");
+
+        const { baseURL } = store;
+        let nestic_elegido = e;
+
+        const resp = await fetch(
+          baseURL + `/api/nesticsmodelar/${nestic_elegido}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+        console.log(dato);
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          store.nesticsModelar.push(dato);
         }
       }
     }

@@ -11,15 +11,15 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CustomInput from "components/CustomInput/CustomInput.js";
-
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
+import CorteProgramasQueVanAProduccion from "components/Corte/CorteProgramasQueVanAProduccion";
 
-import CorteAlerta from "components/Corte/CorteAlerta";
 const useStyles = makeStyles(styles);
 
 export default function CortePruebaTablaII(props) {
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const classes = useStyles();
+  const [nesticModelar, setNesticModelar] = React.useState([]);
 
   const {
     tableHead,
@@ -31,6 +31,14 @@ export default function CortePruebaTablaII(props) {
     customHeadCellClasses,
     customHeadClassesForCells
   } = props;
+
+  const handleToggleNestic = () => {
+    store.nesticsModelar.map(nestic => {
+      nestic.map(nes => {
+        console.log(nes, "desde el segundo nivel .map");
+      });
+    });
+  };
 
   return (
     <div className={classes.tableResponsive}>
@@ -51,6 +59,7 @@ export default function CortePruebaTablaII(props) {
                     [classes.tableShoppingHead]: tableShopping,
                     [classes.tableHeadFontSize]: !tableShopping
                   });
+
                 return (
                   <TableCell className={tableCellClasses} key={key}>
                     {prop}
@@ -62,7 +71,6 @@ export default function CortePruebaTablaII(props) {
         ) : null}
         <TableBody>
           {tableData.map((prop, key) => {
-            console.log(prop);
             var rowColor = "";
             var rowColored = false;
             if (prop.color !== undefined) {
@@ -76,6 +84,50 @@ export default function CortePruebaTablaII(props) {
               [classes[rowColor + "Row"]]: rowColored,
               [classes.tableStripedRow]: striped && key % 2 === 0
             });
+            if (prop.total) {
+              return (
+                <TableRow key={key} hover={hover} className={tableRowClasses}>
+                  <TableCell
+                    className={classes.tableCell}
+                    colSpan={prop.colspan}
+                  />
+                  <TableCell
+                    className={classes.tableCell + " " + classes.tableCellTotal}
+                  >
+                    Total
+                  </TableCell>
+                  <TableCell
+                    className={
+                      classes.tableCell + " " + classes.tableCellAmount
+                    }
+                  >
+                    {prop.amount}
+                  </TableCell>
+                  {tableHead.length - (prop.colspan - 0 + 2) > 0 ? (
+                    <TableCell
+                      className={classes.tableCell}
+                      colSpan={tableHead.length - (prop.colspan - 0 + 2)}
+                    />
+                  ) : null}
+                </TableRow>
+              );
+            }
+            if (prop.purchase) {
+              return (
+                <TableRow key={key} hover={hover} className={tableRowClasses}>
+                  <TableCell
+                    className={classes.tableCell}
+                    colSpan={prop.colspan}
+                  />
+                  <TableCell
+                    className={classes.tableCell + " " + classes.right}
+                    colSpan={prop.col.colspan}
+                  >
+                    {prop.col.text}
+                  </TableCell>
+                </TableRow>
+              );
+            }
             return (
               <TableRow
                 key={key}
@@ -83,28 +135,29 @@ export default function CortePruebaTablaII(props) {
                 className={classes.tableRow + " " + tableRowClasses}
               >
                 <TableCell key={key}>
-                <CorteAlerta />
+                  <CorteProgramasQueVanAProduccion />
                 </TableCell>
 
                 {prop.map((prop, key) => {
-                  return (
-                    (key === 2 || key === 3)?
-                    <TableCell key={key}>
-                      {prop}
-                   </TableCell>
-                  : null);
+                  return key === 0 || key === 3 || key === 4 ? (
+                    <TableCell key={key}>{prop}</TableCell>
+                  ) : null;
                 })}
                 <TableCell>
-                <CustomInput
-                  labelText="Cantidad a Modelar"
-                  id="Cantidad a modelar"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    type: "Cantidad a Modelar"
-                  }}
-                />
+                  <CustomInput
+                    labelText="Unidades a Modelar"
+                    id="Cantidad a modelar"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+
+                    inputProps={{
+                      onChange: event => {
+                        handleToggleNestic(event);
+                      },
+                      type: "Cantidad a Modelar"
+                    }}
+                  />
                 </TableCell>
               </TableRow>
             );

@@ -11,13 +11,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
+import BugReport from "@material-ui/icons/BugReport";
 
 
 import styles from "assets/jss/material-dashboard-pro-react/views/sweetAlertStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteAlerta() {
+export default function CorteProgramasQueVanAProduccion() {
   const classes = useStyles();
   const [alert, setAlert] = React.useState(null);
   const [inputValue, setInputValue] = React.useState(null);
@@ -73,14 +74,15 @@ export default function CorteAlerta() {
   };
   return (
      
-      <GridContainer xs={12} sm={12} md={12}>
+      <GridContainer xs={4} sm={4} md={4}>
            {alert}
-        <GridItem xs={12} sm={12} md={12}>
+        <GridItem xs={4} sm={4} md={4}>
                 <Button
                   color="rose"
                   onClick={warningWithConfirmAndCancelMessage}
+                  size="sm" 
                 >
-                  Agregar a Produccion!
+                <BugReport className={classes.actionButtonRound} />
                 </Button>
         </GridItem>
       </GridContainer>

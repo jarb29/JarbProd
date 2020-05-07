@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 const useStylesII = makeStyles(stylesII);
 
 export default function CustomTable(props) {
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const classes = useStyles();
   const classesII = useStylesII();
   const [checked, setChecked] = React.useState([]);
@@ -43,17 +43,19 @@ export default function CustomTable(props) {
     customHeadCellClasses,
     customHeadClassesForCells
   } = props;
+  console.log(store.nesticsModelar, "nestic para modelar");
 
   const handleToggle = value => {
-    const currentIndex = checked.indexOf(value[1]);
+    const currentIndex = checked.indexOf(value[3]);
     const currentIndexModeloSeleccionado = modelosFiltradosComponente.indexOf(
-      value[1]
+      value[3]
     );
     const newChecked = [...checked];
     const newModeloFiltrado = [...modelosFiltradosComponente];
     if (currentIndex === -1) {
-      newChecked.push(value[1]);
+      newChecked.push(value[3]);
       newModeloFiltrado.push(value);
+      actions.obtenerNesticsFiltrados(value[3]);
     } else {
       newChecked.splice(currentIndex, 1);
       newModeloFiltrado.splice(currentIndexModeloSeleccionado, 1);
@@ -112,7 +114,7 @@ export default function CustomTable(props) {
                 hover={hover}
                 className={classes.tableRow + " " + tableRowClasses}
               >
-                {prop[1]}
+                {prop[2]}
                 <Checkbox
                   key="key"
                   className={classes.positionAbsolute}
@@ -135,12 +137,11 @@ export default function CustomTable(props) {
                       [customCellClasses[customClassesForCells.indexOf(key)]]:
                         customClassesForCells.indexOf(key) !== -1
                     });
-                  return (
-                    (key !== 1)?
+                  return key !== 2 ? (
                     <TableCell className={tableCellClasses} key={key}>
                       {prop}
                     </TableCell>
-                  : null );
+                  ) : null;
                 })}
               </TableRow>
             );
