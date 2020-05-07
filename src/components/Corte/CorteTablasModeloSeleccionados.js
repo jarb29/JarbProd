@@ -9,13 +9,13 @@ import Assignment from "@material-ui/icons/Assignment";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
+import CortePruebaTablaII from "components/Table/CortePruebaTablaII";
 
 const useStyles = makeStyles(styles);
 
@@ -34,8 +34,14 @@ export default function CorteTablasModeloSeleccionados() {
             <h4 className={classes.cardIconTitle}>Programas en Uso</h4>
           </CardHeader>
           <CardBody>
-            <Table
-              tableHead={["Fecha de Creacion", "Id", "Modelo", "OT"]}
+            <CortePruebaTablaII
+              tableHead={[
+                "Seleccione",
+                "Modelo",
+                "OT",
+                "Cantidad a Fabricar",
+                "Tiempo Requerido"
+              ]}
               tableData={store.modeloFiltrado}
               customCellClasses={[classes.center, classes.right, classes.right]}
               customClassesForCells={[0, 4, 5]}
