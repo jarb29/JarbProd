@@ -32,10 +32,11 @@ export default function CortePruebaTablaII(props) {
     customHeadClassesForCells
   } = props;
 
-  const handleToggleNestic = () => {
+  const handleToggleNestic = event => {
+    console.log(event.target.id);
     store.nesticsModelar.map(nestic => {
       nestic.map(nes => {
-        console.log(nes, "desde el segundo nivel .map");
+        //console.log(nes, "desde el segundo nivel .map");
       });
     });
   };
@@ -71,6 +72,7 @@ export default function CortePruebaTablaII(props) {
         ) : null}
         <TableBody>
           {tableData.map((prop, key) => {
+            console.log(prop);
             var rowColor = "";
             var rowColored = false;
             if (prop.color !== undefined) {
@@ -137,7 +139,6 @@ export default function CortePruebaTablaII(props) {
                 <TableCell key={key}>
                   <CorteProgramasQueVanAProduccion />
                 </TableCell>
-
                 {prop.map((prop, key) => {
                   return key === 0 || key === 3 || key === 4 ? (
                     <TableCell key={key}>{prop}</TableCell>
@@ -146,17 +147,17 @@ export default function CortePruebaTablaII(props) {
                 <TableCell>
                   <CustomInput
                     labelText="Unidades a Modelar"
-                    id="Cantidad a modelar"
+                    id={prop[3]}
                     formControlProps={{
                       fullWidth: true
                     }}
-
                     inputProps={{
                       onChange: event => {
                         handleToggleNestic(event);
                       },
                       type: "Cantidad a Modelar"
                     }}
+                    
                   />
                 </TableCell>
               </TableRow>
