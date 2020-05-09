@@ -13,6 +13,8 @@ import TableRow from "@material-ui/core/TableRow";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 import CorteProgramasQueVanAProduccion from "components/Corte/CorteProgramasQueVanAProduccion";
+import CorteNesticTiempo from "components/Corte/CorteNesticTiempo";
+
 
 const useStyles = makeStyles(styles);
 
