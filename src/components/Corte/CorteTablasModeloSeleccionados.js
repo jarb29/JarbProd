@@ -13,7 +13,6 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
-
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 import CortePruebaTablaII from "components/Table/CortePruebaTablaII";
 
@@ -22,6 +21,8 @@ const useStyles = makeStyles(styles);
 export default function CorteTablasModeloSeleccionados() {
   const { store } = useContext(Context);
   const classes = useStyles();
+
+  console.log(store.valorTiempoNesticCalculado, "con el timepo");
 
   return (
     <GridContainer>
@@ -37,11 +38,10 @@ export default function CorteTablasModeloSeleccionados() {
             <CortePruebaTablaII
               tableHead={[
                 "A produccion",
+                "Cantidad a Modelar",
                 "Unidades en OT",
                 "Modelo",
-                "OT",
-                "Cantidad a Modelar",
-                "Tiempo Requerido"
+                "OT"
               ]}
               tableData={store.modeloFiltrado}
               customCellClasses={[classes.center, classes.right, classes.right]}

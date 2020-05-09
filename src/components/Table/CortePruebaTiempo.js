@@ -10,14 +10,12 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
-import CorteProgramasQueVanAProduccion from "components/Corte/CorteProgramasQueVanAProduccion";
 
 const useStyles = makeStyles(styles);
 
-export default function CortePruebaTablaII(props) {
-  const { actions, store } = useContext(Context);
+export default function CortePruebaTiempo(props) {
+  const { store } = useContext(Context);
   const classes = useStyles();
 
   console.log(store.modeloFiltrado, "valor del object en el componente");
@@ -83,30 +81,8 @@ export default function CortePruebaTablaII(props) {
                 hover={hover}
                 className={classes.tableRow + " " + tableRowClasses}
               >
-                <TableCell key={key}>
-                  <CorteProgramasQueVanAProduccion />
-                </TableCell>
-                <TableCell>
-                  <CustomInput
-                    key={key}
-                    labelText="Unidades a Modelar"
-                    id={key}
-                    name={prop[3]}
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      onChange: event => {
-                        console.log(event.currentTarget);
-                        console.log(event.target.id, "deberia ser el key");
-                        actions.handleToggleNesticValor(event);
-                      },
-                      name: prop[3]
-                    }}
-                  />
-                </TableCell>
                 {prop.map((prop, index) => {
-                  return index === 0 || index === 3 || index === 4 ? (
+                  return index === 3 || index === 5 ? (
                     <TableCell key={index}>{prop}</TableCell>
                   ) : null;
                 })}
@@ -119,7 +95,7 @@ export default function CortePruebaTablaII(props) {
   );
 }
 
-CortePruebaTablaII.defaultProps = {
+CortePruebaTiempo.defaultProps = {
   tableHeaderColor: "gray",
   hover: false,
   colorsColls: [],
@@ -131,7 +107,7 @@ CortePruebaTablaII.defaultProps = {
   customHeadClassesForCells: []
 };
 
-CortePruebaTablaII.propTypes = {
+CortePruebaTiempo.propTypes = {
   tableHeaderColor: PropTypes.oneOf([
     "warning",
     "primary",

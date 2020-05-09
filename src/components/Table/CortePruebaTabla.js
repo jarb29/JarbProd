@@ -43,7 +43,6 @@ export default function CustomTable(props) {
     customHeadCellClasses,
     customHeadClassesForCells
   } = props;
-  console.log(store.nesticsModelar, "nestic para modelar");
 
   const handleToggle = value => {
     const currentIndex = checked.indexOf(value[3]);
@@ -52,6 +51,7 @@ export default function CustomTable(props) {
     );
     const newChecked = [...checked];
     const newModeloFiltrado = [...modelosFiltradosComponente];
+
     if (currentIndex === -1) {
       newChecked.push(value[3]);
       newModeloFiltrado.push(value);

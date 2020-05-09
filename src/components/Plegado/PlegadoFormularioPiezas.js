@@ -43,11 +43,6 @@ export default function PlegadoFormularioPiezas() {
     return false;
   };
 
-  console.log(store.plegadoModeloSeleccionado);
-  console.log(store.plegadoPiezaSeleccionada);
-  console.log(store.plegadoMaquinaSeleccionada);
-  console.log(store.plegadoOperadorSeleccionado);
-  console.log(store.plegadoCantidadPiezas);
 
   const handleSubmit = (e) => {
     actions.cargarDatosPlegadoformulario(piezaPlegada)

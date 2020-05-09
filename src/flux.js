@@ -39,7 +39,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       nesticsModelar: [],
 
       //  variables de la logica del toda la aplicacion
-      modeloFiltrado: []
+      modeloFiltrado: [],
+      modeloInputParaCaluloTiempo: [],
+      inputUnidadesStufas: [],
+      valorTiempoNesticCalculado: []
     },
 
     actions: {
@@ -97,6 +100,48 @@ const getState = ({ getStore, getActions, setStore }) => {
           longitud_nestic: e
         });
       },
+      //calculo de tiempo por producto
+
+      handleToggleNestic: e => {
+        setStore({
+          modeloInputParaCaluloTiempo: e.target.id,
+          inputUnidadesStufas: e.target.value
+        });
+      },
+
+      handleToggleNesticValor: event => {
+        const store = getStore();
+        console.log(store.nesticsDisponibles, "en el flux nestic Disponibles");
+        // console.log(store.modeloFiltrado, "en el flux modelo filtrado");
+        console.log(store.modelosDisponibles, "modelos que llegan");
+        let sum = 0;
+        store.nesticsDisponibles.map(nests => {
+          if (event.target.name === nests.modelo_elegido) {
+            let nuevoValor = parseInt(event.target.value);
+            console.log(nuevoValor, "valor introducido");
+            let nuevoNumeroPiezas = nests.numero_piezas_criticas;
+            console.log(nuevoNumeroPiezas, "numero de piezas");
+            let nuevoTiempoCorte = nests.tiempo_corte;
+            console.log(nuevoTiempoCorte, "tiempo de corte");
+            const valorPorPieza = parseFloat(nuevoValor / nuevoNumeroPiezas);
+            console.log(valorPorPieza, "por pieza");
+            const valorFinal = valorPorPieza * nuevoTiempoCorte;
+            console.log(valorFinal, "valor final");
+            sum = parseInt(sum, 10) + parseInt(valorFinal, 10);
+            console.log(sum, "suma");
+          }
+          return sum;
+        });
+
+        store.modeloFiltrado.map(modelo => {
+          if (modelo[3] === event.target.name) {
+            modelo[5] = sum;
+          }
+          setStore({
+            valorTiempoNesticCalculado: store.modeloFiltrado
+          });
+        });
+      },
 
       /////// Funcion para cargar las piezas
 
@@ -119,7 +164,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       crearNesticElegido: e => {
-        console.log(e.target.value);
         setStore({
           nesticElegido: e.target.value
         });
@@ -143,7 +187,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       modeloFiltadroDos: e => {
         const store = getStore();
         setStore({
-          modeloFiltrado: e
+          modeloFiltrado: e,
+          valorTiempoNesticCalculado: e
         });
         sessionStorage.setItem("modeloFiltrado", store.modeloFiltrado);
       },
@@ -246,7 +291,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato);
         if (dato.msg) {
           setStore({
             errorModelo: dato
@@ -286,17 +330,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerNesticsDisponibles: async () => {
         const store = getStore();
 
-        const { baseURL, modelo_elegido } = store;
+        const { baseURL } = store;
 
-        const resp = await fetch(
-          baseURL + `/api/Nesticsdisponibles/${modelo_elegido}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json"
-            }
+        const resp = await fetch(baseURL + `/api/Nesticsdisponibles`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
           }
-        );
+        });
         const dato = await resp.json();
 
         if (dato.msg) {
@@ -305,14 +346,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            nesticsDisponibles: [...dato]
+            nesticsDisponibles: dato
           });
         }
       },
 
       obtenerNesticsFiltrados: async e => {
         const store = getStore();
-        console.log(e, "lo que pasa directo");
 
         const { baseURL } = store;
         let nestic_elegido = e;
@@ -327,7 +367,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato);
 
         if (dato.msg) {
           setStore({
