@@ -15,7 +15,6 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 import CortePruebaTablaII from "components/Table/CortePruebaTablaII";
-import CorteNesticTiempo from "./CorteNesticTiempo";
 
 const useStyles = makeStyles(styles);
 

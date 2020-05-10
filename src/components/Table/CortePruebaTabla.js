@@ -20,7 +20,7 @@ const useStyles = makeStyles(styles);
 const useStylesII = makeStyles(stylesII);
 
 export default function CustomTable(props) {
-  const { actions, store } = useContext(Context);
+  const { actions } = useContext(Context);
   const classes = useStyles();
   const classesII = useStylesII();
   const [checked, setChecked] = React.useState([]);

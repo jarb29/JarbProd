@@ -4,16 +4,16 @@ import CorteTablasModelosDisponibles from "../../components/Corte/CorteTablasMod
 import CorteTablasModeloSeleccionados from "components/Corte/CorteTablasModeloSeleccionados";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import CorteNesticTiempo from "components/Corte/CorteNesticTiempo";
+import CorteTablaNesticTiempo from "components/Corte/CorteTablaNesticTiempo";
 
 function CargarPrograma() {
   return (
     <div className="App">
       <GridContainer>
-        <GridItem xs={4} sm={4} md={4}>
+        <GridItem xs={3} sm={3} md={3}>
           <CorteCargarProgramas />
         </GridItem>
-        <GridItem xs={8} sm={8} md={8}>
+        <GridItem xs={9} sm={9} md={9}>
           <CorteTablasModelosDisponibles />
         </GridItem>
       </GridContainer>
@@ -22,7 +22,7 @@ function CargarPrograma() {
           <CorteTablasModeloSeleccionados />
         </GridItem>
         <GridItem xs={4} sm={4} md={4}>
-          <CorteNesticTiempo />
+          <CorteTablaNesticTiempo />
         </GridItem>
       </GridContainer>
     </div>

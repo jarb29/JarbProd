@@ -18,7 +18,7 @@ import CortePruebaTiempo from "components/Table/CortePruebaTiempo";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteNesticTiempo() {
+export default function CorteTablaNesticTiempo() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
@@ -36,7 +36,7 @@ export default function CorteNesticTiempo() {
           </CardHeader>
           <CardBody>
             <CortePruebaTiempo
-              tableHead={["Modelo", "Tiempo Requerido"]}
+              tableHead={["Modelo", "Tiempo Requerido en Horas"]}
               tableData={store.valorTiempoNesticCalculado}
               customCellClasses={[classes.center, classes.right, classes.right]}
               customClassesForCells={[0, 4, 5]}

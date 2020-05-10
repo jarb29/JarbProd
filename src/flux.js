@@ -111,23 +111,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       handleToggleNesticValor: event => {
         const store = getStore();
-        console.log(store.nesticsDisponibles, "en el flux nestic Disponibles");
-        // console.log(store.modeloFiltrado, "en el flux modelo filtrado");
-        console.log(store.modelosDisponibles, "modelos que llegan");
         let sum = 0;
         store.nesticsDisponibles.map(nests => {
+          // The math is no ok to calculate de number
           if (event.target.name === nests.modelo_elegido) {
             let nuevoValor = parseInt(event.target.value);
-            console.log(nuevoValor, "valor introducido");
             let nuevoNumeroPiezas = nests.numero_piezas_criticas;
-            console.log(nuevoNumeroPiezas, "numero de piezas");
             let nuevoTiempoCorte = nests.tiempo_corte;
-            console.log(nuevoTiempoCorte, "tiempo de corte");
             const valorPorPieza = parseFloat(nuevoValor / nuevoNumeroPiezas);
-            console.log(valorPorPieza, "por pieza");
-            const valorFinal = valorPorPieza * nuevoTiempoCorte;
-            console.log(valorFinal, "valor final");
-            sum = parseInt(sum, 10) + parseInt(valorFinal, 10);
+            const valorFinal = valorPorPieza * (nuevoTiempoCorte + 0.7);
+            sum = Math.round(parseInt(sum, 10) + parseInt(valorFinal, 10) / 60);
             console.log(sum, "suma");
           }
           return sum;
