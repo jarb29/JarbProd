@@ -33,7 +33,6 @@ export default function CorteSeleccioneNesti() {
           name="nestic_cortado"
           onChange={e => {
             actions.cargarPlanchasCortadas(e);
-            actions.cargarPlanchasCortadas(e);
           }}
         >
           <option aria-label="None" value="" />

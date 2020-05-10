@@ -84,6 +84,7 @@ export default function CorteFormularioPlanchasPorOT() {
               <Button
                 color="rose"
                 className={classes.registerButton}
+                onClick = {e => actions.nesticACorte(e)}
               >
                 Registrar
               </Button> : null}

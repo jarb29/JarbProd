@@ -47,6 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorModeloProduccion: [],
       OtDisponiblesProduccion: [],
       nesticDisponiblesProduccion: [],
+      nesticCortados: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -172,14 +173,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // cargando numero de planchas cortadas
       cargarPlanchasCortadas: e => {
-        console.log(
-          e.target.name,
-          "nombre en el flux al cargar planchas cortadas"
-        );
-        console.log(
-          e.target.value,
-          "valor en el flux al cargar planchas cortadas"
-        );
         setStore({
           [e.target.name]: e.target.value
         });
@@ -357,6 +350,49 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      // Crendo Nestics de produccion a corte
+      nesticACorte: e => {
+        e.preventDefault();
+        const store = getStore();
+        console.log(e, "antes del envio en el flux precent default");
+
+        let data = {
+          planchas_cortadas: store.planchas_cortadas,
+          ot_cortada: store.ot_cortada,
+          operador: store.operador,
+          nestic_cortado: store.nestic_cortado
+        };
+        getActions().registroNestiProduccion("/api/plachascortadas", data);
+      },
+
+      registroNestiProduccion: async (url, data) => {
+        console.log(
+          data,
+          "data en el flux para el registro de los programas nest en corte"
+        );
+
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "retorno nestic cortadas a produccion creado");
+        if (dato.msg) {
+          setStore({
+            errorModeloProduccion: dato
+          });
+        } else {
+          setStore({
+            nesticCortados: dato
+          });
+        }
+      },
+
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -463,7 +499,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerNesticEnProduccion: async e => {
         const store = getStore();
         let numeroOt = e.target.value;
-        console.log(e.target.value, "se supone que es el numero ot en el flux");
 
         const { baseURL } = store;
         const resp = await fetch(
