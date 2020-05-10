@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React, { useContext } from "react";
-import { Context } from "../../AppContext";
+import { Context } from "../../../AppContext";
 
 // react component used to create sweet alerts
 import SweetAlert from "react-bootstrap-sweetalert";

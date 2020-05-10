@@ -1,10 +1,10 @@
 import React from "react";
-import CorteCargarProgramas from "../../components/Corte/CorteCargarProgramas";
-import CorteTablasModelosDisponibles from "../../components/Corte/CorteTablasModelosDisponibles";
-import CorteTablasModeloSeleccionados from "components/Corte/CorteTablasModeloSeleccionados";
+import CorteCargarProgramas from "../../components/Corte/VistaCargaProgramas/CorteCargarProgramas";
+import CorteTablasModelosDisponibles from "../../components/Corte/VistaCargaProgramas/CorteTablasModelosDisponibles";
+import CorteTablasModeloSeleccionados from "components/Corte/CargaProgramas/CorteTablasModeloSeleccionados";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import CorteTablaNesticTiempo from "components/Corte/CorteTablaNesticTiempo";
+import CorteTablaNesticTiempo from "components/Corte/CargaProgramas/CorteTablaNesticTiempo";
 
 function CargarPrograma() {
   return (

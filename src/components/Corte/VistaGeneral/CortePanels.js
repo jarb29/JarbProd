@@ -207,15 +207,11 @@ export default function CortePanels() {
                       </p>
                     </CardHeader>
                     <CardBody>
-                      From the seamless transition of glass and metal to the
-                      streamlined profile, every detail was carefully considered
-                      to enhance your experience. So while its display is
+                      From tdededededeedwhile its display is
                       larger, the phone feels just right.
                       <br />
                       <br />
-                      Another Text. The first thing you notice when you hold the
-                      phone is how great it feels in your hand. The cover glass
-                      curves down around the sides to meet the anodized aluminum
+                      Anothdkdoekdoekdoedededededeized aluminum
                       enclosure in a remarkable, simplified design.
                     </CardBody>
                   </Card>

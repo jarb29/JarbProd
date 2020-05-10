@@ -1,7 +1,7 @@
 import React from "react";
-import CorteNesticEnUso from "components/Corte/CorteNesticEnUso";
-import CorteCargarPlanchas from "components/Corte/CorteCargarPlanchas";
-import PanelProgramasProduccion from "components/Corte/PanelProgramasProduccion";
+import CorteNesticEnUso from "components/Corte/VistaCargaPlachasCortadas/CorteNesticEnUso";
+import CorteCargarPlanchas from "components/Corte/VistaCargaPlachasCortadas/CorteCargarPlanchas";
+import PanelProgramasProduccion from "components/Corte/VistaCargaPlachasCortadas/PanelProgramasProduccion";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 

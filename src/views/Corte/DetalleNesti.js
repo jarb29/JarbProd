@@ -1,5 +1,5 @@
 import React from "react";
-import CorteDetalle from "components/Corte/CorteDetalle";
+import CorteDetalle from "components/Corte/VistaDetalle/CorteDetalle";
 
 function CorteDetalleNesti() {
   return (

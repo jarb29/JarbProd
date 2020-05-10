@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import { Context } from "../../AppContext";
+import { Context } from "../../../AppContext";
 
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment";
@@ -14,11 +14,11 @@ import CardBody from "components/Card/CardBody.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
-import CortePruebaTiempo from "components/Table/CortePruebaTiempo";
+import CortePruebaTablaII from "components/Table/CortePruebaTablaII";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteTablaNesticTiempo() {
+export default function CorteTablasModeloSeleccionados() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
@@ -30,12 +30,18 @@ export default function CorteTablaNesticTiempo() {
             <CardIcon color="rose">
               <Assignment />
             </CardIcon>
-            <h4 className={classes.cardIconTitle}>Tiempo</h4>
+            <h4 className={classes.cardIconTitle}>Programas a Modelar</h4>
           </CardHeader>
           <CardBody>
-            <CortePruebaTiempo
-              tableHead={["Modelo", "Tiempo Requerido en Horas"]}
-              tableData={store.valorTiempoNesticCalculado}
+            <CortePruebaTablaII
+              tableHead={[
+                "A produccion",
+                "Cantidad a Modelar",
+                "Unidades en OT",
+                "Modelo",
+                "OT"
+              ]}
+              tableData={store.modeloFiltrado}
               customCellClasses={[classes.center, classes.right, classes.right]}
               customClassesForCells={[0, 4, 5]}
               customHeadCellClasses={[

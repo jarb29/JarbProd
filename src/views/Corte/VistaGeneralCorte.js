@@ -1,5 +1,5 @@
 import React from "react";
-import CorteGeneral from "../../components/Corte/CorteGeneral";
+import CorteGeneral from "../../components/Corte/VistaGeneral/CorteGeneral";
 
 function CargarPrograma() {
   return (

@@ -12,7 +12,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
-import CorteProgramasQueVanAProduccion from "components/Corte/CorteProgramasQueVanAProduccion";
+import CorteProgramasQueVanAProduccion from "components/Corte/VistaCargaProgramas/CorteProgramasQueVanAProduccion";
 
 const useStyles = makeStyles(styles);
 
@@ -82,7 +82,7 @@ export default function CortePruebaTablaII(props) {
                 className={classes.tableRow + " " + tableRowClasses}
               >
                 <TableCell key={key}>
-                  <CorteProgramasQueVanAProduccion nestic={prop}/>
+                  <CorteProgramasQueVanAProduccion nestic={prop} />
                 </TableCell>
                 <TableCell>
                   <CustomInput

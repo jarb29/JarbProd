@@ -33,10 +33,10 @@ import Image from "@material-ui/icons/Image";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import CargarProgramas from "views/Corte/CargarProgramas";
-import CorteDetalleNesti from "views/Corte/CorteDetalleNesti";
+import DetalleNesti from "views/Corte/DetalleNesti";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
-import CorteCargarPlanchasUsadas from "views/Corte/CorteCargarPlanchasUsadas";
+import CargarPlanchasCortadas from "views/Corte/CargarPlanchasCortadas";
 import PlegadoDetalleLineas from "views/Plegado/PlegadoDetalleLineas";
 
 var dashRoutes = [
@@ -71,14 +71,14 @@ var dashRoutes = [
         path: "/cargarplanchas",
         name: "Cargar Planchas Cortadas",
         mini: "PC",
-        component: CorteCargarPlanchasUsadas,
+        component: CargarPlanchasCortadas,
         layout: "/admin"
       },
       {
         path: "/piezasnestic",
         name: "Corte Detalle",
-        mini: "CDN",
-        component: CorteDetalleNesti,
+        mini: "CD",
+        component: DetalleNesti,
         layout: "/admin"
       }
     ]
