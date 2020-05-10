@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function CorteSeleccioneOt() {
+export default function CorteSeleccioneNesti() {
   const classes = useStyles();
   const { actions, store } = useContext(Context);
 
@@ -25,22 +25,22 @@ export default function CorteSeleccioneOt() {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Ot a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">Nestic a Elegir</InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="ot_cortada"
+          name="nestic_cortado"
           onChange={e => {
-            actions.obtenerNesticEnProduccion(e);
+            actions.cargarPlanchasCortadas(e);
             actions.cargarPlanchasCortadas(e);
           }}
         >
           <option aria-label="None" value="" />
-          {store.OtDisponiblesProduccion.map((ot, index) => {
+          {store.nesticDisponiblesProduccion.map((nestic, index) => {
             return (
-              <option value={ot.ot_produccion} key={index} name="ot_cortada">
-                Programa:{ot.modelo_produccion}, Numero Ot:{ot.ot_produccion}
+              <option value={nestic.programa_nestic} key={index}>
+                {nestic.programa_nestic}
               </option>
             );
           })}

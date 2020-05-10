@@ -18,13 +18,12 @@ import styles from "assets/jss/material-dashboard-pro-react/views/sweetAlertStyl
 const useStyles = makeStyles(styles);
 
 export default function CorteProgramasQueVanAProduccion(props) {
-  const { store, actions } = useContext(Context);
+  const { actions } = useContext(Context);
   const classes = useStyles();
   const {
     nestic
   } = props;
   const [alert, setAlert] = React.useState(null);
-  const [inputValue, setInputValue] = React.useState(null);
 
   
   const programas = () =>{

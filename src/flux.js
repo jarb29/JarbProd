@@ -24,6 +24,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       crearLongitudCortePieza: [],
       nesticElegido: [],
 
+      // Variables para las planchas cortadas
+      planchas_cortadas: "",
+      ot_cortada: "",
+      operador: "",
+      nestic_cortado: "",
+
       // Variables para plegado
       plegadoModeloSeleccionado: [],
       plegadoPiezaSeleccionada: [],
@@ -71,7 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////// Funcion para crear el programa nestic
       crearModeloElegido: e => {
-        console.log(e, "flux modelo elegido");
         setStore({
           modelo_elegido: e.target.value
         });
@@ -163,6 +168,20 @@ const getState = ({ getStore, getActions, setStore }) => {
       crearNesticElegido: e => {
         setStore({
           nesticElegido: e.target.value
+        });
+      },
+      // cargando numero de planchas cortadas
+      cargarPlanchasCortadas: e => {
+        console.log(
+          e.target.name,
+          "nombre en el flux al cargar planchas cortadas"
+        );
+        console.log(
+          e.target.value,
+          "valor en el flux al cargar planchas cortadas"
+        );
+        setStore({
+          [e.target.name]: e.target.value
         });
       },
 

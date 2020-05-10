@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function CorteSeleccioneOt() {
+export default function CorteSeleccioneOperador() {
   const classes = useStyles();
-  const { actions, store } = useContext(Context);
+  const { actions } = useContext(Context);
 
   useEffect(() => {
     actions.obtenerOtEnProduccion();
@@ -25,25 +25,35 @@ export default function CorteSeleccioneOt() {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Ot a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">
+          Operador a Elegir
+        </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="ot_cortada"
+          name="operador"
           onChange={e => {
             actions.obtenerNesticEnProduccion(e);
             actions.cargarPlanchasCortadas(e);
           }}
         >
           <option aria-label="None" value="" />
-          {store.OtDisponiblesProduccion.map((ot, index) => {
-            return (
-              <option value={ot.ot_produccion} key={index} name="ot_cortada">
-                Programa:{ot.modelo_produccion}, Numero Ot:{ot.ot_produccion}
-              </option>
-            );
-          })}
+          <option value="Juan Aedo" name="operador">
+            Juan Aedo
+          </option>
+          <option value="Guillermo Cariaco" name="operador">
+            Guillermo Cariaco
+          </option>
+          <option value="Francisco Venegas" name="operador">
+            Francisco Venegas
+          </option>
+          <option value="Luis Olea" name="operador">
+            Luis Olea
+          </option>
+          <option value="Jose Rubio" name="operador">
+            Jose Rubio
+          </option>
         </Select>
       </FormControl>
     </div>
