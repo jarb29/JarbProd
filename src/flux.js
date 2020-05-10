@@ -352,7 +352,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Crendo Nestics de produccion a corte
       nesticACorte: e => {
-        e.preventDefault();
         const store = getStore();
         console.log(e, "antes del envio en el flux precent default");
 

@@ -1,9 +1,7 @@
 /*eslint-disable*/
-import React, { useContext } from "react";
+import React, {useContext}  from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import { Context } from "../../../AppContext";
-
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,22 +10,36 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import { Context } from '../../../AppContext';
 
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import CorteSeleccioneOt from "./CorteSeleccioneOt";
-import CorteSeleccioneNesti from "./CorteSeleccioneNesti"
+import CorteSeleccioneNesti from "./CorteSeleccioneNesti";
 import CorteSeleccioneOperador from "./CorteSeleccioneOperador";
+
 
 const useStyles = makeStyles(styles);
 
-export default function CorteFormularioPlanchasPorOT() {
-  // register form
+export default function CorteNestic() {
   const { actions, store } = useContext(Context);
-  const [registerPassword, setregisterPlanchas] = React.useState("");
-  const [registerPlanchasState, setregisterPlanchasState] = React.useState("");
- 
+  
+  // register form
 
+  const [registerPlanchas, setregisterPlanchas] = React.useState("");
+  const [registerPlanchasState, setregisterPlanchasState] = React.useState("");
+
+
+
+  
+
+  // function that verifies if a string has a given length or not
+  const verifyLength = (value, length) => {
+    if (value.length >= length) {
+      return true;
+    }
+    return false;
+  };
   // function that verifies if value contains only numbers
   const verifyNumber = value => {
     var numberRex = new RegExp("^[0-9]+$");
@@ -36,20 +48,15 @@ export default function CorteFormularioPlanchasPorOT() {
     }
     return false;
   };
-
-  const planchasCortadas = (event) => {
-    actions.cargarPlanchasCortadas(event);
-  };
-
-
+  
+ 
   const classes = useStyles();
-
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form>
+            <form onSubmit={e => actions.nesticACorte(e)}>
               <CorteSeleccioneOt />
               <CorteSeleccioneNesti />
               <CorteSeleccioneOperador />
@@ -69,25 +76,24 @@ export default function CorteFormularioPlanchasPorOT() {
                       setregisterPlanchasState("error");
                     }
                     setregisterPlanchas(event.target.value);
-                    planchasCortadas(event);
                   },
                   name: "planchas_cortadas",
                 }}
               />
+              
               <div className={classes.formCategory}>
-                <small>*</small> Todos los campos son requeridos
+                <small>*</small> Campos Requeridos
               </div>
-              { (store.ot_cortada&& 
-              store.operador &&
-              store.nestic_cortado &&
-              registerPlanchasState === "success")?
+              {store.ot_cortada&& 
+                  store.nestic_cortado &&
+              registerPlanchasState === "success"?
               <Button
                 color="rose"
                 className={classes.registerButton}
-                onClick = {e => actions.nesticACorte(e)}
+                type = "submit"
               >
-                Registrar
-              </Button> : null}
+                Agregar
+              </Button>: null }
             </form>
           </CardBody>
         </Card>

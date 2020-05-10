@@ -34,7 +34,6 @@ export default function CorteSeleccioneOperador() {
           id="grouped-native-select"
           name="operador"
           onChange={e => {
-            actions.obtenerNesticEnProduccion(e);
             actions.cargarPlanchasCortadas(e);
           }}
         >

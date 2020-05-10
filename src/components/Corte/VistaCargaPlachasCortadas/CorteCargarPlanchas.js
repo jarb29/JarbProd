@@ -13,7 +13,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
-import CorteFormularioPlanchasPorOT from "./CorteFormularioPlanchasPorOT";
+import CorteNestic from "./CorteNestic";
 
 
 const useStyles = makeStyles(styles);
@@ -85,106 +85,16 @@ export default function PlegadoCargarDatos() {
                 color="transparent"
                 onClick={() => setClassicModal(false)}
               >
-                
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Planchas........</h4>
+              <h4 className={classes.modalTitle}>Planchas</h4>
             </DialogTitle>
-
-
             <DialogContent
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-              <CorteFormularioPlanchasPorOT />
+              <CorteNestic />
             </DialogContent>
-          </Dialog>
-
-
-          
-          <Button
-            color="rose"
-            round
-            className={classes.marginRight}
-            onClick={() => setSmallModal(true)}
-          >
-            Por si falta
-          </Button>
-          <Dialog
-            classes={{
-              root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal + " " + classes.modalSmall
-            }}
-            open={smallModal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => setSmallModal(false)}
-            aria-labelledby="small-modal-slide-title"
-            aria-describedby="small-modal-slide-description"
-          >
-            <DialogTitle
-              id="small-modal-slide-title"
-              disableTypography
-              className={classes.modalHeader}
-            >
-              <Button
-                justIcon
-                className={classes.modalCloseButton}
-                key="close"
-                aria-label="Close"
-                color="transparent"
-                onClick={() => setSmallModal(false)}
-              >
-               
-                <Close className={classes.modalClose} /> 
-              </Button>
-              <h4 className={classes.modalTitle}>Prueba</h4>
-            </DialogTitle>
-          </Dialog>
-          <Button
-            color="info"
-            round
-            className={classes.marginRight}
-            onClick={() => setNoticeModal(true)}
-          >
-            Por si falta
-                    </Button>
-          <Dialog
-            classes={{
-              root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal
-            }}
-            open={noticeModal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => setNoticeModal(false)}
-            aria-labelledby="notice-modal-slide-title"
-            aria-describedby="notice-modal-slide-description"
-          >
-            <DialogTitle
-              id="notice-modal-slide-title"
-              disableTypography
-              className={classes.modalHeader}
-            >
-              <Button
-                justIcon
-                className={classes.modalCloseButton}
-                key="close"
-                aria-label="Close"
-                color="transparent"
-                onClick={() => setNoticeModal(false)}
-              >
-                <Close className={classes.modalClose} />
-              </Button>
-              <h4 className={classes.modalTitle}>Por si falta</h4>
-            </DialogTitle>
-           
-            <DialogActions
-              className={
-                classes.modalFooter + " " + classes.modalFooterCenter
-              }
-            >
-            </DialogActions>
           </Dialog>
         </GridItem>
       </GridContainer>

@@ -159,10 +159,12 @@ export default function CorteFormularioModelo() {
                 <small>*</small> Campos Requeridos
               </div>
               {
-              (confirmNombredelProgramaState === "success" && numeroOtState ==="success"&& cantidadOtState === "success")?<Button
+              (confirmNombredelProgramaState === "success" && 
+              numeroOtState ==="success"&& 
+              cantidadOtState === "success")?
+              <Button
                 color="rose"
                 className={classes.registerButton}
-                //type='submit'
                 onMouseOver = {handleSubmit}
                 type = "submit"
               >
