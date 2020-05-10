@@ -40,6 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       modelosAProduccion: [],
       errorModeloProduccion: [],
       OtDisponiblesProduccion: [],
+      nesticDisponiblesProduccion: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -428,7 +429,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno de la ot del flux")
+        console.log(dato, "retorno de la ot del flux");
         if (dato.msg) {
           setStore({
             error: dato
@@ -436,6 +437,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             OtDisponiblesProduccion: dato
+          });
+        }
+      },
+
+      obtenerNesticEnProduccion: async e => {
+        const store = getStore();
+        let numeroOt = e.target.value;
+        console.log(e.target.value, "se supone que es el numero ot en el flux");
+
+        const { baseURL } = store;
+        const resp = await fetch(
+          baseURL + `/api/nesticProduccion/${numeroOt}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+        console.log(dato, "Nestis elegidos retorno de la ot del flux");
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            nesticDisponiblesProduccion: dato
           });
         }
       }

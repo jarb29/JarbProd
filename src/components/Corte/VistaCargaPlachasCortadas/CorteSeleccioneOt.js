@@ -31,7 +31,7 @@ export default function CorteSeleccioneOt() {
           defaultValue=""
           id="grouped-native-select"
           name="categoria"
-          onChange={e => actions.obtenerOtEnProduccion(e)}
+          onChange={e => actions.obtenerNesticEnProduccion(e)}
         >
           <option aria-label="None" value="" />
           {store.OtDisponiblesProduccion.map((ot, index) => {

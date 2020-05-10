@@ -24,12 +24,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function PlegadoCargarDatos() {
   const classes = useStyles();
-  const [tl, setTL] = React.useState(false);
-  const [tc, setTC] = React.useState(false);
-  const [tr, setTR] = React.useState(false);
-  const [bl, setBL] = React.useState(false);
-  const [bc, setBC] = React.useState(false);
-  const [br, setBR] = React.useState(false);
   const [classicModal, setClassicModal] = React.useState(false);
   const [noticeModal, setNoticeModal] = React.useState(false);
   const [smallModal, setSmallModal] = React.useState(false);
