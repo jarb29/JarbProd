@@ -121,7 +121,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             const valorPorPieza = parseFloat(nuevoValor / nuevoNumeroPiezas);
             const valorFinal = valorPorPieza * (nuevoTiempoCorte + 0.7);
             sum = Math.round(parseInt(sum, 10) + parseInt(valorFinal, 10) / 60);
-            console.log(sum, "suma");
           }
           return sum;
         });
@@ -294,6 +293,46 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
+
+      programasAProduccion: event => {
+        const store = getStore();
+        console.log(event, "modelos a produccion");
+
+        //let data = {
+        //  nombre_pieza: store.nombre_pieza,
+         // cantidadPiezasPorPlancha: store.cantidadPiezasPorPlancha,
+         // crearLongitudCortePieza: store.crearLongitudCortePieza,
+         // nesticElegido: store.nesticElegido
+        //};
+
+        //getActions().registroNestic("/api/crearpieza", data);
+      },
+
+      registroProgramasProduccion: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        if (dato.msg) {
+          setStore({
+            errorModelo: dato
+          });
+        } else {
+          setStore({
+            piezasDisponiles: dato
+          });
+        }
+      },
+
+
+
+
 
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 

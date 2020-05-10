@@ -22,8 +22,6 @@ export default function CorteTablasModeloSeleccionados() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
-  console.log(store.valorTiempoNesticCalculado, "con el timepo");
-
   return (
     <GridContainer>
       <GridItem xs={12}>

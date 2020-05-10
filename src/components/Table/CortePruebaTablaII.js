@@ -17,10 +17,8 @@ import CorteProgramasQueVanAProduccion from "components/Corte/CorteProgramasQueV
 const useStyles = makeStyles(styles);
 
 export default function CortePruebaTablaII(props) {
-  const { actions, store } = useContext(Context);
+  const { actions } = useContext(Context);
   const classes = useStyles();
-
-  console.log(store.modeloFiltrado, "valor del object en el componente");
 
   const {
     tableHead,
@@ -84,7 +82,7 @@ export default function CortePruebaTablaII(props) {
                 className={classes.tableRow + " " + tableRowClasses}
               >
                 <TableCell key={key}>
-                  <CorteProgramasQueVanAProduccion />
+                  <CorteProgramasQueVanAProduccion nestic={prop}/>
                 </TableCell>
                 <TableCell>
                   <CustomInput
@@ -97,8 +95,6 @@ export default function CortePruebaTablaII(props) {
                     }}
                     inputProps={{
                       onChange: event => {
-                        console.log(event.currentTarget);
-                        console.log(event.target.id, "deberia ser el key");
                         actions.handleToggleNesticValor(event);
                       },
                       name: prop[3]

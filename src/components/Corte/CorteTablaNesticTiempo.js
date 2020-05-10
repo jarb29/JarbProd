@@ -22,8 +22,6 @@ export default function CorteTablaNesticTiempo() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
-  console.log(store.valorTiempoNesticCalculado, "En el timepo");
-
   return (
     <GridContainer>
       <GridItem xs={12}>

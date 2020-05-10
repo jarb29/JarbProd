@@ -1,6 +1,7 @@
 /*eslint-disable*/
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { Context } from "../../AppContext";
+
 // react component used to create sweet alerts
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -12,60 +13,71 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import BugReport from "@material-ui/icons/BugReport";
-
-
 import styles from "assets/jss/material-dashboard-pro-react/views/sweetAlertStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteProgramasQueVanAProduccion() {
+export default function CorteProgramasQueVanAProduccion(props) {
+  const { store, actions } = useContext(Context);
   const classes = useStyles();
+  const {
+    nestic
+  } = props;
   const [alert, setAlert] = React.useState(null);
   const [inputValue, setInputValue] = React.useState(null);
+  console.log(nestic);
+  
+  const programas = () =>{
+    console.log(nestic);
+    actions.programasAProduccion(nestic);
+  };
 
-  const warningWithConfirmAndCancelMessage = () => {
+
+  const warningWithConfirmAndCancelMessage = (nestic) => {
     setAlert(
       <SweetAlert
         warning
         style={{ display: "block", marginTop: "-100px" }}
-        title="Are you sure?"
-        onConfirm={() => successDelete()}
-        onCancel={() => cancelDetele()}
+        title="Agregar el programa a produccion?"
+        onConfirm={() => {successAgregado();
+        programas()}}
+        onCancel={() => cancelproceso()}
         confirmBtnCssClass={classes.button + " " + classes.success}
         cancelBtnCssClass={classes.button + " " + classes.danger}
-        confirmBtnText="Yes, delete it!"
-        cancelBtnText="Cancel"
+        confirmBtnText="Si, agregar!"
+        cancelBtnText="Cancelar"
         showCancel
       >
-        You will not be able to recover this imaginary file!
+        No se puede deshacer esta opcion!
       </SweetAlert>
     );
   };
-  const successDelete = () => {
+
+  const successAgregado = () => {
     setAlert(
       <SweetAlert
         success
         style={{ display: "block", marginTop: "-100px" }}
-        title="Deleted!"
+        title="Agregado!"
         onConfirm={() => hideAlert()}
         onCancel={() => hideAlert()}
         confirmBtnCssClass={classes.button + " " + classes.success}
       >
-        Your imaginary file has been deleted.
+        Su prograga fue agregado
       </SweetAlert>
     );
   };
-  const cancelDetele = () => {
+  const cancelproceso = () => {
     setAlert(
       <SweetAlert
         danger
         style={{ display: "block", marginTop: "-100px" }}
-        title="Cancelled"
+        title="Cancelado"
         onConfirm={() => hideAlert()}
         onCancel={() => hideAlert()}
         confirmBtnCssClass={classes.button + " " + classes.success}
       >
-        Your imaginary file is safe :)
+        El programa no se agrego:)
       </SweetAlert>
     );
   };

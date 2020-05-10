@@ -18,7 +18,6 @@ export default function CortePruebaTiempo(props) {
   const { store } = useContext(Context);
   const classes = useStyles();
 
-  console.log(store.modeloFiltrado, "valor del object en el componente");
 
   const {
     tableHead,
