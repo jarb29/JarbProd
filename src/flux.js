@@ -69,6 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////// Funcion para crear el programa nestic
       crearModeloElegido: e => {
+        console.log(e, "flux modelo elegido");
         setStore({
           modelo_elegido: e.target.value
         });
@@ -385,9 +386,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       obtenerNesticsFiltrados: async e => {
         const store = getStore();
+        console.log(e.target.value, "en el flux nestic filtrado");
 
         const { baseURL } = store;
-        let nestic_elegido = e;
+        let nestic_elegido = e.target.value;
 
         const resp = await fetch(
           baseURL + `/api/nesticsmodelar/${nestic_elegido}`,
@@ -399,12 +401,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
+        console.log(dato, "en el flux nestic filtrado despues del fetch");
 
         if (dato.msg) {
           setStore({
             error: dato
           });
         } else {
+          setStore({
+            nesticsModelar: dato
+          });
           store.nesticsModelar.push(dato);
         }
       }

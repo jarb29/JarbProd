@@ -55,7 +55,6 @@ export default function CustomTable(props) {
     if (currentIndex === -1) {
       newChecked.push(value[3]);
       newModeloFiltrado.push(value);
-      actions.obtenerNesticsFiltrados(value[3]);
     } else {
       newChecked.splice(currentIndex, 1);
       newModeloFiltrado.splice(currentIndexModeloSeleccionado, 1);

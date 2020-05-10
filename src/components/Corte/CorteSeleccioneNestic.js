@@ -31,7 +31,7 @@ export default function CorteSeleccioneNestic() {
           onChange={e => actions.crearNesticElegido(e)}
         >
           <option aria-label="None" value="" />
-          {store.nesticsDisponibles.map((nestic, index) => {
+          {store.nesticsModelar.map((nestic, index) => {
             return (
               <option value={nestic.programa_nestic} key={index}>
                 {nestic.programa_nestic}

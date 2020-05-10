@@ -32,7 +32,10 @@ export default function CorteSeleccioneModelo() {
           defaultValue=""
           id="grouped-native-select"
           name="categoria"
-          onChange={e => actions.crearModeloElegido(e)}
+          onChange={e => {
+            actions.crearModeloElegido(e);
+            actions.obtenerNesticsFiltrados(e);
+          }}
         >
           <option aria-label="None" value="" />
           {store.modelosDisponibles.map((programa, index) => {
