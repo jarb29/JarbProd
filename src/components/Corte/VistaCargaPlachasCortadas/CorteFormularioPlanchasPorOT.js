@@ -27,10 +27,11 @@ import CardFooter from "components/Card/CardFooter.js";
 
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
+import CorteSeleccioneOt from "./CorteSeleccioneOt";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteFormularioPlanchasPorNestic() {
+export default function CorteFormularioPlanchasPorOT() {
   // register form
   const [registerEmail, setregisterEmail] = React.useState("");
   const [registerEmailState, setregisterEmailState] = React.useState("");
@@ -168,6 +169,7 @@ export default function CorteFormularioPlanchasPorNestic() {
         <Card>
           <CardBody>
             <form>
+              <CorteSeleccioneOt />
               <CustomInput
                 success={registerEmailState === "success"}
                 error={registerEmailState === "error"}

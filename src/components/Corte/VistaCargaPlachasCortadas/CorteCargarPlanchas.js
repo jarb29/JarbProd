@@ -7,27 +7,13 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
-import MailOutline from "@material-ui/icons/MailOutline";
-import CardIcon from "components/Card/CardIcon.js";
-
-// @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
 import Close from "@material-ui/icons/Close";
-
-// core components
-import Heading from "components/Heading/Heading.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 import Button from "components/CustomButtons/Button.js";
-import Snackbar from "components/Snackbar/Snackbar.js";
-import Instruction from "components/Instruction/Instruction.js";
 import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
-import CorteFormularioPlanchasPorNestic from "./CorteFormularioPlanchasPorNestic";
- 
+import CorteFormularioPlanchasPorOT from "./CorteFormularioPlanchasPorOT";
 
 
 const useStyles = makeStyles(styles);
@@ -57,60 +43,6 @@ export default function PlegadoCargarDatos() {
       }
     };
   });
-  const showNotification = place => {
-    switch (place) {
-      case "tl":
-        if (!tl) {
-          setTL(true);
-          setTimeout(function () {
-            setTL(false);
-          }, 6000);
-        }
-        break;
-      case "tc":
-        if (!tc) {
-          setTC(true);
-          setTimeout(function () {
-            setTC(false);
-          }, 6000);
-        }
-        break;
-      case "tr":
-        if (!tr) {
-          setTR(true);
-          setTimeout(function () {
-            setTR(false);
-          }, 6000);
-        }
-        break;
-      case "bl":
-        if (!bl) {
-          setBL(true);
-          setTimeout(function () {
-            setBL(false);
-          }, 6000);
-        }
-        break;
-      case "bc":
-        if (!bc) {
-          setBC(true);
-          setTimeout(function () {
-            setBC(false);
-          }, 6000);
-        }
-        break;
-      case "br":
-        if (!br) {
-          setBR(true);
-          setTimeout(function () {
-            setBR(false);
-          }, 6000);
-        }
-        break;
-      default:
-        break;
-    }
-  };
   return (
     <Card>
       <GridContainer justify="center">
@@ -164,19 +96,20 @@ export default function PlegadoCargarDatos() {
               </Button>
               <h4 className={classes.modalTitle}>Planchas........</h4>
             </DialogTitle>
-            <CorteFormularioPlanchasPorNestic />
+
+
+            <CorteFormularioPlanchasPorOT />
+
+
             <DialogContent
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-       
             </DialogContent>
           </Dialog>
 
 
-
-
-
+          
           <Button
             color="rose"
             round
@@ -202,7 +135,6 @@ export default function PlegadoCargarDatos() {
               disableTypography
               className={classes.modalHeader}
             >
-              
               <Button
                 justIcon
                 className={classes.modalCloseButton}
@@ -216,14 +148,7 @@ export default function PlegadoCargarDatos() {
               </Button>
               <h4 className={classes.modalTitle}>Prueba</h4>
             </DialogTitle>
-     
           </Dialog>
-
-
-
-
-
-
           <Button
             color="info"
             round
@@ -270,9 +195,6 @@ export default function PlegadoCargarDatos() {
             </DialogActions>
           </Dialog>
         </GridItem>
-
-
-
       </GridContainer>
     </Card>
   );

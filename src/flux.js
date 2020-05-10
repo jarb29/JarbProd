@@ -39,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       nesticsModelar: [],
       modelosAProduccion: [],
       errorModeloProduccion: [],
+      OtDisponiblesProduccion: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -297,6 +298,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      // Creandon programas a produccion
       programasAProduccion: event => {
         console.log(event[3], "modelos a produccion");
 
@@ -412,6 +414,29 @@ const getState = ({ getStore, getActions, setStore }) => {
             nesticsModelar: dato
           });
           store.nesticsModelar.push(dato);
+        }
+      },
+
+      obtenerOtEnProduccion: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/otProduccion`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "retorno de la ot del flux")
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            OtDisponiblesProduccion: dato
+          });
         }
       }
     }
