@@ -92,13 +92,11 @@ export default function PlegadoCargarDatos() {
             </DialogTitle>
 
 
-            <CorteFormularioPlanchasPorOT />
-
-
             <DialogContent
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
+              <CorteFormularioPlanchasPorOT />
             </DialogContent>
           </Dialog>
 

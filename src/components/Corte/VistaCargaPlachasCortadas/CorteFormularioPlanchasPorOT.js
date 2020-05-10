@@ -38,9 +38,7 @@ export default function CorteFormularioPlanchasPorOT() {
   };
 
   const planchasCortadas = (event) => {
-
     actions.cargarPlanchasCortadas(event);
-
   };
 
 
