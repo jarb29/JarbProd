@@ -25,10 +25,9 @@ export default function CorteProgramasQueVanAProduccion(props) {
   } = props;
   const [alert, setAlert] = React.useState(null);
   const [inputValue, setInputValue] = React.useState(null);
-  console.log(nestic);
+
   
   const programas = () =>{
-    console.log(nestic);
     actions.programasAProduccion(nestic);
   };
 

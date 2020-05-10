@@ -37,6 +37,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       modelosDisponibles: [],
       nesticsDisponibles: [],
       nesticsModelar: [],
+      modelosAProduccion: [],
+      errorModeloProduccion: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -295,20 +297,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       programasAProduccion: event => {
-        const store = getStore();
-        console.log(event, "modelos a produccion");
+        console.log(event[3], "modelos a produccion");
 
-        //let data = {
-        //  nombre_pieza: store.nombre_pieza,
-         // cantidadPiezasPorPlancha: store.cantidadPiezasPorPlancha,
-         // crearLongitudCortePieza: store.crearLongitudCortePieza,
-         // nesticElegido: store.nesticElegido
-        //};
-
-        //getActions().registroNestic("/api/crearpieza", data);
+        let data = {
+          modelo_produccion: event[3],
+          ot_produccion: event[4],
+          cantidad_producir: event[0]
+        };
+        getActions().registroProgramasProduccion(
+          "/api/modelosproduccion",
+          data
+        );
       },
 
       registroProgramasProduccion: async (url, data) => {
+        console.log(data, "data en el flux");
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -319,20 +322,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "retorno modelo a produccion creado");
         if (dato.msg) {
           setStore({
-            errorModelo: dato
+            errorModeloProduccion: dato
           });
         } else {
           setStore({
-            piezasDisponiles: dato
+            modelosAProduccion: dato
           });
         }
       },
-
-
-
-
 
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
