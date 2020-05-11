@@ -11,6 +11,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
+import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
 
 const styles = {
   cardTitle,
@@ -27,7 +28,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function PanelProgramasProduccion() {
+export default function CorteCalculoPlanchas() {
   const classes = useStyles();
   return (
     <div>
@@ -36,7 +37,7 @@ export default function PanelProgramasProduccion() {
           <Card>
             <CardHeader>
               <h4 className={classes.cardTitle}>
-                Navigation Pills <small> - Vertical Tabs</small>
+                Navegador <small> Calculo Planchas</small>
               </h4>
             </CardHeader>
             <CardBody>
@@ -51,21 +52,7 @@ export default function PanelProgramasProduccion() {
                     tabButton: "Profile",
                     tabContent: (
                       <span>
-                        <p>
-                          Collaboratively administrate empowered markets via
-                          plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
-                        <br />
-                        <p>This is very nice.</p>
+                        <CorteTablaCalculoPlanchas />
                       </span>
                     )
                   },

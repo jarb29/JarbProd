@@ -96,6 +96,77 @@ export default function PlegadoCargarDatos() {
               <CorteNestic />
             </DialogContent>
           </Dialog>
+
+
+
+          <Button
+                      color="info"
+                      round
+                      className={classes.marginRight}
+                      onClick={() => setNoticeModal(true)}
+                    >
+                      Extra
+                    </Button>
+                    <Dialog
+                      classes={{
+                        root: classes.center + " " + classes.modalRoot,
+                        paper: classes.modal
+                      }}
+                      open={noticeModal}
+                      TransitionComponent={Transition}
+                      keepMounted
+                      onClose={() => setNoticeModal(false)}
+                      aria-labelledby="notice-modal-slide-title"
+                      aria-describedby="notice-modal-slide-description"
+                    >
+                      <DialogTitle
+                        id="notice-modal-slide-title"
+                        disableTypography
+                        className={classes.modalHeader}
+                      >
+                        <Button
+                          justIcon
+                          className={classes.modalCloseButton}
+                          key="close"
+                          aria-label="Close"
+                          color="transparent"
+                          onClick={() => setNoticeModal(false)}
+                        >
+                          <Close className={classes.modalClose} />
+                        </Button>
+                        <h4 className={classes.modalTitle}>Extra</h4>
+                      </DialogTitle>
+                      <DialogContent
+                        id="notice-modal-slide-description"
+                        className={classes.modalBody}
+                      >   
+                      </DialogContent>
+                      <DialogActions
+                        className={
+                          classes.modalFooter + " " + classes.modalFooterCenter
+                        }
+                      >
+                        <Button
+                          onClick={() => setNoticeModal(false)}
+                          color="info"
+                          round
+                        >
+                          Agregar
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
         </GridItem>
       </GridContainer>
     </Card>
