@@ -49,6 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       OtDisponiblesProduccion: [],
       nesticDisponiblesProduccion: [],
       nesticCortados: [],
+      modeloAModelar: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -393,43 +394,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      modeloEstufas: e => {
-        const store = getStore();
-        console.log(e, "antes del envio en el flux para modelar las estufas");
-
-        let data = {
-          estufas_modelar: store.estufas_modelar,
-          ot_cortada: store.ot_cortada
-        };
-        getActions().estufasmodelar("/api/estufasmodelar", data);
-      },
-
-      estufasmodelar: async (url, data) => {
-        console.log(data, "data en el flux para mdelar la cantidad de estufas");
-
-        const store = getStore();
-        const { baseURL } = store;
-        const resp = await fetch(baseURL + url, {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-        const dato = await resp.json();
-        console.log(dato, "retorno nestic cortadas a produccion creado");
-        if (dato.msg) {
-          setStore({
-            errorModeloProduccion: dato
-          });
-        } else {
-          setStore({
-            nesticCortados: dato
-          });
-        }
-      },
-
-
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -556,6 +520,33 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             nesticDisponiblesProduccion: dato
+          });
+        }
+      },
+
+      modelarEstufas: async e => {
+        const store = getStore();
+        let numeroOt = store.ot_cortada;
+        let estufas = store.estufas_modelar;
+
+        const { baseURL } = store;
+        const resp = await fetch(
+          baseURL + `/api/modelarEstufas/${numeroOt}/${estufas}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            modeloAModelar: dato
           });
         }
       }

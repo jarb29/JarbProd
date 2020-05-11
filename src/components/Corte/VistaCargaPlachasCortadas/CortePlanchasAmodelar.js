@@ -77,7 +77,7 @@ export default function CortePlanchasAmodelar() {
               <Button
                 color="rose"
                 className={classes.registerButton}
-                onClick = {() => {actions.modeloEstufas()}}
+                onClick = {(e) => actions.modelarEstufas(e)}
               >
                 Calcule
               </Button>: null }

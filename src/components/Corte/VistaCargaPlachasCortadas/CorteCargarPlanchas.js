@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useContext } from "react";
+import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
@@ -15,7 +15,7 @@ import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
 import CortePlanchasAmodelar from "./CortePlanchasAmodelar";
 import CorteCargarPlanchasCortadas from "./CorteCargarPlanchasCortadas";
-import { Context } from '../../../AppContext';
+
 
 
 const useStyles = makeStyles(styles);
@@ -28,8 +28,7 @@ export default function PlegadoCargarDatos() {
   const classes = useStyles();
   const [classicModal, setClassicModal] = React.useState(false);
   const [noticeModal, setNoticeModal] = React.useState(false);
-  const [smallModal, setSmallModal] = React.useState(false);
-  const { actions, store } = useContext(Context);
+ 
   React.useEffect(() => {
     // Specify how to clean up after this effect:
     return function cleanup() {
