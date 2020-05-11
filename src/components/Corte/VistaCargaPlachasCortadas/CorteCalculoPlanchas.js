@@ -11,6 +11,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
+import CorteModelosenUso from "./CorteTablaModelosenUso";
 
 const styles = {
   cardTitle,
@@ -59,16 +60,7 @@ export default function CorteCalculoPlanchas() {
                     tabButton: "Modelos en Corte",
                     tabContent: (
                       <span>
-                        <p>
-                          Efficiently unleash cross-media information without
-                          cross-media value. Quickly maximize timely
-                          deliverables for real-time schemas.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically maintain clicks-and-mortar solutions
-                          without functional solutions.
-                        </p>
+                        <CorteModelosenUso />
                       </span>
                     )
                   },

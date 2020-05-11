@@ -524,7 +524,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      modelarEstufas: async e => {
+      modelarEstufas: async () => {
         const store = getStore();
         let numeroOt = store.ot_cortada;
         let estufas = store.estufas_modelar;

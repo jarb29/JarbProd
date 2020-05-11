@@ -16,7 +16,6 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { Context } from "../../../AppContext";
 
 const useRowStyles = makeStyles({
-
   root: {
     "& > *": {
       borderBottom: "unset"

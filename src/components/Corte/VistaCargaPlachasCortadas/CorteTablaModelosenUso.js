@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Context } from "../../../AppContext";
 
-export default function CorteTablaCalculoPlanchas() {
+export default function CorteModelosenUso() {
   const { store } = useContext(Context);
 
   const a =
@@ -22,15 +22,17 @@ export default function CorteTablaCalculoPlanchas() {
       <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Nestic: (Modelo: {a})</TableCell>
-            <TableCell align="left">Cantidad Planchas</TableCell>
+            <TableCell>Modelos en Uso:</TableCell>
+            <TableCell align="left">Ordenes de Trabajo</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {store.modeloAModelar.map(row => (
+          {store.OtDisponiblesProduccion.map(row => (
             <TableRow key={row.id}>
-              <TableCell component="th">{row.nestic}</TableCell>
-              <TableCell align="left">{row.plancha}</TableCell>
+              <TableCell component="th">
+              {row.id} : {row.modelo_produccion}
+              </TableCell>
+              <TableCell align="left"> # {row.ot_produccion}</TableCell>
             </TableRow>
           ))}
         </TableBody>
