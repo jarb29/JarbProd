@@ -45,23 +45,34 @@ export default function CustomTable(props) {
   } = props;
 
   const handleToggle = value => {
-    const currentIndex = checked.indexOf(value[3]);
+    const currentIndex = checked.indexOf(value[2]);
+    console.log(currentIndex, "valor actual en 2");
+
     const currentIndexModeloSeleccionado = modelosFiltradosComponente.indexOf(
-      value[3]
+      value[2]
     );
+    console.log(currentIndexModeloSeleccionado, "valor actual en 2");
+
     const newChecked = [...checked];
     const newModeloFiltrado = [...modelosFiltradosComponente];
-
     if (currentIndex === -1) {
-      newChecked.push(value[3]);
+      console.log(value, "dentro del -1")
+
+      newChecked.push(value[2]);
       newModeloFiltrado.push(value);
+
     } else {
+
+      console.log(newChecked, "newChecked");
+      console.log(newModeloFiltrado, "newModeloFiltrado.");
       newChecked.splice(currentIndex, 1);
-      newModeloFiltrado.splice(currentIndexModeloSeleccionado, 1);
+      newModeloFiltrado.splice(currentIndex, 1);
+      
     }
     setChecked(newChecked);
     setmodelosFiltradosComponente(newModeloFiltrado);
     actions.modeloFiltadroDos(newModeloFiltrado);
+
   };
 
   return (

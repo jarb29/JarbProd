@@ -9,7 +9,6 @@ import NavPills from "components/NavPills/NavPills.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
 
@@ -37,7 +36,7 @@ export default function CorteCalculoPlanchas() {
           <Card>
             <CardHeader>
               <h4 className={classes.cardTitle}>
-                Navegador <small> Calculo Planchas</small>
+                Navegador <small>Modelar Calculos</small>
               </h4>
             </CardHeader>
             <CardBody>
@@ -49,7 +48,7 @@ export default function CorteCalculoPlanchas() {
                 }}
                 tabs={[
                   {
-                    tabButton: "Profile",
+                    tabButton: "Calculo plachas",
                     tabContent: (
                       <span>
                         <CorteTablaCalculoPlanchas />
