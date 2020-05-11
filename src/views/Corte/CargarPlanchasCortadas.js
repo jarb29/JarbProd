@@ -1,5 +1,5 @@
 import React from "react";
-import CorteNesticEnUso from "components/Corte/VistaCargaPlachasCortadas/CorteNesticEnUso";
+import CorteModelosEnUso from "components/Corte/VistaCargaPlachasCortadas/CorteModelosEnUso";
 import CorteCargarPlanchas from "components/Corte/VistaCargaPlachasCortadas/CorteCargarPlanchas";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -16,7 +16,7 @@ function CorteCargarPlanchasUsadas() {
           <CorteCalculoPlanchas />
         </GridItem>
       </GridContainer>
-      <CorteNesticEnUso />
+      <CorteModelosEnUso />
     </div>
   );
 }

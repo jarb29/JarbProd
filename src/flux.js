@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ot_cortada: "",
       operador: "",
       nestic_cortado: "",
+      estufas_modelar: [],
 
       // Variables para plegado
       plegadoModeloSeleccionado: [],
@@ -391,6 +392,43 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
+
+      modeloEstufas: e => {
+        const store = getStore();
+        console.log(e, "antes del envio en el flux para modelar las estufas");
+
+        let data = {
+          estufas_modelar: store.estufas_modelar,
+          ot_cortada: store.ot_cortada
+        };
+        getActions().estufasmodelar("/api/estufasmodelar", data);
+      },
+
+      estufasmodelar: async (url, data) => {
+        console.log(data, "data en el flux para mdelar la cantidad de estufas");
+
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "retorno nestic cortadas a produccion creado");
+        if (dato.msg) {
+          setStore({
+            errorModeloProduccion: dato
+          });
+        } else {
+          setStore({
+            nesticCortados: dato
+          });
+        }
+      },
+
 
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 

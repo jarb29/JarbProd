@@ -172,13 +172,6 @@ export default function CorteCargarProgramas() {
               <CorteFormularioNestic />
             </DialogContent>
           </Dialog>
-
-
-
-
-
-
-
           <Button
             color="info"
             round

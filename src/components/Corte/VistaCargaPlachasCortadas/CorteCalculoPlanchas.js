@@ -56,7 +56,7 @@ export default function CorteCalculoPlanchas() {
                     )
                   },
                   {
-                    tabButton: "Settings",
+                    tabButton: "Modelos en Corte",
                     tabContent: (
                       <span>
                         <p>

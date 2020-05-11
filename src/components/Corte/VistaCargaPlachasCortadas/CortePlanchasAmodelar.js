@@ -15,13 +15,11 @@ import { Context } from '../../../AppContext';
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import CorteSeleccioneOt from "./CorteSeleccioneOt";
-import CorteSeleccioneNesti from "./CorteSeleccioneNesti";
-import CorteSeleccioneOperador from "./CorteSeleccioneOperador";
 
 
 const useStyles = makeStyles(styles);
 
-export default function CorteNestic() {
+export default function CortePlanchasAmodelar() {
   const { actions, store } = useContext(Context);
   
   // register form
@@ -30,16 +28,6 @@ export default function CorteNestic() {
   const [registerPlanchasState, setregisterPlanchasState] = React.useState("");
 
 
-
-  
-
-  // function that verifies if a string has a given length or not
-  const verifyLength = (value, length) => {
-    if (value.length >= length) {
-      return true;
-    }
-    return false;
-  };
   // function that verifies if value contains only numbers
   const verifyNumber = value => {
     var numberRex = new RegExp("^[0-9]+$");
@@ -56,15 +44,13 @@ export default function CorteNestic() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form onSubmit={e => actions.nesticACorte(e)}>
+            <form>
               <CorteSeleccioneOt />
-              <CorteSeleccioneNesti />
-              <CorteSeleccioneOperador />
               <CustomInput
                 success={registerPlanchasState === "success"}
                 error={registerPlanchasState === "error"}
-                labelText="Cantidad de planchas cortadas *"
-                id="planchas_cortadas"
+                labelText="Cantidad de estufas a modelar *"
+                id="estufas_modelar"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -76,8 +62,10 @@ export default function CorteNestic() {
                       setregisterPlanchasState("error");
                     }
                     setregisterPlanchas(event.target.value);
+                    actions.cargarPlanchasCortadas(event);
+
                   },
-                  name: "planchas_cortadas",
+                  name: "estufas_modelar",
                 }}
               />
               
@@ -85,14 +73,13 @@ export default function CorteNestic() {
                 <small>*</small> Campos Requeridos
               </div>
               {store.ot_cortada&& 
-                  store.nestic_cortado &&
               registerPlanchasState === "success"?
               <Button
                 color="rose"
                 className={classes.registerButton}
-                type = "submit"
+                onClick = {() => {actions.modeloEstufas()}}
               >
-                Agregar
+                Calcule
               </Button>: null }
             </form>
           </CardBody>

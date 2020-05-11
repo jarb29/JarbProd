@@ -67,7 +67,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                History que tabla en esta))))
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>

@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useContext } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
@@ -13,7 +13,9 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
-import CorteNestic from "./CorteNestic";
+import CortePlanchasAmodelar from "./CortePlanchasAmodelar";
+import CorteCargarPlanchasCortadas from "./CorteCargarPlanchasCortadas";
+import { Context } from '../../../AppContext';
 
 
 const useStyles = makeStyles(styles);
@@ -27,6 +29,7 @@ export default function PlegadoCargarDatos() {
   const [classicModal, setClassicModal] = React.useState(false);
   const [noticeModal, setNoticeModal] = React.useState(false);
   const [smallModal, setSmallModal] = React.useState(false);
+  const { actions, store } = useContext(Context);
   React.useEffect(() => {
     // Specify how to clean up after this effect:
     return function cleanup() {
@@ -93,80 +96,59 @@ export default function PlegadoCargarDatos() {
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-              <CorteNestic />
+              <CorteCargarPlanchasCortadas />
             </DialogContent>
           </Dialog>
-
-
-
           <Button
-                      color="info"
-                      round
-                      className={classes.marginRight}
-                      onClick={() => setNoticeModal(true)}
-                    >
-                      Extra
+            color="info"
+            round
+            className={classes.marginRight}
+            onClick={() => setNoticeModal(true)}
+          >
+            Estufas a modelar
                     </Button>
-                    <Dialog
-                      classes={{
-                        root: classes.center + " " + classes.modalRoot,
-                        paper: classes.modal
-                      }}
-                      open={noticeModal}
-                      TransitionComponent={Transition}
-                      keepMounted
-                      onClose={() => setNoticeModal(false)}
-                      aria-labelledby="notice-modal-slide-title"
-                      aria-describedby="notice-modal-slide-description"
-                    >
-                      <DialogTitle
-                        id="notice-modal-slide-title"
-                        disableTypography
-                        className={classes.modalHeader}
-                      >
-                        <Button
-                          justIcon
-                          className={classes.modalCloseButton}
-                          key="close"
-                          aria-label="Close"
-                          color="transparent"
-                          onClick={() => setNoticeModal(false)}
-                        >
-                          <Close className={classes.modalClose} />
-                        </Button>
-                        <h4 className={classes.modalTitle}>Extra</h4>
-                      </DialogTitle>
-                      <DialogContent
-                        id="notice-modal-slide-description"
-                        className={classes.modalBody}
-                      >   
-                      </DialogContent>
-                      <DialogActions
-                        className={
-                          classes.modalFooter + " " + classes.modalFooterCenter
-                        }
-                      >
-                        <Button
-                          onClick={() => setNoticeModal(false)}
-                          color="info"
-                          round
-                        >
-                          Agregar
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
-
-
-
-
-
-
-
-
-
-
-
-
+          <Dialog
+            classes={{
+              root: classes.center + " " + classes.modalRoot,
+              paper: classes.modal
+            }}
+            open={noticeModal}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={() => setNoticeModal(false)}
+            aria-labelledby="notice-modal-slide-title"
+            aria-describedby="notice-modal-slide-description"
+          >
+            <DialogTitle
+              id="notice-modal-slide-title"
+              disableTypography
+              className={classes.modalHeader}
+            >
+              <Button
+                justIcon
+                className={classes.modalCloseButton}
+                key="close"
+                aria-label="Close"
+                color="transparent"
+                onClick={() => setNoticeModal(false)}
+              >
+                <Close className={classes.modalClose} />
+              </Button>
+              <h4 className={classes.modalTitle}>Estufas a Modelar</h4>
+            </DialogTitle>
+            <DialogContent
+              id="notice-modal-slide-description"
+              className={classes.modalBody}
+            >
+              <CortePlanchasAmodelar />
+            </DialogContent>
+            <DialogActions
+              className={
+                classes.modalFooter + " " + classes.modalFooterCenter
+              }
+            >
+            </DialogActions>
+          </Dialog>
         </GridItem>
       </GridContainer>
     </Card>
