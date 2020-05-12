@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { Context } from "../../../AppContext";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -29,7 +30,13 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function CorteCalculoPlanchas() {
+  const { actions } = useContext(Context);
   const classes = useStyles();
+
+  useEffect(() => {
+    actions.estufasEnProduccion();
+  }, []);
+
   return (
     <div>
       <GridContainer>

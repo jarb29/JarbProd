@@ -11,12 +11,6 @@ import { Context } from "../../../AppContext";
 export default function CorteModelosenUso() {
   const { store } = useContext(Context);
 
-  const a =
-    store.nesticDisponiblesProduccion[0] === undefined
-      ? "Seleccione modelo"
-      : store.nesticDisponiblesProduccion[0].modelo_elegido;
-  console.log(a);
-
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
@@ -30,7 +24,7 @@ export default function CorteModelosenUso() {
           {store.OtDisponiblesProduccion.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th">
-              {row.id} : {row.modelo_produccion}
+                {row.id} : {row.modelo_produccion}
               </TableCell>
               <TableCell align="left"> # {row.ot_produccion}</TableCell>
             </TableRow>

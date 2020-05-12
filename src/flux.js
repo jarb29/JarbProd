@@ -50,6 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       nesticDisponiblesProduccion: [],
       nesticCortados: [],
       modeloAModelar: [],
+      estufasEnProduccion: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -547,6 +548,29 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             modeloAModelar: dato
+          });
+        }
+      },
+
+      estufasEnProduccion: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/tablaestufasProduccion/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "estufas en produccion flux")
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            estufasEnProduccion: dato
           });
         }
       }
