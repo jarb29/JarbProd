@@ -23,13 +23,12 @@ const useRowStyles = makeStyles({
   }
 });
 
-
 function Row(props) {
-  const { row, piezas } = props;
+  const { row, piezas, nombre, total } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
 
-  console.log(row, "en la seguna funcion")
+  console.log(total, "en la seguna funcion");
 
   return (
     <React.Fragment>
@@ -44,12 +43,11 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.nombre_pieza}
+          {nombre}
         </TableCell>
-        <TableCell align="right">{row.calories} </TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell component="th" scope="row">
+          {total}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -73,10 +71,14 @@ function Row(props) {
                     <TableRow key={historyRow.cantidad_fabricada_por_corte}>
                       <TableCell component="th" scope="row">
                         {historyRow.nestic_produccion}
-                      </TableCell> 
+                      </TableCell>
                       <TableCell align="right">{historyRow.operador}</TableCell>
-                      <TableCell align="right">{historyRow.ot_produccion}</TableCell>
-                      <TableCell align="right">{historyRow.cantidad_fabricada_por_corte}</TableCell>
+                      <TableCell align="right">
+                        {historyRow.ot_produccion}
+                      </TableCell>
+                      <TableCell align="right">
+                        {historyRow.cantidad_fabricada_por_corte}
+                      </TableCell>
                       <TableCell align="right">
                         {historyRow.total_pieza}
                       </TableCell>
@@ -112,7 +114,18 @@ export default function TablaMaterialUi(props) {
         <TableBody>
           {piezas.map((row, index) => {
             const b = valores[index];
-            return <Row key={row} row={b} piezas={piezas} />;
+            let largo = b.length;
+            let total_por_pieza = b[largo - 1].total_pieza;
+
+            return (
+              <Row
+                key={row}
+                nombre={row}
+                row={b}
+                piezas={piezas}
+                total={total_por_pieza}
+              />
+            );
           })}
         </TableBody>
       </Table>
@@ -126,3 +139,13 @@ TablaMaterialUi.propTypes = {
   modelos: PropTypes.array,
   row: PropTypes.array
 };
+
+Row.propTypes = {
+  piezas: PropTypes.array,
+  valores: PropTypes.array,
+  modelos: PropTypes.array,
+  row: PropTypes.array,
+  total: PropTypes.number,
+  nombre: PropTypes.array
+};
+
