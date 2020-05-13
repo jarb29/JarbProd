@@ -50,7 +50,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       nesticDisponiblesProduccion: [],
       nesticCortados: [],
       modeloAModelar: [],
-      estufasEnProduccion: [],
+      estufasEnProduccion_datos_totales: [],
+      estufasEnProduccion_datos_diarios: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -541,6 +542,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
+        console.log(dato, "estufas a modelar");
         if (dato.msg) {
           setStore({
             error: dato
@@ -563,14 +565,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "estufas en produccion flux")
+        console.log(dato, "estufas en produccion flux");
         if (dato.msg) {
           setStore({
             error: dato
           });
         } else {
           setStore({
-            estufasEnProduccion: dato
+            estufasEnProduccion_datos_totales: dato
           });
         }
       }

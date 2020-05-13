@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../../AppContext";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -28,30 +29,39 @@ const useStyles = makeStyles(styles);
 
 export default function CorteNesticEnUso() {
   const classes = useStyles();
+  const { store } = useContext(Context);
+  const modelos = Object.keys(store.estufasEnProduccion_datos_totales);
+  const valores = Object.values(store.estufasEnProduccion_datos_totales);
+  let nombre_piezas_disponibles = [];
+  let valores_piezas = [];
+
+  const piezas = valores.map(valor => {
+    nombre_piezas_disponibles.push(Object.keys(valor));
+  });
+
+  const valoresPorPieza = valores.map(valor => {
+    console.log(valor, "despues del objecto por valores");
+    valores_piezas.push(Object.values(valor));
+  });
+
+  console.log(modelos, "modelos despues del aplicaicon");
+
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
-          <Card>
-            <CardHeader>
-              <h4 className={classes.cardTitle}>Modelo</h4>
-            </CardHeader>
-            <CardBody>
-              <TabladePiezasEnCorte />
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={12}>
-          <Card>
-            <CardHeader>
-              <h4 className={classes.cardTitle}>Modelo</h4>
-            </CardHeader>
-            <CardBody>
-              <TabladePiezasEnCorte />
-            </CardBody>
-          </Card>
+          {modelos.map((valor, index) => {
+            return (
+              <Card key={index}>
+                <CardHeader key={index}>
+            <h4 className={classes.cardTitle}>{valor}</h4>
+                </CardHeader>
+                <CardBody key={index}>
+                  <TabladePiezasEnCorte  />
+                </CardBody>
+              </Card>
+            );
+          })}
         </GridItem>
       </GridContainer>
     </div>

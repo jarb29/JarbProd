@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -17,10 +17,6 @@ const useStyles = makeStyles(theme =>
 export default function CorteSeleccioneNesti() {
   const classes = useStyles();
   const { actions, store } = useContext(Context);
-
-  useEffect(() => {
-    actions.obtenerOtEnProduccion();
-  }, []);
 
   return (
     <div>

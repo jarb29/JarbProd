@@ -6,6 +6,7 @@ import GridItem from "components/Grid/GridItem.js";
 import CorteCalculoPlanchas from "components/Corte/VistaCargaPlachasCortadas/CorteCalculoPlanchas";
 
 function CorteCargarPlanchasUsadas() {
+
   return (
     <div className="App">
       <GridContainer>
