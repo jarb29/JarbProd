@@ -44,16 +44,11 @@ export default function CorteNesticEnUso() {
     valores_piezas.push(Object.values(valor));
   });
 
-  console.log(modelos, "modelos despues del aplicaicon");
-  console.log(nombre_piezas_disponibles, "nombre de piezas disponibles");
-  console.log(valores_piezas, "valores despues de las piezas")
-
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           {modelos.map((valor, index) => {
-
             const a = nombre_piezas_disponibles[index];
             const b = valores_piezas[index];
             console.log(a, b);
@@ -64,11 +59,7 @@ export default function CorteNesticEnUso() {
                   <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <TablaMaterialUi
-                    piezas={a}
-                    valores={b}
-                    modelos={modelos}
-                  />
+                  <TablaMaterialUi piezas={a} valores={b} modelos={modelos} />
                 </CardBody>
               </Card>
             );

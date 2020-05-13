@@ -24,7 +24,7 @@ const useRowStyles = makeStyles({
 });
 
 function Row(props) {
-  const { row, piezas, nombre, total } = props;
+  const { row, nombre, total } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
 
@@ -54,7 +54,7 @@ function Row(props) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Historia
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -63,6 +63,7 @@ function Row(props) {
                     <TableCell align="right">Operador</TableCell>
                     <TableCell align="right">Ot</TableCell>
                     <TableCell align="right">Cortado por Turno</TableCell>
+                    <TableCell align="right">Fecha</TableCell>
                     <TableCell align="right">Total</TableCell>
                   </TableRow>
                 </TableHead>
@@ -78,6 +79,9 @@ function Row(props) {
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.cantidad_fabricada_por_corte}
+                      </TableCell>
+                      <TableCell align="right">
+                        {historyRow.fecha}
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.total_pieza}
@@ -118,13 +122,7 @@ export default function TablaMaterialUi(props) {
             let total_por_pieza = b[largo - 1].total_pieza;
 
             return (
-              <Row
-                key={row}
-                nombre={row}
-                row={b}
-                piezas={piezas}
-                total={total_por_pieza}
-              />
+              <Row key={row} nombre={row} row={b} total={total_por_pieza} />
             );
           })}
         </TableBody>
@@ -141,11 +139,9 @@ TablaMaterialUi.propTypes = {
 };
 
 Row.propTypes = {
-  piezas: PropTypes.array,
   valores: PropTypes.array,
   modelos: PropTypes.array,
   row: PropTypes.array,
   total: PropTypes.number,
   nombre: PropTypes.array
 };
-
