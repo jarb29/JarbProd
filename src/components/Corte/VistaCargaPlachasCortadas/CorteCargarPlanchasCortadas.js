@@ -39,12 +39,7 @@ export default function CorteCargarPlanchasCortadas() {
     return false;
   };
 
-  
 
-
-
-  
- 
   const classes = useStyles();
   return (
     <GridContainer>

@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import TabladePiezasEnCorte from "./TabladePiezasEnCorte";
+import TablaMaterialUi from "./TablaMaterialUi";
 
 const styles = {
   cardTitle,
@@ -45,19 +45,30 @@ export default function CorteNesticEnUso() {
   });
 
   console.log(modelos, "modelos despues del aplicaicon");
+  console.log(nombre_piezas_disponibles, "nombre de piezas disponibles");
+  console.log(valores_piezas, "valores despues de las piezas")
 
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           {modelos.map((valor, index) => {
+
+            const a = nombre_piezas_disponibles[index];
+            const b = valores_piezas[index];
+            console.log(a, b);
+
             return (
               <Card key={index}>
                 <CardHeader key={index}>
-            <h4 className={classes.cardTitle}>{valor}</h4>
+                  <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <TabladePiezasEnCorte  />
+                  <TablaMaterialUi
+                    piezas={a}
+                    valores={b}
+                    modelos={modelos}
+                  />
                 </CardBody>
               </Card>
             );

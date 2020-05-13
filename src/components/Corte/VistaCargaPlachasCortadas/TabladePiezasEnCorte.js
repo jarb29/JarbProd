@@ -8,34 +8,31 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardHeader from "components/Card/CardHeader.js";
-
+import PropTypes from "prop-types";
 import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 import CorteParaModelosEnUso from "components/Table/CorteParaModelosUso";
 
 const useStyles = makeStyles(styles);
 
-export default function TabladePiezasEnCorte() {
+export default function TabladePiezasEnCorte(props) {
   const classes = useStyles();
-  const { store } = useContext(Context);
-  const modelos = Object.keys(store.estufasEnProduccion_datos_totales);
-  const valores = Object.values(store.estufasEnProduccion_datos_totales);
-  let nombre_piezas_disponibles = [];
-  let valores_piezas = [];
+  //const { store } = useContext(Context);
+  const { piezas, valores, modelos } = props;
 
-  const piezas = valores.map(valor => {
-    nombre_piezas_disponibles.push(Object.keys(valor));
-  });
+  console.log(piezas, "piezas por el props");
+  console.log(valores, "valores por el props");
+  console.log(modelos, "modelos que llegan");
+  //let nombre_piezas_disponibles = [];
+  //let valores_piezas = [];
 
-  const valoresPorPieza = valores.map(valor => {
-    console.log(valor, "despues del objecto por valores");
-    valores_piezas.push(Object.values(valor));
-  });
+  //const piezas = valores.map(valor => {
+  // nombre_piezas_disponibles.push(Object.keys(valor));
+  //});
 
-  console.log(modelos, "modelos despues del aplicaicon");
-  //console.log(valores, "valores despues del aplicaicon");
-  //console.log(store.estufasEnProduccion_datos_totales, "lo que va llegando");
-  //console.log(nombre_piezas_disponibles, "piezas despues del aplicaicon");
-  //console.log(valores_piezas, "valores de la piezas despues del aplicaicon");
+  //const valoresPorPieza = valores.map(valor => {
+  //console.log(valor, "despues del objecto por valores");
+  //valores_piezas.push(Object.values(valor));
+  //});
 
   return (
     <GridContainer>
@@ -72,3 +69,9 @@ export default function TabladePiezasEnCorte() {
     </GridContainer>
   );
 }
+
+TabladePiezasEnCorte.propTypes = {
+  piezas: PropTypes.array,
+  valores: PropTypes.array,
+  modelos: PropTypes.array
+};
