@@ -40,7 +40,6 @@ export default function CorteNesticEnUso() {
   });
 
   const valoresPorPieza = valores.map(valor => {
-   
     valores_piezas.push(Object.values(valor));
   });
 
@@ -51,7 +50,6 @@ export default function CorteNesticEnUso() {
           {modelos.map((valor, index) => {
             const a = nombre_piezas_disponibles[index];
             const b = valores_piezas[index];
-        
 
             return (
               <Card key={index}>

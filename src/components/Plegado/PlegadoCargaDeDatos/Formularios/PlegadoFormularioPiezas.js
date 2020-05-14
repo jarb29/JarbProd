@@ -17,7 +17,7 @@ import PlegadoModelosDisponibles from "./PlegadoModelosDisponibles";
 import PlegadoPiezasDisponiblesModelo from "./PlegadoPiezasDisponiblesModelo";
 import PlegadoMaquinasDisponibles from "./PlegadoMaquinasDisponibles";
 import PlegadoraOperadores from "./PlegadoraOperadores";
-import { Context } from '../../AppContext';
+import { Context } from '../../../../AppContext';
 const useStyles = makeStyles(styles);
 
 export default function PlegadoFormularioPiezas() {
@@ -43,14 +43,9 @@ export default function PlegadoFormularioPiezas() {
     return false;
   };
 
-
   const handleSubmit = (e) => {
     actions.cargarDatosPlegadoformulario(piezaPlegada)
   };
-
-  
-
-  
 
   const classes = useStyles();
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import PlegadoResumenLineas from "components/Plegado/PlegadoResumenLineas";
+import PlegadoResumenLineas from "components/Plegado/PlegadoGeneral/PlegadoResumenLineas";
 
 function PlegadoVistaGeneral() {
   return (

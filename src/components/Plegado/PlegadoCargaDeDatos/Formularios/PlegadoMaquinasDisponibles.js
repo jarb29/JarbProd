@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { Context } from "../../AppContext";
+import { Context } from "../../../../AppContext";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function PlegadoPiezasDisponiblesModelo() {
+export default function PlegadoMaquinasDisponibles() {
   const classes = useStyles();
   const { actions } = useContext(Context);
 
@@ -22,22 +22,22 @@ export default function PlegadoPiezasDisponiblesModelo() {
     <div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-native-select">
-          Seleccione una Pieza
+          Seleccione una Maquina
         </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="plegadoPiezaSeleccionada"
+          name="plegadoMaquinaSeleccionada"
           onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Bebidas</option>
-          <option value="Dulces">Dulces</option>
-          <option value="Charcuteria">Charcuteria</option>
-          <option value="Verduras">Verduras</option>
-          <option value="Frutas">Frutas</option>
-          <option value="Varios">Varios</option>
+          <option value="Bebidas">Plagadora 1</option>
+          <option value="Dulces">Plegadora 2</option>
+          <option value="Charcuteria">Plegadora 3</option>
+          <option value="Verduras">Durman</option>
+          <option value="Frutas">Plegadora 4</option>
+          <option value="Varios">Plegadora 5</option>
         </Select>
       </FormControl>
     </div>

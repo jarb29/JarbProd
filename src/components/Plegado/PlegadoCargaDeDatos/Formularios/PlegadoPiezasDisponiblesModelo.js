@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { Context } from "../../AppContext";
+import { Context } from "../../../../AppContext";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function PlegadoModelosDisponibles() {
+export default function PlegadoPiezasDisponiblesModelo() {
   const classes = useStyles();
   const { actions } = useContext(Context);
 
@@ -22,13 +22,13 @@ export default function PlegadoModelosDisponibles() {
     <div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-native-select">
-          Seleccione un Modelo
+          Seleccione una Pieza
         </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="plegadoModeloSeleccionado"
+          name="plegadoPiezaSeleccionada"
           onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />

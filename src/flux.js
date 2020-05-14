@@ -317,7 +317,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Creandon programas a produccion
       programasAProduccion: event => {
-
         let data = {
           modelo_produccion: event[3],
           ot_produccion: event[4],
@@ -330,7 +329,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroProgramasProduccion: async (url, data) => {
-  
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -341,7 +339,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-     
+
         if (dato.msg) {
           setStore({
             errorModeloProduccion: dato
@@ -354,9 +352,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // Crendo Nestics de produccion a corte
-      nesticACorte: e => {
+      nesticACorte: () => {
         const store = getStore();
- 
 
         let data = {
           planchas_cortadas: store.planchas_cortadas,
@@ -368,8 +365,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroNestiProduccion: async (url, data) => {
-    
-
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -380,7 +375,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-      
+
         if (dato.msg) {
           setStore({
             errorModeloProduccion: dato
@@ -444,7 +439,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerNesticsFiltrados: async e => {
         const store = getStore();
 
-
         const { baseURL } = store;
         let nestic_elegido = e.target.value;
 
@@ -458,7 +452,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-    
 
         if (dato.msg) {
           setStore({
@@ -483,7 +476,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-  
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -561,7 +554,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-    
+
         if (dato.msg) {
           setStore({
             error: dato

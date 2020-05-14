@@ -14,7 +14,6 @@ import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
 import CorteTablaModelosenUso from "./CorteTablaModelosenUso";
 
-
 const styles = {
   cardTitle,
   pageSubcategoriesTitle: {
@@ -76,7 +75,7 @@ export default function CorteCalculoPlanchas() {
                     tabButton: "Extra",
                     tabContent: (
                       <span>
-                        <p>"Para cualquier cosa Adicional"</p>
+                        <p>Para cualquier cosa Adicional</p>
                       </span>
                     )
                   }

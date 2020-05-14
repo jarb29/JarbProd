@@ -16,8 +16,6 @@ export default function CorteTablaCalculoPlanchas() {
       ? "Seleccione modelo"
       : store.nesticDisponiblesProduccion[0].modelo_elegido;
 
-
-
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
