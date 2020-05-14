@@ -96,7 +96,7 @@ export default function CortePruebaTablaII(props) {
                     inputProps={{
                       onChange: event => {
                         actions.handleToggleNesticValor(event);
-                        console.log(prop, "dentro del tabllaII");
+               
                       },
                       name: prop[3]
                     }}

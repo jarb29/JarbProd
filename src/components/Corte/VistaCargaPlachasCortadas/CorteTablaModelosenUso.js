@@ -18,6 +18,7 @@ export default function CorteTablaModelosenUso() {
           <TableRow>
             <TableCell>Modelos en Uso:</TableCell>
             <TableCell align="left">Ordenes de Trabajo</TableCell>
+            <TableCell align="left">Total en OT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -27,6 +28,7 @@ export default function CorteTablaModelosenUso() {
                 {row.id} : {row.modelo_produccion}
               </TableCell>
               <TableCell align="left"> # {row.ot_produccion}</TableCell>
+              <TableCell align="left"> # {row.cantidad_producir}</TableCell>
             </TableRow>
           ))}
         </TableBody>

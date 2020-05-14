@@ -16,7 +16,7 @@ export default function CorteTablaCalculoPlanchas() {
       ? "Seleccione modelo"
       : store.nesticDisponiblesProduccion[0].modelo_elegido;
 
-  console.log(store.modeloAModelar, "modelos a modelar");
+
 
   return (
     <TableContainer component={Paper}>

@@ -52,8 +52,7 @@ export default function CustomTable(props) {
       newChecked.push(value[2]);
       newModeloFiltrado.push(value);
     } else {
-      console.log(newChecked, "newChecked");
-      console.log(newModeloFiltrado, "newModeloFiltrado.");
+  
       newChecked.splice(currentIndex, 1);
       newModeloFiltrado.splice(currentIndex, 1);
     }

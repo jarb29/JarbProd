@@ -317,7 +317,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Creandon programas a produccion
       programasAProduccion: event => {
-        console.log(event[3], "modelos a produccion");
 
         let data = {
           modelo_produccion: event[3],
@@ -331,7 +330,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroProgramasProduccion: async (url, data) => {
-        console.log(data, "data en el flux");
+  
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -342,7 +341,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno modelo a produccion creado");
+     
         if (dato.msg) {
           setStore({
             errorModeloProduccion: dato
@@ -357,7 +356,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Crendo Nestics de produccion a corte
       nesticACorte: e => {
         const store = getStore();
-        console.log(e, "antes del envio en el flux precent default");
+ 
 
         let data = {
           planchas_cortadas: store.planchas_cortadas,
@@ -369,10 +368,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroNestiProduccion: async (url, data) => {
-        console.log(
-          data,
-          "data en el flux para el registro de los programas nest en corte"
-        );
+    
 
         const store = getStore();
         const { baseURL } = store;
@@ -384,7 +380,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno nestic cortadas a produccion creado");
+      
         if (dato.msg) {
           setStore({
             errorModeloProduccion: dato
@@ -447,7 +443,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       obtenerNesticsFiltrados: async e => {
         const store = getStore();
-        console.log(e.target.value, "en el flux nestic filtrado");
+
 
         const { baseURL } = store;
         let nestic_elegido = e.target.value;
@@ -462,7 +458,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "en el flux nestic filtrado despues del fetch");
+    
 
         if (dato.msg) {
           setStore({
@@ -487,7 +483,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno de la ot del flux");
+  
         if (dato.msg) {
           setStore({
             error: dato
@@ -514,7 +510,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "Nestis elegidos retorno de la ot del flux");
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -542,7 +538,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "estufas a modelar");
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -565,7 +561,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "estufas en produccion flux");
+    
         if (dato.msg) {
           setStore({
             error: dato

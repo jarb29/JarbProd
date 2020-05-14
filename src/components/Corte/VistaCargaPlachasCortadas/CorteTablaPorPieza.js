@@ -28,7 +28,7 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
 
-  console.log(total, "en la seguna funcion");
+
 
   return (
     <React.Fragment>
@@ -102,10 +102,6 @@ function Row(props) {
 
 export default function CorteTablaPorPieza(props) {
   const { piezas, valores, modelos } = props;
-
-  console.log(piezas, "piezas por el props");
-  console.log(valores, "valores por el props");
-  console.log(modelos, "modelos que llegan");
 
   return (
     <TableContainer component={Paper}>
