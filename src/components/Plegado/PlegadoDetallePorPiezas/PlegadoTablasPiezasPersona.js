@@ -1,113 +1,143 @@
 import React from "react";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import PropTypes from "prop-types";
 
-// material-ui icons
+const useRowStyles = makeStyles({
+  root: {
+    "& > *": {
+      borderBottom: "unset"
+    }
+  }
+});
 
-import Person from "@material-ui/icons/Person";
-import Edit from "@material-ui/icons/Edit";
-import Close from "@material-ui/icons/Close";
+function Row(props) {
+  const { row, nombre, total } = props;
+  const [open, setOpen] = React.useState(false);
+  const classes = useRowStyles();
 
-// core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Table from "components/Table/Table.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
-
-const useStyles = makeStyles(styles);
-
-export default function PlegadoTablasPiezasPersona() {
-  const classes = useStyles();
-  const fillButtons = [
-    { color: "info", icon: Person },
-    { color: "success", icon: Edit },
-    { color: "danger", icon: Close }
-  ].map((prop, key) => {
-    return (
-      <Button color={prop.color} className={classes.actionButton} key={key}>
-        <prop.icon className={classes.icon} />
-      </Button>
-    );
-  });
-  const simpleButtons = [
-    { color: "info", icon: Person },
-    { color: "success", icon: Edit },
-    { color: "danger", icon: Close }
-  ].map((prop, key) => {
-    return (
-      <Button
-        color={prop.color}
-        simple
-        className={classes.actionButton}
-        key={key}
-      >
-        <prop.icon className={classes.icon} />
-      </Button>
-    );
-  });
-  const roundButtons = [
-    { color: "info", icon: Person },
-    { color: "success", icon: Edit },
-    { color: "danger", icon: Close }
-  ].map((prop, key) => {
-    return (
-      <Button
-        round
-        color={prop.color}
-        className={classes.actionButton + " " + classes.actionButtonRound}
-        key={key}
-      >
-        <prop.icon className={classes.icon} />
-      </Button>
-    );
-  });
   return (
-    <GridContainer>
-      <GridItem xs={12}>
-        <Card>
-          <Table
-            tableHead={[
-              "#",
-              "Name",
-              "Job Position",
-              "Since",
-              "Salary",
-              "Actions"
-            ]}
-            tableData={[
-              ["1", "Andrew Mike", "Develop", "2013", "€ 99,225", fillButtons],
-              ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
-              ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons],
-              [
-                "4",
-                "Mike Monday",
-                "Marketing",
-                "2013",
-                "€ 49,990",
-                roundButtons
-              ],
-              [
-                "5",
-                "Paul Dickens",
-                "Communication",
-                "2015",
-                "€ 69,201",
-                fillButtons
-              ]
-            ]}
-            customCellClasses={[classes.center, classes.right, classes.right]}
-            customClassesForCells={[0, 4, 5]}
-            customHeadCellClasses={[
-              classes.center,
-              classes.right,
-              classes.right
-            ]}
-            customHeadClassesForCells={[0, 4, 5]}
-          />
-        </Card>
-      </GridItem>
-    </GridContainer>
+    <React.Fragment>
+      <TableRow className={classes.root}>
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {nombre}
+        </TableCell>
+        <TableCell component="th" scope="row" align="left">
+          {total}
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box margin={1}>
+              <Typography variant="h6" gutterBottom component="div">
+                Historia
+              </Typography>
+              <Table size="small" aria-label="purchases">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Programa</TableCell>
+                    <TableCell align="right">Operador</TableCell>
+                    <TableCell align="right">Ot</TableCell>
+                    <TableCell align="right">Cortado por Turno</TableCell>
+                    <TableCell align="right">Fecha</TableCell>
+                    <TableCell align="left">Total</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {row.map(historyRow => (
+                    <TableRow key={historyRow.cantidad_fabricada_por_corte}>
+                      <TableCell component="th" scope="row">
+                        {historyRow.nestic_produccion}
+                      </TableCell>
+                      <TableCell align="right">{historyRow.operador}</TableCell>
+                      <TableCell align="right">
+                        {historyRow.ot_produccion}
+                      </TableCell>
+                      <TableCell align="right">
+                        {historyRow.cantidad_fabricada_por_corte}
+                      </TableCell>
+                      <TableCell align="right">
+                        {historyRow.fecha === undefined
+                          ? null
+                          : historyRow.fecha.split("2020")[0]}
+                      </TableCell>
+                      <TableCell align="right">
+                        {historyRow.total_pieza}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
   );
 }
+
+export default function PlegadoTablasPiezasPersona(props) {
+  const { piezas, valores } = props;
+
+  return (
+    <TableContainer component={Paper}>
+      <Table aria-label="collapsible table">
+        <TableHead>
+          <TableRow>
+            <TableCell />
+            <TableCell>Nombre de la Pieza</TableCell>
+            <TableCell align="left">Total</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {piezas.map((row, index) => {
+            const b = valores[index];
+            let largo = b.length;
+            let total_por_pieza = b[largo - 1].total_pieza;
+
+            return (
+              <Row key={row} nombre={row} row={b} total={total_por_pieza} />
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
+PlegadoTablasPiezasPersona.propTypes = {
+  piezas: PropTypes.array,
+  valores: PropTypes.array,
+  modelos: PropTypes.array,
+  row: PropTypes.array
+};
+
+Row.propTypes = {
+  valores: PropTypes.array,
+  modelos: PropTypes.array,
+  row: PropTypes.array,
+  total: PropTypes.number,
+  nombre: PropTypes.array
+};
