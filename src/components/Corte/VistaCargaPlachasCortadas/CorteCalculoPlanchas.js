@@ -14,6 +14,7 @@ import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
 import CorteTablaModelosenUso from "./CorteTablaModelosenUso";
 
+
 const styles = {
   cardTitle,
   pageSubcategoriesTitle: {
@@ -76,14 +77,7 @@ export default function CorteCalculoPlanchas() {
                     tabContent: (
                       <span>
                         <p>
-                          Completely synergize resource taxing relationships via
-                          premier niche markets. Professionally cultivate
-                          one-to-one customer service with robust ideas.{" "}
-                        </p>
-                        <br />
-                        <p>
-                          Dynamically innovate resource-leveling customer
-                          service for state of the art customer service.
+                       
                         </p>
                       </span>
                     )

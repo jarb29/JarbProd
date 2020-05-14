@@ -74,9 +74,6 @@ export default function CorteCargarProgramas() {
           >
             <h4 className={classes.cardTitle}>Elija una de las Opciones</h4>
           </div>
-
-
-
           <Button
             color="primary"
             round

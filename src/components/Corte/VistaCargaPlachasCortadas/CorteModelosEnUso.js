@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import TablaMaterialUi from "./TablaMaterialUi";
+import CorteTablaPorPieza from "./CorteTablaPorPieza";
 
 const styles = {
   cardTitle,
@@ -59,7 +59,11 @@ export default function CorteNesticEnUso() {
                   <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <TablaMaterialUi piezas={a} valores={b} modelos={modelos} />
+                  <CorteTablaPorPieza
+                    piezas={a}
+                    valores={b}
+                    modelos={modelos}
+                  />
                 </CardBody>
               </Card>
             );

@@ -30,7 +30,6 @@ function Row(props) {
 
   console.log(total, "en la seguna funcion");
 
-
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -46,7 +45,7 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {nombre}
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" align="left">
           {total}
         </TableCell>
       </TableRow>
@@ -65,7 +64,7 @@ function Row(props) {
                     <TableCell align="right">Ot</TableCell>
                     <TableCell align="right">Cortado por Turno</TableCell>
                     <TableCell align="right">Fecha</TableCell>
-                    <TableCell align="right">Total</TableCell>
+                    <TableCell align="left">Total</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -82,7 +81,9 @@ function Row(props) {
                         {historyRow.cantidad_fabricada_por_corte}
                       </TableCell>
                       <TableCell align="right">
-                        {historyRow.fecha === undefined? null : historyRow.fecha.split('2020')[0]}
+                        {historyRow.fecha === undefined
+                          ? null
+                          : historyRow.fecha.split("2020")[0]}
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.total_pieza}
@@ -99,7 +100,7 @@ function Row(props) {
   );
 }
 
-export default function TablaMaterialUi(props) {
+export default function CorteTablaPorPieza(props) {
   const { piezas, valores, modelos } = props;
 
   console.log(piezas, "piezas por el props");
@@ -113,7 +114,7 @@ export default function TablaMaterialUi(props) {
           <TableRow>
             <TableCell />
             <TableCell>Nombre de la Pieza</TableCell>
-            <TableCell align="right">Total</TableCell>
+            <TableCell align="left">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -132,7 +133,7 @@ export default function TablaMaterialUi(props) {
   );
 }
 
-TablaMaterialUi.propTypes = {
+CorteTablaPorPieza.propTypes = {
   piezas: PropTypes.array,
   valores: PropTypes.array,
   modelos: PropTypes.array,

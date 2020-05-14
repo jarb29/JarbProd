@@ -28,6 +28,7 @@ export default function PlegadoCargarDatos() {
   const classes = useStyles();
   const [classicModal, setClassicModal] = React.useState(false);
   const [noticeModal, setNoticeModal] = React.useState(false);
+  const [smallModal, setSmallModal] = React.useState(false);
  
   React.useEffect(() => {
     // Specify how to clean up after this effect:
@@ -100,14 +101,15 @@ export default function PlegadoCargarDatos() {
               <CorteCargarPlanchasCortadas />
             </DialogContent>
           </Dialog>
+
           <Button
             color="info"
             round
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Estufas a modelar
-                    </Button>
+            Modelar Planchas
+          </Button>
           <Dialog
             classes={{
               root: classes.center + " " + classes.modalRoot,
@@ -135,7 +137,7 @@ export default function PlegadoCargarDatos() {
               >
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Estufas a Modelar</h4>
+              <h4 className={classes.modalTitle}>Modelar planchas</h4>
             </DialogTitle>
             <DialogContent
               id="notice-modal-slide-description"
@@ -150,7 +152,55 @@ export default function PlegadoCargarDatos() {
             >
             </DialogActions>
           </Dialog>
-        </GridItem>
+
+
+                        
+                    <Button
+                      color="rose"
+                      round
+                      className={classes.marginRight}
+                      onClick={() => setSmallModal(true)}
+                    >
+                      Modelar tiempo
+                    </Button>
+                    <Dialog
+                      classes={{
+                        root: classes.center + " " + classes.modalRoot,
+                        paper: classes.modal
+                      }}
+                      open={smallModal}
+                      TransitionComponent={Transition}
+                      keepMounted
+                      onClose={() => setSmallModal(false)}
+                      aria-labelledby="small-modal-slide-title"
+                      aria-describedby="small-modal-slide-description"
+                    >
+                      <DialogTitle
+                        id="small-modal-slide-title"
+                        disableTypography
+                        className={classes.modalHeader}
+                      >
+                        <Button
+                          justIcon
+                          className={classes.modalCloseButton}
+                          key="close"
+                          aria-label="Close"
+                          color="transparent"
+                          onClick={() => setSmallModal(false)}
+                        >
+                          <Close className={classes.modalClose} />
+                        </Button>
+                      </DialogTitle>
+                      <DialogContent
+                        id="small-modal-slide-description"
+                        className={
+                          classes.modalBody + " " + classes.modalSmallBody
+                        }
+                      >
+                    <CortePlanchasAmodelar />
+                  </DialogContent>
+              </Dialog>
+           </GridItem>
       </GridContainer>
     </Card>
   );
