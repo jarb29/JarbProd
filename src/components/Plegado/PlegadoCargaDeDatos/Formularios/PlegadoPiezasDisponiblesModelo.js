@@ -16,28 +16,28 @@ const useStyles = makeStyles(theme =>
 
 export default function PlegadoPiezasDisponiblesModelo() {
   const classes = useStyles();
-  const { actions } = useContext(Context);
-
+  const { store, actions } = useContext(Context);
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">
-          Seleccione una Pieza
-        </InputLabel>
+        <InputLabel htmlFor="grouped-native-select">Pieza a Elegir</InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
           name="plegadoPiezaSeleccionada"
-          onChange={e => actions.cargarDatosPlegado(e)}
+          onChange={e => {
+            actions.cargarDatosPlegado(e);
+          }}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Bebidas</option>
-          <option value="Dulces">Dulces</option>
-          <option value="Charcuteria">Charcuteria</option>
-          <option value="Verduras">Verduras</option>
-          <option value="Frutas">Frutas</option>
-          <option value="Varios">Varios</option>
+          {store.piezasDisponiblesPlegado.map((ot, index) => {
+            return (
+              <option value={ot.nombre_pieza} key={index} name="ot_cortada">
+                Pieza disponible: {ot.nombre_pieza}
+              </option>
+            );
+          })}
         </Select>
       </FormControl>
     </div>

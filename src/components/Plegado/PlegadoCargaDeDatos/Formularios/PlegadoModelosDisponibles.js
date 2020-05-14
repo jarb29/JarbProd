@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -18,6 +18,10 @@ export default function PlegadoModelosDisponibles() {
   const classes = useStyles();
   const { actions, store } = useContext(Context);
 
+  useEffect(() => {
+    actions.obtenerOtEnProduccion();
+  }, []);
+
   console.log(store.OtDisponiblesProduccion, "lo que deberia llegar");
 
   return (
@@ -28,16 +32,21 @@ export default function PlegadoModelosDisponibles() {
           native
           defaultValue=""
           id="grouped-native-select"
-          name="ot_cortada"
+          name="plegado_modelo_seleccionado"
           onChange={e => {
             actions.obtenerPiezas(e);
+            actions.cargarDatosPlegado(e);
           }}
         >
           <option aria-label="None" value="" />
           {store.OtDisponiblesProduccion.map((ot, index) => {
             return (
-              <option value={ot.ot_produccion} key={index} name="ot_cortada">
-                Programa:{ot.modelo_produccion}, Numero Ot:{ot.ot_produccion}
+              <option
+                value={ot.ot_produccion}
+                key={index}
+                name={ot.modelo_produccion}
+              >
+                Programa: {ot.modelo_produccion}, Numero Ot: {ot.ot_produccion}
               </option>
             );
           })}

@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       estufas_modelar: [],
 
       // Variables para plegado
-      plegadoModeloSeleccionado: [],
+      plegado_modelo_seleccionado: [],
       plegadoPiezaSeleccionada: [],
       plegadoMaquinaSeleccionada: [],
       plegadoOperadorSeleccionado: [],
@@ -55,6 +55,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Variables retorno del back Plegado
       piezasDisponiblesPlegado: [],
+      errorpiezasPlegado: [],
+      registroPiezas: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -188,16 +190,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Plegado
 
       cargarDatosPlegado: e => {
+        console.log(e.target.name, "em la funcion de plegado");
+        console.log(e.target.value, "em la funcion de plegado");
         setStore({
           [e.target.name]: e.target.value
         });
       },
 
-      cargarDatosPlegadoformulario: e => {
-        setStore({
-          plegadoCantidadPiezas: e
-        });
-      },
       //Filtro de modelo
 
       modeloFiltadroDos: e => {
@@ -390,6 +389,46 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      //Creando la base de datos de plagado
+      piezasEnPlegado: () => {
+        const store = getStore();
+
+        let data = {
+          plegado_ot_seleccionado: store.plegado_modelo_seleccionado,
+          plegadoPiezaSeleccionada: store.plegadoPiezaSeleccionada,
+          plegadoMaquinaSeleccionada: store.plegadoMaquinaSeleccionada,
+          plegadoOperadorSeleccionado: store.plegadoOperadorSeleccionado,
+          plegadoCantidadPiezas: store.plegadoCantidadPiezas
+        };
+
+        console.log(data, "data que va a plegado");
+
+        getActions().registroPiezasPlegado("/api/piezasplegado", data);
+      },
+
+      registroPiezasPlegado: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "despues de creado");
+        if (dato.msg) {
+          setStore({
+            errorpiezasPlegado: dato
+          });
+        } else {
+          setStore({
+            registroPiezas: dato
+          });
+        }
+      },
+
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -574,7 +613,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerPiezas: async e => {
         const store = getStore();
         let numeroOt = e.target.value;
+        let nombre = e.target.name;
         console.log(numeroOt, "ot pasada al flux");
+        console.log(nombre, "nombrepasada al flux");
 
         const { baseURL } = store;
         const resp = await fetch(baseURL + `/api/plegadopiezas/${numeroOt}`, {
@@ -584,7 +625,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos de piezas desde el retorno")
+        console.log(dato, "datos de piezas desde el retorno");
 
         if (dato.msg) {
           setStore({

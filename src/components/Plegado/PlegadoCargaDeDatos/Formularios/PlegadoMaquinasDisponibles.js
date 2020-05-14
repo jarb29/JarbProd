@@ -32,12 +32,12 @@ export default function PlegadoMaquinasDisponibles() {
           onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Plagadora 1</option>
-          <option value="Dulces">Plegadora 2</option>
-          <option value="Charcuteria">Plegadora 3</option>
-          <option value="Verduras">Durman</option>
-          <option value="Frutas">Plegadora 4</option>
-          <option value="Varios">Plegadora 5</option>
+          <option value="Plegadora 1">Plegadora 1</option>
+          <option value="Plegadora 2">Plegadora 2</option>
+          <option value="Plegadora 3">Plegadora 3</option>
+          <option value="Durman">Durman</option>
+          <option value="Plegadora 4">Plegadora 4</option>
+          <option value="Plegadora 5">Plegadora 5</option>
         </Select>
       </FormControl>
     </div>

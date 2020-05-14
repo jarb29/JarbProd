@@ -27,13 +27,6 @@ export default function PlegadoFormularioPiezas() {
   const [piezaPlegadaState, setPiezaPlegadaState] = React.useState("");
 
 
-  // function that verifies if a string has a given length or not
-  const verifyLength = (value, length) => {
-    if (value.length >= length) {
-      return true;
-    }
-    return false;
-  };
   // function that verifies if value contains only numbers
   const verifyNumber = value => {
     var numberRex = new RegExp("^[0-9]+$");
@@ -43,9 +36,6 @@ export default function PlegadoFormularioPiezas() {
     return false;
   };
 
-  const handleSubmit = (e) => {
-    actions.cargarDatosPlegadoformulario(piezaPlegada)
-  };
 
   const classes = useStyles();
   return (
@@ -75,15 +65,17 @@ export default function PlegadoFormularioPiezas() {
                       setPiezaPlegadaState("error");
                     }
                     setPiezaPlegada(event.target.value);
+                    actions.cargarDatosPlegado(event)
                   },
-                  type: "pieza_plegada"
+                  type: "pieza_plegada",
+                  name: "plegadoCantidadPiezas"
                 }}
               />
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
               {(piezaPlegadaState === "success" &&
-              store.plegadoModeloSeleccionado &&
+              store.plegado_modelo_seleccionado &&
               store.plegadoPiezaSeleccionada&&
               store.plegadoMaquinaSeleccionada&&
               store.plegadoOperadorSeleccionado&&
@@ -91,7 +83,7 @@ export default function PlegadoFormularioPiezas() {
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {handleSubmit}
+                  onClick = {() => {actions.piezasEnPlegado()}}
                 >
                   Register
               </Button> : null}
