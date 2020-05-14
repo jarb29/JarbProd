@@ -161,7 +161,7 @@ export default function PlegadoCargarDatos() {
                       className={classes.marginRight}
                       onClick={() => setSmallModal(true)}
                     >
-                      Modelar tiempo
+                      Extra
                     </Button>
                     <Dialog
                       classes={{

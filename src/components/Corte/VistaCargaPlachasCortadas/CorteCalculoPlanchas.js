@@ -73,12 +73,10 @@ export default function CorteCalculoPlanchas() {
                     )
                   },
                   {
-                    tabButton: "Calculo de tiempo",
+                    tabButton: "Extra",
                     tabContent: (
                       <span>
-                        <p>
-                       
-                        </p>
+                        <p>"Para cualquier cosa Adicional"</p>
                       </span>
                     )
                   }

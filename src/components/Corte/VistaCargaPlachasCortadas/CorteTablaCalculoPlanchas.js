@@ -16,6 +16,8 @@ export default function CorteTablaCalculoPlanchas() {
       ? "Seleccione modelo"
       : store.nesticDisponiblesProduccion[0].modelo_elegido;
 
+  console.log(store.modeloAModelar, "modelos a modelar");
+
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
@@ -23,6 +25,7 @@ export default function CorteTablaCalculoPlanchas() {
           <TableRow>
             <TableCell>Nestic: (Modelo: {a})</TableCell>
             <TableCell align="left">Cantidad Planchas</TableCell>
+            <TableCell align="left">Tiempo (min)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -30,6 +33,9 @@ export default function CorteTablaCalculoPlanchas() {
             <TableRow key={row.id}>
               <TableCell component="th">{row.nestic}</TableCell>
               <TableCell align="left">{row.plancha}</TableCell>
+              <TableCell align="left">
+                {row.tiempo_para_esas_planchas}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
