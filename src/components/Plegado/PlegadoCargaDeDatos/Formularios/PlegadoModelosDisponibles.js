@@ -16,28 +16,31 @@ const useStyles = makeStyles(theme =>
 
 export default function PlegadoModelosDisponibles() {
   const classes = useStyles();
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
+
+  console.log(store.OtDisponiblesProduccion, "lo que deberia llegar");
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">
-          Seleccione un Modelo
-        </InputLabel>
+        <InputLabel htmlFor="grouped-native-select">Ot a Elegir</InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="plegadoModeloSeleccionado"
-          onChange={e => actions.cargarDatosPlegado(e)}
+          name="ot_cortada"
+          onChange={e => {
+            actions.obtenerPiezas(e);
+          }}
         >
           <option aria-label="None" value="" />
-          <option value="Bebidas">Bebidas</option>
-          <option value="Dulces">Dulces</option>
-          <option value="Charcuteria">Charcuteria</option>
-          <option value="Verduras">Verduras</option>
-          <option value="Frutas">Frutas</option>
-          <option value="Varios">Varios</option>
+          {store.OtDisponiblesProduccion.map((ot, index) => {
+            return (
+              <option value={ot.ot_produccion} key={index} name="ot_cortada">
+                Programa:{ot.modelo_produccion}, Numero Ot:{ot.ot_produccion}
+              </option>
+            );
+          })}
         </Select>
       </FormControl>
     </div>

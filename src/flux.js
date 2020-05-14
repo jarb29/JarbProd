@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       plegadoOperadorSeleccionado: [],
       plegadoCantidadPiezas: [],
 
-      // variables de retornodel back
+      // variables de retornodel back corte
       errorModelo: [],
       piezasDisponiles: [],
       modelosDisponibles: [],
@@ -52,6 +52,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       modeloAModelar: [],
       estufasEnProduccion_datos_totales: [],
       estufasEnProduccion_datos_diarios: [],
+
+      // Variables retorno del back Plegado
+      piezasDisponiblesPlegado: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -562,6 +565,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             estufasEnProduccion_datos_totales: dato
+          });
+        }
+      },
+
+      // Plegado desde aca plegado
+
+      obtenerPiezas: async e => {
+        const store = getStore();
+        let numeroOt = e.target.value;
+        console.log(numeroOt, "ot pasada al flux");
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/plegadopiezas/${numeroOt}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "datos de piezas desde el retorno")
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            piezasDisponiblesPlegado: dato
           });
         }
       }
