@@ -12,7 +12,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaCalculoPlanchas from "./CorteTablaCalculoPlanchas";
-import CorteModelosenUso from "./CorteTablaModelosenUso";
+import CorteTablaModelosenUso from "./CorteTablaModelosenUso";
 
 const styles = {
   cardTitle,
@@ -67,12 +67,12 @@ export default function CorteCalculoPlanchas() {
                     tabButton: "Modelos en Corte",
                     tabContent: (
                       <span>
-                        <CorteModelosenUso />
+                        <CorteTablaModelosenUso />
                       </span>
                     )
                   },
                   {
-                    tabButton: "Options",
+                    tabButton: "Calculo de tiempo",
                     tabContent: (
                       <span>
                         <p>

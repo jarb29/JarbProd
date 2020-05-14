@@ -30,6 +30,7 @@ function Row(props) {
 
   console.log(total, "en la seguna funcion");
 
+
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -81,7 +82,7 @@ function Row(props) {
                         {historyRow.cantidad_fabricada_por_corte}
                       </TableCell>
                       <TableCell align="right">
-                        {historyRow.fecha}
+                        {historyRow.fecha === undefined? null : historyRow.fecha.split('2020')[0]}
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.total_pieza}

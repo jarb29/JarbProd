@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Context } from "../../../AppContext";
 
-export default function CorteModelosenUso() {
+export default function CorteTablaModelosenUso() {
   const { store } = useContext(Context);
 
   return (

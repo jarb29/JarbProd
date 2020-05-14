@@ -33,7 +33,6 @@ import Image from "@material-ui/icons/Image";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import CargarProgramas from "views/Corte/CargarProgramas";
-import DetalleNesti from "views/Corte/DetalleNesti";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 import CargarPlanchasCortadas from "views/Corte/CargarPlanchasCortadas";
@@ -72,13 +71,6 @@ var dashRoutes = [
         name: "Cargar Planchas Cortadas",
         mini: "PC",
         component: CargarPlanchasCortadas,
-        layout: "/admin"
-      },
-      {
-        path: "/piezasnestic",
-        name: "Corte Detalle",
-        mini: "CD",
-        component: DetalleNesti,
         layout: "/admin"
       }
     ]
