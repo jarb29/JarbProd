@@ -1,9 +1,9 @@
 import React from "react";
-import PlegadoDetallePorPiezas from "../../components/Plegado/PlegadoDetallePorPiezas/PlegadoDetallePorPiezas";
 import PinturaModalCargarDatos from "../../components/Pintura/PinturaCargaDeDatos/PinturaModalCargarDatos";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
+import PinturaDetallePorPiezas from "../../components/Pintura/PinturaDetallePorPiezas/PinturaDetallePorPiezas";
 
 function PlegadoDetallePiezas() {
   return (
@@ -16,7 +16,7 @@ function PlegadoDetallePiezas() {
           <PanelOtEnUso />
         </GridItem>
       </GridContainer>
-      <PlegadoDetallePorPiezas />
+      <PinturaDetallePorPiezas />
     </div>
   );
 }

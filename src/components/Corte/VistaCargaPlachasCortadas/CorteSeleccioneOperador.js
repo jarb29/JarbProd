@@ -20,6 +20,7 @@ export default function CorteSeleccioneOperador() {
 
   useEffect(() => {
     actions.obtenerOtEnProduccion();
+    actions.obtenerPiezasPintadas();
   }, []);
 
   return (

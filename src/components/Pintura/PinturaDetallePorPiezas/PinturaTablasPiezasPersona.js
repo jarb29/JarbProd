@@ -57,7 +57,6 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="right">Operador</TableCell>
                     <TableCell align="right">Ot</TableCell>
                     <TableCell align="right">Fabricada por Turno</TableCell>
                     <TableCell align="right">Fecha</TableCell>
@@ -67,7 +66,6 @@ function Row(props) {
                 <TableBody>
                   {row.map(historyRow => (
                     <TableRow key={historyRow.cantidad_fabricada_por_dia}>
-                      <TableCell align="right">{historyRow.operador}</TableCell>
                       <TableCell align="right">
                         {historyRow.ot_produccion}
                       </TableCell>
@@ -95,7 +93,7 @@ function Row(props) {
   );
 }
 
-export default function PlegadoTablasPiezasPersona(props) {
+export default function PinturaTablasPiezasPersona(props) {
   const { piezas, valores } = props;
 
   return (
@@ -124,7 +122,7 @@ export default function PlegadoTablasPiezasPersona(props) {
   );
 }
 
-PlegadoTablasPiezasPersona.propTypes = {
+PinturaTablasPiezasPersona.propTypes = {
   piezas: PropTypes.array,
   valores: PropTypes.array,
   modelos: PropTypes.array,

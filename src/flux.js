@@ -713,14 +713,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
 
         const { baseURL } = store;
-        const resp = await fetch(baseURL + `/api/piezasPintadas`, {
+        const resp = await fetch(baseURL + "/api/piezasPintadas", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos de piezas plegadas desde el retorno");
+        console.log(dato, "datos de piezas pintadas desde el retorno");
 
         if (dato.msg) {
           setStore({
