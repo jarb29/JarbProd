@@ -37,6 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       plegadoMaquinaSeleccionada: [],
       plegadoOperadorSeleccionado: [],
       plegadoCantidadPiezas: [],
+
       // Variables para pintura
       pinturaCantidadPiezas: [],
 
@@ -58,8 +59,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Variables retorno del back Plegado
       piezasDisponiblesPlegado: [],
       errorpiezasPlegado: [],
-      registroPiezas: [],
+      registroPiezasPlegado: [],
       piezasPlegadas: [],
+
+      // Variables del retorno del back Pintura
+
+      errorpiezasPintura: [],
+      registroPiezasPintura: [],
+      piezasPintadas: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -392,7 +399,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      //Creando la base de datos de plagado
+      //Creando la base de datos de PLEGADO
       piezasEnPlegado: () => {
         const store = getStore();
 
@@ -427,7 +434,46 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            registroPiezas: dato
+            registroPiezasPlegado: dato
+          });
+        }
+      },
+
+      //Creando la base de datos de Pintura
+
+      piezasEnPintura: () => {
+        const store = getStore();
+
+        let data = {
+          pintura_ot_seleccionado: store.plegado_modelo_seleccionado,
+          pinturaPiezaSeleccionada: store.plegadoPiezaSeleccionada,
+          pinturaCantidadPiezas: store.pinturaCantidadPiezas
+        };
+
+        console.log(data, "data que va de pintura");
+
+        getActions().registroPiezasPintura("/api/piezaspintura", data);
+      },
+
+      registroPiezasPintura: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "despues de creado");
+        if (dato.msg) {
+          setStore({
+            errorpiezasPintura: dato
+          });
+        } else {
+          setStore({
+            registroPiezasPintura: dato
           });
         }
       },
@@ -659,6 +705,30 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             piezasPlegadas: dato
+          });
+        }
+      },
+
+      obtenerPiezasPintadas: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/piezasPintadas`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "datos de piezas plegadas desde el retorno");
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            piezasPintadas: dato
           });
         }
       }

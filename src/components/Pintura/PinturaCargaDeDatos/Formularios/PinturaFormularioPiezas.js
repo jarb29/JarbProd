@@ -77,7 +77,7 @@ export default function PinturaFormularioPiezas() {
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.piezasEnPlegado()}}
+                  onClick = {() => {actions.piezasEnPintura()}}
                 >
                   Register
               </Button> : null}
