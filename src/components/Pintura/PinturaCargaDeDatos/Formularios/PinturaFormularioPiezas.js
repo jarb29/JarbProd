@@ -13,14 +13,12 @@ import CardBody from "components/Card/CardBody.js";
 
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
-import PlegadoModelosDisponibles from "./PlegadoModelosDisponibles";
-import PlegadoPiezasDisponiblesModelo from "./PlegadoPiezasDisponiblesModelo";
-import PlegadoMaquinasDisponibles from "./PlegadoMaquinasDisponibles";
-import PlegadoraOperadores from "./PlegadoraOperadores";
+import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
+import PlegadoPiezasDisponiblesModelo from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 import { Context } from '../../../../AppContext';
 const useStyles = makeStyles(styles);
 
-export default function PlegadoFormularioPiezas() {
+export default function PinturaFormularioPiezas() {
   const { actions, store } = useContext(Context);
   // register form
   const [piezaPlegada, setPiezaPlegada] = React.useState("");
@@ -46,14 +44,12 @@ export default function PlegadoFormularioPiezas() {
             <form>
               <PlegadoModelosDisponibles />
               <PlegadoPiezasDisponiblesModelo />
-              <PlegadoMaquinasDisponibles />
-              <PlegadoraOperadores />
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
-                labelText="Incluya las Piezas Plegadas *"
+                labelText="Incluya las Piezas Pintadas *"
                 id="pieza_plegada"
-                name="plegadoCantidadPiezas"
+                name="pinturaCantidadPiezas"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -67,8 +63,8 @@ export default function PlegadoFormularioPiezas() {
                     setPiezaPlegada(event.target.value);
                     actions.cargarDatosPlegado(event)
                   },
-                  type: "pieza_plegada",
-                  name: "plegadoCantidadPiezas"
+                  type: "pintura",
+                  name: "pinturaCantidadPiezas"
                 }}
               />
               <div className={classes.formCategory}>
@@ -77,8 +73,6 @@ export default function PlegadoFormularioPiezas() {
               {(piezaPlegadaState === "success" &&
               store.plegado_modelo_seleccionado &&
               store.plegadoPiezaSeleccionada&&
-              store.plegadoMaquinaSeleccionada&&
-              store.plegadoOperadorSeleccionado&&
               store.plegadoCantidadPiezas)?
                 <Button
                   color="rose"

@@ -37,6 +37,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       plegadoMaquinaSeleccionada: [],
       plegadoOperadorSeleccionado: [],
       plegadoCantidadPiezas: [],
+      // Variables para pintura
+      pinturaCantidadPiezas: [],
 
       // variables de retornodel back corte
       errorModelo: [],

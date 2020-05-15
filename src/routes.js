@@ -36,6 +36,8 @@ import CargarProgramas from "views/Corte/CargarProgramas";
 import PlegadoVistaGeneral from "views/Plegado/PlegadoVistaGeneral";
 import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 import CargarPlanchasCortadas from "views/Corte/CargarPlanchasCortadas";
+import PinturaVistaGeneral from "views/Pintura/PinturaVistaGeneral";
+import PinturaDetallePiezas from "views/Pintura/PinturaDetallePiezas";
 
 var dashRoutes = [
   {
@@ -92,6 +94,28 @@ var dashRoutes = [
         name: "Cargar Piezas",
         mini: "PM",
         component: PlegadoDetallePiezas,
+        layout: "/admin"
+      }
+    ]
+  },
+  {
+    collapse: true,
+    name: "Pintura",
+    icon: Apps,
+    state: "pinturatablesCollapse",
+    views: [
+      {
+        path: "/pintura",
+        name: "Pintura- General",
+        mini: "PG",
+        component: PinturaVistaGeneral,
+        layout: "/admin"
+      },
+      {
+        path: "/piezasporpintura",
+        name: "Pintura Cargar Piezas",
+        mini: "PCP",
+        component: PinturaDetallePiezas,
         layout: "/admin"
       }
     ]
