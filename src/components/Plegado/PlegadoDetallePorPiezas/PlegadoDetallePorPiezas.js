@@ -30,8 +30,8 @@ const useStyles = makeStyles(styles);
 export default function PlegadoDetallePorPieza() {
   const classes = useStyles();
   const { store } = useContext(Context);
-  const modelos = Object.keys(store.estufasEnProduccion_datos_totales);
-  const valores = Object.values(store.estufasEnProduccion_datos_totales);
+  const modelos = Object.keys(store.piezasPlegadas);
+  const valores = Object.values(store.piezasPlegadas);
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 

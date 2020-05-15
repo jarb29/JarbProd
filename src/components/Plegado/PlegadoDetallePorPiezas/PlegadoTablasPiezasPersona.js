@@ -57,29 +57,26 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Programa</TableCell>
                     <TableCell align="right">Operador</TableCell>
                     <TableCell align="right">Ot</TableCell>
-                    <TableCell align="right">Cortado por Turno</TableCell>
+                    <TableCell align="right">Fabricada por Turno</TableCell>
                     <TableCell align="right">Fecha</TableCell>
                     <TableCell align="left">Total</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.map(historyRow => (
-                    <TableRow key={historyRow.cantidad_fabricada_por_corte}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.nestic_produccion}
-                      </TableCell>
+                    <TableRow key={historyRow.cantidad_fabricada_por_dia}>
                       <TableCell align="right">{historyRow.operador}</TableCell>
                       <TableCell align="right">
                         {historyRow.ot_produccion}
                       </TableCell>
                       <TableCell align="right">
-                        {historyRow.cantidad_fabricada_por_corte}
+                        {historyRow.cantidad_fabricada_por_dia}
                       </TableCell>
                       <TableCell align="right">
-                        {historyRow.fecha === undefined
+                        {historyRow.fecha === undefined ||
+                        historyRow.fecha === null
                           ? null
                           : historyRow.fecha.split("2020")[0]}
                       </TableCell>

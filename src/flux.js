@@ -57,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       piezasDisponiblesPlegado: [],
       errorpiezasPlegado: [],
       registroPiezas: [],
+      piezasPlegadas: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -609,13 +610,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // Plegado desde aca plegado
+      //obteniedno las piezas disponibles para plegado
 
       obtenerPiezas: async e => {
         const store = getStore();
         let numeroOt = e.target.value;
-        let nombre = e.target.name;
-        console.log(numeroOt, "ot pasada al flux");
-        console.log(nombre, "nombrepasada al flux");
 
         const { baseURL } = store;
         const resp = await fetch(baseURL + `/api/plegadopiezas/${numeroOt}`, {
@@ -634,6 +633,30 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             piezasDisponiblesPlegado: dato
+          });
+        }
+      },
+
+      obtenerPiezasPlegadas: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/piezasPlegadas`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "datos de piezas plegadas desde el retorno");
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            piezasPlegadas: dato
           });
         }
       }
