@@ -13,9 +13,8 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
+import Linea1FormularioPiezas from "./Formularios/Linea1FormularioPiezas";
 import PinturaFormularioPiezas from "./Formularios/PinturaFormularioPiezas";
- 
-
 
 const useStyles = makeStyles(styles);
 
@@ -103,7 +102,7 @@ export default function PinturaCargarDatos() {
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-               <PinturaFormularioPiezas />
+               <Linea1FormularioPiezas />
             </DialogContent>
           </Dialog>
           
@@ -113,12 +112,12 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setSmallModal(true)}
           >
-            Por si falta
+            Piezas - Sub-Producto
           </Button>
           <Dialog
             classes={{
               root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal + " " + classes.modalSmall
+              paper: classes.modal 
             }}
             open={smallModal}
             TransitionComponent={Transition}
@@ -143,8 +142,14 @@ export default function PinturaCargarDatos() {
                
                 <Close className={classes.modalClose} /> 
               </Button>
-              <h4 className={classes.modalTitle}>Prueba</h4>
+              <h4 className={classes.modalTitle}>Ingresar pieza que conforma el Sub-Producto</h4>
             </DialogTitle>
+            <DialogContent
+              id="classic-modal-slide-description"
+              className={classes.modalBody}
+            >
+               <PinturaFormularioPiezas />
+            </DialogContent>
           </Dialog>
           <Button
             color="info"
@@ -152,7 +157,7 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Por si falta
+            Ingresar Produccion
                     </Button>
           <Dialog
             classes={{
@@ -181,7 +186,7 @@ export default function PinturaCargarDatos() {
               >
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Por si falta</h4>
+              <h4 className={classes.modalTitle}>Ingresar Cantidad</h4>
             </DialogTitle>
            
             <DialogActions
@@ -190,6 +195,12 @@ export default function PinturaCargarDatos() {
               }
             >
             </DialogActions>
+            <DialogContent
+              id="classic-modal-slide-description"
+              className={classes.modalBody}
+            >
+               <PinturaFormularioPiezas />
+            </DialogContent>
           </Dialog>
         </GridItem>
       </GridContainer>

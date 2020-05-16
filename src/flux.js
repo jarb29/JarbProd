@@ -67,6 +67,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorpiezasPintura: [],
       registroPiezasPintura: [],
       piezasPintadas: [],
+      // Variables de la linea
+      subproducto: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],

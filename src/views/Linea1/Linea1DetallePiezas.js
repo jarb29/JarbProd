@@ -9,10 +9,10 @@ function Linea1DetallePiezas() {
   return (
     <div className="App">
       <GridContainer>
-        <GridItem xs={3} sm={3} md={3}>
+        <GridItem xs={4} sm={4} md={4}>
           <Linea1ModalCargarDatos />
         </GridItem>
-        <GridItem xs={9} sm={9} md={9}>
+        <GridItem xs={8} sm={8} md={8}>
           <PanelOtEnUso />
         </GridItem>
       </GridContainer>

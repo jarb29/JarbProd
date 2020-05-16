@@ -131,14 +131,14 @@ var dashRoutes = [
       {
         path: "/linea1",
         name: "Resumen",
-        mini: "L1G",
+        mini: "LG",
         component: Linea1VistaGeneral,
         layout: "/admin"
       },
       {
         path: "/lineaunodetalles",
         name: "Cargar Datos Lineas",
-        mini: "L1P",
+        mini: "LP",
         component: Linea1DetallePiezas,
         layout: "/admin"
       }
