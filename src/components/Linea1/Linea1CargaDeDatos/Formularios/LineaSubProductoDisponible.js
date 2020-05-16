@@ -16,6 +16,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/validationForm
 import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
 import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 import { Context } from '../../../../AppContext';
+import PlegadoPiezasDisponiblesModelo from "components/Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 const useStyles = makeStyles(styles);
 
 export default function LineaSubProductoDisponible() {
@@ -44,42 +45,19 @@ export default function LineaSubProductoDisponible() {
             <form>
               <PlegadoModelosDisponibles />
               <LineaSubProductosPorModelos />
-              <CustomInput
-                success={piezaPlegadaState === "success"}
-                error={piezaPlegadaState === "error"}
-                labelText="Incluya las Piezas Pintadas *"
-                id="pieza_plegada"
-                name="pinturaCantidadPiezas"
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  onChange: event => {
-                    if (verifyNumber(event.target.value)) {
-                      setPiezaPlegadaState("success");
-                    } else {
-                      setPiezaPlegadaState("error");
-                    }
-                    setPiezaPlegada(event.target.value);
-                    actions.cargarDatosPlegado(event)
-                  },
-                  type: "pintura",
-                  name: "pinturaCantidadPiezas"
-                }}
-              />
+              <PlegadoPiezasDisponiblesModelo />       
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
-              {(piezaPlegadaState === "success" &&
-              store.plegado_modelo_seleccionado &&
-              store.plegadoPiezaSeleccionada&&
-              store.plegadoCantidadPiezas)?
+              {(store.plegado_modelo_seleccionado &&
+              store.SubProducto_seleccionado &&
+              store.plegadoPiezaSeleccionada) ?
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.piezasEnPintura()}}
+                  onClick = {() => {actions.creandoPiezasIntegranSubProducto()}}
                 >
-                  Register
+                  Ingresar
               </Button> : null}
             </form>
           </CardBody>

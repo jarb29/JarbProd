@@ -67,9 +67,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorpiezasPintura: [],
       registroPiezasPintura: [],
       piezasPintadas: [],
+
       // Variables de la linea
       nombre_subproducto: [],
       linea1CantidadPiezas: [],
+      SubProducto_seleccionado: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -80,8 +82,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Variables del retorno del back linea1
       errorSubProducto: [],
       registroSubProducto: [],
-      subProductosDisponibleslineas: []
+      subProductosDisponibleslineas: [],
 
+      // Retorno de piezas que integran el sub producto
+      registroPiezasIntegranSubProducto: [],
+      errorPiezasIntegranSubProducto: []
     },
 
     actions: {
@@ -487,7 +492,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-
       //Creando la base de datos de las Lineas
 
       creandoSubProductos: () => {
@@ -525,6 +529,49 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
+      //Creando la base de datos dde piezas que integran el subproducto
+
+      creandoPiezasIntegranSubProducto: () => {
+        const store = getStore();
+
+        let data = {
+          subProductoSeleccionado: store.SubProducto_seleccionado,
+          subProducto_ot_seleccionado: store.plegado_modelo_seleccionado,
+          piezaSeleccionaIntegraSubproducto:  store.plegadoPiezaSeleccionada
+        };
+
+        console.log(data, "data que va a crear piezas del subproductp");
+
+        getActions().registroPiezasIntegranSubProducto(
+          "/api/creandopiezasIntegranSubProductos",
+          data
+        );
+      },
+
+      registroPiezasIntegranSubProducto: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "despues de creado");
+        if (dato.msg) {
+          setStore({
+            errorPiezasIntegranSubProducto: dato
+          });
+        } else {
+          setStore({
+            PiezasIntegranSubProducto: dato
+          });
+        }
+      },
+
+
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -780,17 +827,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerSubProductosDisponible: async e => {
         const store = getStore();
         let numeroOt = e.target.value;
-        console.log(numeroOt, "numero ot para el subproducto")
+        console.log(numeroOt, "numero ot para el subproducto");
 
         const { baseURL } = store;
         const resp = await fetch(
           baseURL + `/api/obtenerSubproducto/${numeroOt}`,
           {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
-        });
+        );
         const dato = await resp.json();
         console.log(dato, "datos de piezas desde el retorno");
 
@@ -803,14 +851,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             subProductosDisponibleslineas: dato
           });
         }
-      },
-
-
-
-
-
-
-
+      }
     }
   };
 };

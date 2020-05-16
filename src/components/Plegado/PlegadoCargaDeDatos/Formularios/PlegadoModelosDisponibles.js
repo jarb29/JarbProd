@@ -24,7 +24,6 @@ export default function PlegadoModelosDisponibles() {
     actions.obtenerPiezasPintadas();
   }, []);
 
-
   return (
     <div>
       <FormControl className={classes.formControl}>

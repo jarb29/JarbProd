@@ -20,12 +20,14 @@ export default function LineaSubProductosPorModelos() {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Pieza a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">
+          Sub Producto a Elegir
+        </InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="plegadoPiezaSeleccionada"
+          name="SubProducto_seleccionado"
           onChange={e => {
             actions.cargarDatosPlegado(e);
           }}

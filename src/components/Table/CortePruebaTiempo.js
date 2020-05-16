@@ -13,9 +13,8 @@ import styles from "assets/jss/material-dashboard-pro-react/views/extendedTables
 
 const useStyles = makeStyles(styles);
 
-export default function CortePruebaTiempo(props){
-const classes = useStyles();
-
+export default function CortePruebaTiempo(props) {
+  const classes = useStyles();
 
   const {
     tableHead,

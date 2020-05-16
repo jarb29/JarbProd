@@ -54,9 +54,9 @@ export default function PinturaFormularioPiezas() {
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
-                labelText="Incluya las Piezas Pintadas *"
-                id="pieza_plegada"
-                name="pinturaCantidadPiezas"
+                labelText="Nombre del Sub-Producto *"
+                id="nombre_subproducto"
+                name="nombre_subproducto"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -70,7 +70,7 @@ export default function PinturaFormularioPiezas() {
                     setPiezaPlegada(event.target.value);
                     actions.cargarDatosPlegado(event)
                   },
-                  type: "pintura",
+                  type: "sub_producto",
                   name: "nombre_subproducto"
                 }}
               />
@@ -84,7 +84,7 @@ export default function PinturaFormularioPiezas() {
                   className={classes.registerButton}
                   onClick = {() => {actions.creandoSubProductos()}}
                 >
-                  Register
+                  Ingresar
               </Button> : null}
             </form>
           </CardBody>
