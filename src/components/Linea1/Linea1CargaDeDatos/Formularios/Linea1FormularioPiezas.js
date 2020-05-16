@@ -33,6 +33,15 @@ export default function PinturaFormularioPiezas() {
     }
     return false;
   };
+  const verifyLength = (value, length) => {
+    if (value.length >= length) {
+      return true;
+    }
+    return false;
+  };
+
+
+
 
   const classes = useStyles();
   return (
@@ -53,7 +62,7 @@ export default function PinturaFormularioPiezas() {
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (verifyNumber(event.target.value)) {
+                    if (verifyLength(event.target.value, 6)) {
                       setPiezaPlegadaState("success");
                     } else {
                       setPiezaPlegadaState("error");

@@ -493,7 +493,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
 
         let data = {
-          pinturaCantidadPiezas: store.nombre_subproducto,
+          Linea1NombreSubproducto: store.nombre_subproducto,
           subProducto_ot_seleccionado: store.plegado_modelo_seleccionado
         };
 
