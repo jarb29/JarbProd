@@ -79,7 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Variables del retorno del back linea1
       errorSubProducto: [],
-      registroSubProducto: []
+      registroSubProducto: [],
+      subProductosDisponibleslineas: []
 
     },
 
@@ -524,11 +525,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
-
-
-
-
-
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -780,7 +776,41 @@ const getState = ({ getStore, getActions, setStore }) => {
             piezasPintadas: dato
           });
         }
-      }
+      },
+      obtenerSubProductosDisponible: async e => {
+        const store = getStore();
+        let numeroOt = e.target.value;
+        console.log(numeroOt, "numero ot para el subproducto")
+
+        const { baseURL } = store;
+        const resp = await fetch(
+          baseURL + `/api/obtenerSubproducto/${numeroOt}`,
+          {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "datos de piezas desde el retorno");
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            subProductosDisponibleslineas: dato
+          });
+        }
+      },
+
+
+
+
+
+
+
     }
   };
 };

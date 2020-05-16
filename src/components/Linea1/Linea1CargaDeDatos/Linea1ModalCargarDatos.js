@@ -15,6 +15,7 @@ import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
 import Linea1FormularioPiezas from "./Formularios/Linea1FormularioPiezas";
 import PinturaFormularioPiezas from "./Formularios/PinturaFormularioPiezas";
+import LineaSubProductoDisponible from "./Formularios/LineaSubProductoDisponible";
 
 const useStyles = makeStyles(styles);
 
@@ -148,7 +149,7 @@ export default function PinturaCargarDatos() {
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-               <PinturaFormularioPiezas />
+               <LineaSubProductoDisponible />
             </DialogContent>
           </Dialog>
           <Button

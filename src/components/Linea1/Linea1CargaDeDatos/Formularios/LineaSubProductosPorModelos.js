@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -14,41 +14,31 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function PlegadoModelosDisponibles() {
+export default function LineaSubProductosPorModelos() {
   const classes = useStyles();
-  const { actions, store } = useContext(Context);
-
-  useEffect(() => {
-    actions.obtenerOtEnProduccion();
-    actions.obtenerPiezasPlegadas();
-    actions.obtenerPiezasPintadas();
-  }, []);
-
-
+  const { store, actions } = useContext(Context);
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="grouped-native-select">Ot a Elegir</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">Pieza a Elegir</InputLabel>
         <Select
           native
           defaultValue=""
           id="grouped-native-select"
-          name="plegado_modelo_seleccionado"
+          name="plegadoPiezaSeleccionada"
           onChange={e => {
-            actions.obtenerPiezas(e);
             actions.cargarDatosPlegado(e);
-            actions.obtenerSubProductosDisponible(e);
           }}
         >
           <option aria-label="None" value="" />
-          {store.OtDisponiblesProduccion.map((ot, index) => {
+          {store.subProductosDisponibleslineas.map((ot, index) => {
             return (
               <option
-                value={ot.ot_produccion}
+                value={ot.Linea1NombreSubproducto}
                 key={index}
-                name={ot.modelo_produccion}
+                name="SubProducto_seleccionado"
               >
-                Programa: {ot.modelo_produccion}, Numero Ot: {ot.ot_produccion}
+                Sub Producto disponible: {ot.Linea1NombreSubproducto}
               </option>
             );
           })}

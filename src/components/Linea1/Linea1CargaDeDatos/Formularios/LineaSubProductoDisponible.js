@@ -14,11 +14,11 @@ import CardBody from "components/Card/CardBody.js";
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
-import PlegadoPiezasDisponiblesModelo from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
+import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 import { Context } from '../../../../AppContext';
 const useStyles = makeStyles(styles);
 
-export default function PinturaFormularioPiezas() {
+export default function LineaSubProductoDisponible() {
   const { actions, store } = useContext(Context);
   // register form
   const [piezaPlegada, setPiezaPlegada] = React.useState("");
@@ -43,7 +43,7 @@ export default function PinturaFormularioPiezas() {
           <CardBody>
             <form>
               <PlegadoModelosDisponibles />
-              <PlegadoPiezasDisponiblesModelo />
+              <LineaSubProductosPorModelos />
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
