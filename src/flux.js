@@ -84,6 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorSubProducto: [],
       registroSubProducto: [],
       subProductosDisponibleslineas: [],
+      cantidad_utilizada_por_subproducto: [],
 
       // Retorno de piezas que integran el sub producto
       registroPiezasIntegranSubProducto: [],
@@ -538,7 +539,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         let data = {
           subProductoSeleccionado: store.SubProducto_seleccionado,
           subProducto_ot_seleccionado: store.plegado_modelo_seleccionado,
-          piezaSeleccionaIntegraSubproducto:  store.plegadoPiezaSeleccionada
+          piezaSeleccionaIntegraSubproducto: store.plegadoPiezaSeleccionada,
+          cantidad_utilizada_por_subproducto:
+            store.cantidad_utilizada_por_subproducto
         };
 
         console.log(data, "data que va a crear piezas del subproductp");

@@ -39,6 +39,7 @@ export default function LineaSubProductoDisponible() {
     store.SubProducto_seleccionado,
     store.plegadoPiezaSeleccionada, "all the values del botom")
 
+    
 
   const classes = useStyles();
   return (
@@ -49,11 +50,37 @@ export default function LineaSubProductoDisponible() {
             <form>
               <PlegadoModelosDisponibles />
               <LineaSubProductosPorModelos />
-              <PlegadoPiezasDisponiblesModelo />       
+              <PlegadoPiezasDisponiblesModelo />   
+              <CustomInput
+                success={piezaPlegadaState === "success"}
+                error={piezaPlegadaState === "error"}
+                labelText="Incluya la cantidad utilizada *"
+                id="cantidad_utilizada"
+                name="cantidad_utilizada_por_subproducto"
+                formControlProps={{
+                  fullWidth: true
+                }}
+                inputProps={{
+                  onChange: event => {
+                    if (verifyNumber(event.target.value)) {
+                      setPiezaPlegadaState("success");
+                    } else {
+                      setPiezaPlegadaState("error");
+                    }
+                    setPiezaPlegada(event.target.value);
+                    actions.cargarDatosPlegado(event)
+                  },
+                  type: "pintura",
+                  name: "cantidad_utilizada_por_subproducto"
+                }}
+              />    
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
-              {store.plegado_modelo_seleccionado&&store.SubProducto_seleccionado&&store.plegadoPiezaSeleccionada?
+              {store.plegado_modelo_seleccionado&&
+              store.SubProducto_seleccionado&&
+              store.plegadoPiezaSeleccionada&&
+              piezaPlegadaState === "success"?
                 <Button
                   color="rose"
                   className={classes.registerButton}
