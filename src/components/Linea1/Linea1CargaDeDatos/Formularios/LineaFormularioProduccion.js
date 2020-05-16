@@ -14,11 +14,11 @@ import CardBody from "components/Card/CardBody.js";
 // style for this view
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
-import PlegadoPiezasDisponiblesModelo from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 import { Context } from '../../../../AppContext';
+import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 const useStyles = makeStyles(styles);
 
-export default function PinturaFormularioPiezas() {
+export default function LineaFormularioProduccion() {
   const { actions, store } = useContext(Context);
   // register form
   const [piezaPlegada, setPiezaPlegada] = React.useState("");
@@ -43,13 +43,13 @@ export default function PinturaFormularioPiezas() {
           <CardBody>
             <form>
               <PlegadoModelosDisponibles />
-              <PlegadoPiezasDisponiblesModelo />
+              <LineaSubProductosPorModelos />
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
-                labelText="Incluya las Piezas Pintadas *"
-                id="pieza_plegada"
-                name="pinturaCantidadPiezas"
+                labelText="Incluya la cantidad fabricada *"
+                id="produccion_Cantidad_fabricada"
+                name="produccion_Cantidad_fabricada"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -64,20 +64,19 @@ export default function PinturaFormularioPiezas() {
                     actions.cargarDatosPlegado(event)
                   },
                   type: "pintura",
-                  name: "pinturaCantidadPiezas"
+                  name: "produccion_Cantidad_fabricada"
                 }}
               />
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
-              {(piezaPlegadaState === "success" &&
-              store.plegado_modelo_seleccionado &&
-              store.plegadoPiezaSeleccionada&&
-              store.plegadoCantidadPiezas)?
+              {store.plegado_modelo_seleccionado&&
+              store.SubProducto_seleccionado&&
+              piezaPlegadaState === "success"?
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.piezasEnPintura()}}
+                  onClick = {() => {}}
                 >
                   Register
               </Button> : null}

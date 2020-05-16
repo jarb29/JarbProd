@@ -72,6 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       nombre_subproducto: [],
       linea1CantidadPiezas: [],
       SubProducto_seleccionado: [],
+      produccion_Cantidad_fabricada: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],

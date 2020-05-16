@@ -35,6 +35,10 @@ export default function LineaSubProductoDisponible() {
     return false;
   };
 
+  console.log(store.plegado_modelo_seleccionado, 
+    store.SubProducto_seleccionado,
+    store.plegadoPiezaSeleccionada, "all the values del botom")
+
 
   const classes = useStyles();
   return (
@@ -49,9 +53,7 @@ export default function LineaSubProductoDisponible() {
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
-              {(store.plegado_modelo_seleccionado &&
-              store.SubProducto_seleccionado &&
-              store.plegadoPiezaSeleccionada) ?
+              {store.plegado_modelo_seleccionado&&store.SubProducto_seleccionado&&store.plegadoPiezaSeleccionada?
                 <Button
                   color="rose"
                   className={classes.registerButton}
