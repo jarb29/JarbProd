@@ -88,7 +88,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Retorno de piezas que integran el sub producto
       registroPiezasIntegranSubProducto: [],
-      errorPiezasIntegranSubProducto: []
+      errorPiezasIntegranSubProducto: [],
+
+      // Retorno del back cuando se crea la produccion
+      creandoProduccion: [],
+      errorCreandoProduccion: []
     },
 
     actions: {
@@ -575,6 +579,42 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      creandoProduccion: () => {
+        const store = getStore();
+
+        let data = {
+          ot_seleccionada: store.plegado_modelo_seleccionado,
+          sub_producto_seleccionado: store.SubProducto_seleccionado,
+          produccion_Cantidad_fabricada: store.produccion_Cantidad_fabricada
+        };
+
+        console.log(data, "data que va a crear piezas del produccion");
+
+        getActions().registroDeProduccion("/api/produccion", data);
+      },
+
+      registroDeProduccion: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "despues de creado");
+        if (dato.msg) {
+          setStore({
+            errorCreandoProduccion: dato
+          });
+        } else {
+          setStore({
+            creandoProduccion: dato
+          });
+        }
+      },
 
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 

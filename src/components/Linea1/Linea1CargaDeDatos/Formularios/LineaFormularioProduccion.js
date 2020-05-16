@@ -76,7 +76,7 @@ export default function LineaFormularioProduccion() {
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {}}
+                  onClick = {() => {actions.creandoProduccion()}}
                 >
                   Register
               </Button> : null}
