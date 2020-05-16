@@ -33,7 +33,6 @@ export default function PinturaDetallePorPiezas() {
   const modelos = Object.keys(store.piezasPintadas);
   const valores = Object.values(store.piezasPintadas);
 
-  console.log(store.piezasPintadas, "piezas pintadas desde el componente");
  
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];

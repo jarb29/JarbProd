@@ -34,7 +34,6 @@ export default function PinturaFormularioPiezas() {
     return false;
   };
 
-  console.log(piezaPlegada , "valor dentro del componente linea1 formulario piezas")
   const classes = useStyles();
   return (
     <GridContainer>
@@ -74,7 +73,7 @@ export default function PinturaFormularioPiezas() {
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.piezasEnPintura()}}
+                  onClick = {() => {actions.creandoSubProductos()}}
                 >
                   Register
               </Button> : null}

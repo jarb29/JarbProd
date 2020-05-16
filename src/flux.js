@@ -68,13 +68,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       registroPiezasPintura: [],
       piezasPintadas: [],
       // Variables de la linea
-      subproducto: [],
+      nombre_subproducto: [],
+      linea1CantidadPiezas: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
       modeloInputParaCaluloTiempo: [],
       inputUnidadesStufas: [],
-      valorTiempoNesticCalculado: []
+      valorTiempoNesticCalculado: [],
+
+      // Variables del retorno del back linea1
+      errorSubProducto: [],
+      registroSubProducto: []
+
     },
 
     actions: {
@@ -480,6 +486,49 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+
+      //Creando la base de datos de las Lineas
+
+      creandoSubProductos: () => {
+        const store = getStore();
+
+        let data = {
+          pinturaCantidadPiezas: store.nombre_subproducto,
+          subProducto_ot_seleccionado: store.plegado_modelo_seleccionado
+        };
+
+        console.log(data, "data que va de pintura");
+
+        getActions().registroSubProducto("/api/creandoSubProductos", data);
+      },
+
+      registroSubProducto: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "despues de creado");
+        if (dato.msg) {
+          setStore({
+            errorSubProducto: dato
+          });
+        } else {
+          setStore({
+            registroSubProducto: dato
+          });
+        }
+      },
+
+
+
+
+
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -698,7 +747,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos de piezas plegadas desde el retorno");
 
         if (dato.msg) {
           setStore({
@@ -722,7 +770,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos de piezas pintadas desde el retorno");
 
         if (dato.msg) {
           setStore({

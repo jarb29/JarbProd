@@ -24,7 +24,6 @@ export default function PlegadoModelosDisponibles() {
     actions.obtenerPiezasPintadas();
   }, []);
 
-  console.log(store.OtDisponiblesProduccion, "lo que deberia llegar");
 
   return (
     <div>
