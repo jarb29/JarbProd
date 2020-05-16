@@ -3,7 +3,7 @@ import Linea1ModalCargarDatos from "../../components/Linea1/Linea1CargaDeDatos/L
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
-import PinturaDetallePorPiezas from "../../components/Pintura/PinturaDetallePorPiezas/PinturaDetallePorPiezas";
+import LineaDetallePorSubProducto from "components/Linea1/Linea1DetallePorPiezas/LineaDetallePorSubProducto";
 
 function Linea1DetallePiezas() {
   return (
@@ -16,7 +16,7 @@ function Linea1DetallePiezas() {
           <PanelOtEnUso />
         </GridItem>
       </GridContainer>
-      <PinturaDetallePorPiezas />
+      <LineaDetallePorSubProducto />
     </div>
   );
 }

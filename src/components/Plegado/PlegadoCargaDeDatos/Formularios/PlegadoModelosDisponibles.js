@@ -22,6 +22,7 @@ export default function PlegadoModelosDisponibles() {
     actions.obtenerOtEnProduccion();
     actions.obtenerPiezasPlegadas();
     actions.obtenerPiezasPintadas();
+    actions.obtenerProduccionDisponible();
   }, []);
 
   return (

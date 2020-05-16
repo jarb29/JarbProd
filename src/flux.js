@@ -92,7 +92,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Retorno del back cuando se crea la produccion
       creandoProduccion: [],
-      errorCreandoProduccion: []
+      errorCreandoProduccion: [],
+
+      // Produccion disponible
+
+      produccionDisponibles: []
     },
 
     actions: {
@@ -893,6 +897,30 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             subProductosDisponibleslineas: dato
+          });
+        }
+      },
+
+      obtenerProduccionDisponible: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + `/api/produccionDisponible`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "produccion disponible");
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            produccionDisponibles: dato
           });
         }
       }

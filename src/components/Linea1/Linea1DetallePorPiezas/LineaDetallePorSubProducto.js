@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import PinturaTablasPiezasPersona from "./PinturaTablasPiezasPersona";
+import PinturaTablasPiezasPersona from "./LineaTablasPiezasPorModelo";
 
 const styles = {
   cardTitle,
@@ -27,13 +27,12 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function PinturaDetallePorPiezas() {
+export default function LineaDetallePorSubProducto() {
   const classes = useStyles();
   const { store } = useContext(Context);
-  const modelos = Object.keys(store.piezasPintadas);
-  const valores = Object.values(store.piezasPintadas);
+  const modelos = Object.keys(store.produccionDisponibles);
+  const valores = Object.values(store.produccionDisponibles);
 
-  console.log(store.piezasPintadas, "piezas pintadas desde el componente");
  
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];

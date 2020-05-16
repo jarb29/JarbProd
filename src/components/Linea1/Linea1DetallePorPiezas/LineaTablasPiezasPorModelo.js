@@ -93,7 +93,7 @@ function Row(props) {
   );
 }
 
-export default function PinturaTablasPiezasPersona(props) {
+export default function LineaTablasPiezasPorModelo(props) {
   const { piezas, valores } = props;
 
   return (
@@ -122,7 +122,7 @@ export default function PinturaTablasPiezasPersona(props) {
   );
 }
 
-PinturaTablasPiezasPersona.propTypes = {
+LineaTablasPiezasPorModelo.propTypes = {
   piezas: PropTypes.array,
   valores: PropTypes.array,
   modelos: PropTypes.array,

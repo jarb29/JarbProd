@@ -35,9 +35,6 @@ export default function LineaSubProductoDisponible() {
     return false;
   };
 
-  console.log(store.plegado_modelo_seleccionado, 
-    store.SubProducto_seleccionado,
-    store.plegadoPiezaSeleccionada, "all the values del botom")
 
     
 
