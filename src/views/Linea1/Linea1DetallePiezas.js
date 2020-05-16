@@ -1,16 +1,16 @@
 import React from "react";
-import PinturaModalCargarDatos from "../../components/Pintura/PinturaCargaDeDatos/PinturaModalCargarDatos";
+import Linea1ModalCargarDatos from "../../components/Linea1/Linea1CargaDeDatos/Linea1ModalCargarDatos";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
 import PinturaDetallePorPiezas from "../../components/Pintura/PinturaDetallePorPiezas/PinturaDetallePorPiezas";
 
-function PinturaDetallePiezas() {
+function Linea1DetallePiezas() {
   return (
     <div className="App">
       <GridContainer>
         <GridItem xs={3} sm={3} md={3}>
-          <PinturaModalCargarDatos />
+          <Linea1ModalCargarDatos />
         </GridItem>
         <GridItem xs={9} sm={9} md={9}>
           <PanelOtEnUso />
@@ -21,4 +21,4 @@ function PinturaDetallePiezas() {
   );
 }
 
-export default PinturaDetallePiezas;
+export default Linea1DetallePiezas;

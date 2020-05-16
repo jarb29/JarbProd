@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
-import { Context } from "../../AppContext";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,9 +13,8 @@ import styles from "assets/jss/material-dashboard-pro-react/views/extendedTables
 
 const useStyles = makeStyles(styles);
 
-export default function CortePruebaTiempo(props) {
-  const { store } = useContext(Context);
-  const classes = useStyles();
+export default function CortePruebaTiempo(props){
+const classes = useStyles();
 
 
   const {

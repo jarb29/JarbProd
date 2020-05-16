@@ -38,6 +38,8 @@ import PlegadoDetallePiezas from "views/Plegado/PlegadoDetallePiezas";
 import CargarPlanchasCortadas from "views/Corte/CargarPlanchasCortadas";
 import PinturaVistaGeneral from "views/Pintura/PinturaVistaGeneral";
 import PinturaDetallePiezas from "views/Pintura/PinturaDetallePiezas";
+import Linea1VistaGeneral from "views/Linea1/Linea1VistaGeneral";
+import Linea1DetallePiezas from "views/Linea1/Linea1DetallePiezas";
 
 var dashRoutes = [
   {
@@ -116,6 +118,28 @@ var dashRoutes = [
         name: "Pintura Cargar Piezas",
         mini: "PCP",
         component: PinturaDetallePiezas,
+        layout: "/admin"
+      }
+    ]
+  },
+  {
+    collapse: true,
+    name: "Lineas",
+    icon: Timeline,
+    state: "linea1tablesCollapse",
+    views: [
+      {
+        path: "/linea1",
+        name: "Resumen",
+        mini: "L1G",
+        component: Linea1VistaGeneral,
+        layout: "/admin"
+      },
+      {
+        path: "/lineaunodetalles",
+        name: "Cargar Datos Lineas",
+        mini: "L1P",
+        component: Linea1DetallePiezas,
         layout: "/admin"
       }
     ]

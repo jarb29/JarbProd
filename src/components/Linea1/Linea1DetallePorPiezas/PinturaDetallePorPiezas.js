@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import PlegadoTablasPiezasPersona from "./PlegadoTablasPiezasPersona";
+import PinturaTablasPiezasPersona from "./PinturaTablasPiezasPersona";
 
 const styles = {
   cardTitle,
@@ -27,20 +27,23 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function PlegadoDetallePorPieza() {
+export default function PinturaDetallePorPiezas() {
   const classes = useStyles();
   const { store } = useContext(Context);
-  const modelos = Object.keys(store.piezasPlegadas);
-  const valores = Object.values(store.piezasPlegadas);
+  const modelos = Object.keys(store.piezasPintadas);
+  const valores = Object.values(store.piezasPintadas);
+
+  console.log(store.piezasPintadas, "piezas pintadas desde el componente");
+ 
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 
   const piezas = valores.map(valor => {
-    return nombre_piezas_disponibles.push(Object.keys(valor));
+    nombre_piezas_disponibles.push(Object.keys(valor));
   });
 
   const valoresPorPieza = valores.map(valor => {
-    return valores_piezas.push(Object.values(valor));
+    valores_piezas.push(Object.values(valor));
   });
 
   return (
@@ -57,7 +60,7 @@ export default function PlegadoDetallePorPieza() {
                   <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <PlegadoTablasPiezasPersona
+                  <PinturaTablasPiezasPersona
                     piezas={a}
                     valores={b}
                     modelos={modelos}

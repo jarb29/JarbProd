@@ -1,7 +1,7 @@
 import React from "react";
 import PinturaResumenLineas from "components/Pintura/PinturaGeneral/PinturaResumenLineas";
 
-function PlegadoVistaGeneral() {
+function PinturaVistaGeneral() {
   return (
     <div className="App">
       <PinturaResumenLineas />
@@ -9,4 +9,4 @@ function PlegadoVistaGeneral() {
   );
 }
 
-export default PlegadoVistaGeneral;
+export default PinturaVistaGeneral;
