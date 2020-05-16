@@ -102,13 +102,14 @@ export default function LineaTablasPiezasPorModelo(props) {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Nombre de la Pieza</TableCell>
+            <TableCell>Nombre Sub - Producto</TableCell>
             <TableCell align="left">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {piezas.map((row, index) => {
             const b = valores[index];
+            console.log(row);
             let largo = b.length;
             let total_por_pieza = b[largo - 1].total_pieza;
 
