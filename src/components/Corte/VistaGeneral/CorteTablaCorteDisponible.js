@@ -45,8 +45,6 @@ export default function CorteTablaCorteDisponible() {
     valores_piezas.push(Object.values(valor));
   });
 
-
-
   return (
     <div>
       <GridContainer>
@@ -54,8 +52,6 @@ export default function CorteTablaCorteDisponible() {
           {modelos.map((valor, index) => {
             const a = nombre_piezas_disponibles[index];
             const b = valores_piezas[index];
-
-            console.log(b, "valores")
 
             return (
               <Card key={index}>

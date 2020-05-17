@@ -98,7 +98,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       produccionDisponibles: [],
       todoDisponibleLineas: [],
-      todoDisponibleLineasCorte: []
+      todoDisponibleLineasCorte: [],
+      corteModeloCritico: []
     },
 
     actions: {
@@ -916,7 +917,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const dato = await resp.json();
 
-
         if (dato.msg) {
           setStore({
             error: dato
@@ -928,7 +928,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-     //obteniedo lo disponible menos lo usado por cada linea
+      //obteniedo lo disponible menos lo usado por cada linea
       obtenerTodoLoDisponibleLineas: async () => {
         const store = getStore();
 
@@ -951,7 +951,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            todoDisponibleLineasCorte: dato[0]
+            todoDisponibleLineasCorte: dato[0],
+            corteModeloCritico: dato[1]
           });
         }
       }
