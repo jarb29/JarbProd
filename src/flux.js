@@ -951,7 +951,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            todoDisponibleLineasCorte: dato
+            todoDisponibleLineasCorte: dato[0]
           });
         }
       }
