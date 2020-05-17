@@ -46,7 +46,7 @@ export default function CorteGeneral() {
                   <p className={classes.cardCategory}>{modelos.pieza}</p>
                   <h3 className={classes.cardTitle}>
                     {modelos.valor_minimo}
-                    <small>GB</small>
+                    <small>UND</small>
                   </h3>
                 </CardHeader>
                 <CardFooter stats>

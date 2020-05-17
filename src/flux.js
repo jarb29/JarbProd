@@ -99,7 +99,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       produccionDisponibles: [],
       todoDisponibleLineas: [],
       todoDisponibleLineasCorte: [],
-      corteModeloCritico: []
+      corteModeloCritico: [],
+      corteNesticCortados: []
     },
 
     actions: {
@@ -952,7 +953,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             todoDisponibleLineasCorte: dato[0],
-            corteModeloCritico: dato[1]
+            corteModeloCritico: dato[1],
+            corteNesticCortados: dato[2]
           });
         }
       }

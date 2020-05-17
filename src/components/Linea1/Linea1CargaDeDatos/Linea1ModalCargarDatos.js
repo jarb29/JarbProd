@@ -158,7 +158,7 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Ingresar Produccion
+            Produccion Soldadura
                     </Button>
           <Dialog
             classes={{

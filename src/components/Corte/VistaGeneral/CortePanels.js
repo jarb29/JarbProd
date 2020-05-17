@@ -15,6 +15,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
+import CorteTablaPlanchasCortadas from "./CorteTablaPlanchasCortadas";
 
 const styles = {
   cardTitle,
@@ -46,32 +47,26 @@ export default function CortePanels() {
             alignCenter
             tabs={[
               {
-                tabButton: "Linea 1",
+                tabButton: "Planchas Cortadas",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Description about product
+                        Plachas Cortadas
                       </h4>
                       <p className={classes.cardCategory}>
-                        More information here
+                        Total de planchas cortadas por nestic
                       </p>
                     </CardHeader>
                     <CardBody>
-                      Collaboratively administrate empowered markets via
-                      plug-and-play networks. Dynamically procrastinate B2C
-                      users after installed base benefits.
-                      <br />
-                      <br />
-                      Dramatically visualize customer directed convergence
-                      without revolutionary ROI.
+                      <CorteTablaPlanchasCortadas />
                     </CardBody>
                   </Card>
                 )
               },
               {
-                tabButton: "Linea 2",
+                tabButton: "Disponibilidad para fabricacion",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
@@ -96,7 +91,7 @@ export default function CortePanels() {
                 )
               },
               {
-                tabButton: "Linea 3",
+                tabButton: "Subproductos por modelo",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
@@ -116,103 +111,6 @@ export default function CortePanels() {
                       <br />
                       Dynamically innovate resource-leveling customer service
                       for state of the art customer service.
-                    </CardBody>
-                  </Card>
-                )
-              },
-              {
-                tabButton: "Linea 4",
-                tabIcon: Info,
-                tabContent: (
-                  <Card>
-                    <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Legal info of the product
-                      </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
-                    </CardHeader>
-                    <CardBody>
-                      Completely synergize resource taxing relationships via
-                      premier niche markets. Professionally cultivate one-to-one
-                      customer service with robust ideas.
-                      <br />
-                      <br />
-                      Dynamically innovate resource-leveling customer service
-                      for state of the art customer service.
-                    </CardBody>
-                  </Card>
-                )
-              },
-              {
-                tabButton: "Linea 5",
-                tabIcon: Info,
-                tabContent: (
-                  <Card>
-                    <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Legal info of the product
-                      </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
-                    </CardHeader>
-                    <CardBody>
-                      Completely synergize resource taxing relationships via
-                      premier niche markets. Professionally cultivate one-to-one
-                      customer service with robust ideas.
-                      <br />
-                      <br />
-                      Dynamically innovate resource-leveling customer service
-                      for state of the art customer service.
-                    </CardBody>
-                  </Card>
-                )
-              },
-              {
-                tabButton: "Linea 6",
-                tabIcon: Info,
-                tabContent: (
-                  <Card>
-                    <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Legal info of the product
-                      </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
-                    </CardHeader>
-                    <CardBody>
-                      Completely synergize resource taxing relationships via
-                      premier niche markets. Professionally cultivate one-to-one
-                      customer service with robust ideas.
-                      <br />
-                      <br />
-                      Dynamically innovate resource-leveling customer service
-                      for state of the art customer service.
-                    </CardBody>
-                  </Card>
-                )
-              },
-              {
-                tabButton: "Total",
-                tabIcon: HelpOutline,
-                tabContent: (
-                  <Card>
-                    <CardHeader>
-                      <h4 className={classes.cardTitle}>Help center</h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
-                    </CardHeader>
-                    <CardBody>
-                      From tdededededeedwhile its display is
-                      larger, the phone feels just right.
-                      <br />
-                      <br />
-                      Anothdkdoekdoekdoedededededeized aluminum
-                      enclosure in a remarkable, simplified design.
                     </CardBody>
                   </Card>
                 )
