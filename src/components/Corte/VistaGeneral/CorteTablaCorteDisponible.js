@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import CorteTablaPorPieza from "./CorteTablaPorPieza";
+import CorteTablaCortesDisponibles from "./CorteTablaCortesDisponibles";
 
 const styles = {
   cardTitle,
@@ -27,11 +27,13 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function CorteModelosEnUso() {
+export default function CorteTablaCorteDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
-  const modelos = Object.keys(store.estufasEnProduccion_datos_totales);
-  const valores = Object.values(store.estufasEnProduccion_datos_totales);
+
+  console.log(store.todoDisponibleLineasCorte, "valores disponibles de corte");
+  const modelos = Object.keys(store.todoDisponibleLineasCorte);
+  const valores = Object.values(store.todoDisponibleLineasCorte);
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 
@@ -57,7 +59,7 @@ export default function CorteModelosEnUso() {
                   <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <CorteTablaPorPieza
+                  <CorteTablaCortesDisponibles
                     piezas={a}
                     valores={b}
                     modelos={modelos}

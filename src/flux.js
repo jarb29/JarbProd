@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       produccionDisponibles: [],
       todoDisponibleLineas: [],
-      errortodoDisponibleLineas: []
+      todoDisponibleLineasCorte: []
     },
 
     actions: {
@@ -610,7 +610,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado");
+        console.log(dato, "despues de creado en la produccion");
         if (dato.msg) {
           setStore({
             errorCreandoProduccion: dato
@@ -766,6 +766,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
+        console.log(dato, "modelar estufas");
 
         if (dato.msg) {
           setStore({
@@ -789,7 +790,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-
+        console.log(dato, "modelar estufas");
         if (dato.msg) {
           setStore({
             error: dato
@@ -926,13 +927,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         }
       },
+
      //obteniedo lo disponible menos lo usado por cada linea
       obtenerTodoLoDisponibleLineas: async () => {
         const store = getStore();
 
         const { baseURL } = store;
         const resp = await fetch(
-          baseURL + `/api/producionporModeloDisponible`,
+          baseURL + `/api/producionPorModeloDisponible`,
           {
             method: "GET",
             headers: {
@@ -949,7 +951,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            todoDisponibleLineas: dato
+            todoDisponibleLineasCorte: dato
           });
         }
       }
