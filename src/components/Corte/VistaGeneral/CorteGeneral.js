@@ -18,8 +18,6 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
-import CortePanels from "./CortePanels";
-import CorteTablaCorteDisponible from "./CorteTablaCorteDisponible";
 
 
 const useStyles = makeStyles(styles);
@@ -138,8 +136,6 @@ export default function CorteGeneral() {
           </Card>
         </GridItem>
       </GridContainer>
-      <CortePanels />
-      <CorteTablaCorteDisponible />
     </div>
   );
 }
