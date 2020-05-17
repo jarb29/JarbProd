@@ -109,7 +109,6 @@ export default function LineaTablasPiezasPorModelo(props) {
         <TableBody>
           {piezas.map((row, index) => {
             const b = valores[index];
-            console.log(row);
             let largo = b.length;
             let total_por_pieza = b[largo - 1].total_pieza;
 

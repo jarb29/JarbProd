@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../../../AppContext";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -29,7 +29,7 @@ const useStyles = makeStyles(styles);
 
 export default function LineaDetallePorSubProducto() {
   const classes = useStyles();
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const modelos = Object.keys(store.produccionDisponibles);
   const valores = Object.values(store.produccionDisponibles);
 
@@ -44,6 +44,10 @@ export default function LineaDetallePorSubProducto() {
   const valoresPorPieza = valores.map(valor => {
     valores_piezas.push(Object.values(valor));
   });
+
+  useEffect(() => {
+    actions.obtenerTodoLoDisponibleLineas();
+  }, []);
 
   return (
     <div>
