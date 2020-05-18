@@ -16,6 +16,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/notificationsS
 import Linea1FormularioPiezas from "./Formularios/Linea1FormularioPiezas";
 import LineaFormularioProduccion from "./Formularios/LineaFormularioProduccion";
 import LineaSubProductoDisponible from "./Formularios/LineaSubProductoDisponible";
+import LineaAgregarProdTermiancion from "./LineaAgregarProdTermiancion";
 
 const useStyles = makeStyles(styles);
 
@@ -204,6 +205,7 @@ export default function PinturaCargarDatos() {
             </DialogContent>
           </Dialog>
         </GridItem>
+        <LineaAgregarProdTermiancion />
       </GridContainer>
     </Card>
   );
