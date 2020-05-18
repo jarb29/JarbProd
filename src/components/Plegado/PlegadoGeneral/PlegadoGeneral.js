@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 export default function PlegadoGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
-  console.log(store.corteModeloCritico, "cosola para mostrar");
+  console.log(store.PiezasPlegadasValoresMinimos, "cosola para mostrar");
   let colors = [
     "warning",
     "info",
@@ -35,7 +35,7 @@ export default function PlegadoGeneral() {
   return (
     <div>
       <GridContainer>
-        {store.corteModeloCritico.map((modelos, index) => {
+        {store.PiezasPlegadasValoresMinimos.map((modelos, index) => {
           return (
             <GridItem xs={4} sm={4} md={4} lg={4} key={index}>
               <Card>
@@ -54,7 +54,7 @@ export default function PlegadoGeneral() {
                     <Danger>
                       <Warning />
                     </Danger>
-                    <a>{modelos.nestic}</a>
+                    <a># Ot: {modelos.Ot}</a>
                   </div>
                 </CardFooter>
               </Card>
