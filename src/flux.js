@@ -100,7 +100,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       todoDisponibleLineas: [],
       todoDisponibleLineasCorte: [],
       corteModeloCritico: [],
-      corteNesticCortados: []
+      corteNesticCortados: [],
+      disponibilidad_fabricacion: []
     },
 
     actions: {
@@ -228,8 +229,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Plegado
 
       cargarDatosPlegado: e => {
-        console.log(e.target.name, "em la funcion de plegado");
-        console.log(e.target.value, "em la funcion de plegado");
         setStore({
           [e.target.name]: e.target.value
         });
@@ -439,8 +438,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           plegadoCantidadPiezas: store.plegadoCantidadPiezas
         };
 
-        console.log(data, "data que va a plegado");
-
         getActions().registroPiezasPlegado("/api/piezasplegado", data);
       },
 
@@ -455,7 +452,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado");
+
         if (dato.msg) {
           setStore({
             errorpiezasPlegado: dato
@@ -478,8 +475,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           pinturaCantidadPiezas: store.pinturaCantidadPiezas
         };
 
-        console.log(data, "data que va de pintura");
-
         getActions().registroPiezasPintura("/api/piezaspintura", data);
       },
 
@@ -494,7 +489,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado");
+
         if (dato.msg) {
           setStore({
             errorpiezasPintura: dato
@@ -516,8 +511,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           subProducto_ot_seleccionado: store.plegado_modelo_seleccionado
         };
 
-        console.log(data, "data que va de pintura");
-
         getActions().registroSubProducto("/api/creandoSubProductos", data);
       },
 
@@ -532,7 +525,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado");
+
         if (dato.msg) {
           setStore({
             errorSubProducto: dato
@@ -556,8 +549,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             store.cantidad_utilizada_por_subproducto
         };
 
-        console.log(data, "data que va a crear piezas del subproductp");
-
         getActions().registroPiezasIntegranSubProducto(
           "/api/creandopiezasIntegranSubProductos",
           data
@@ -575,7 +566,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado");
+
         if (dato.msg) {
           setStore({
             errorPiezasIntegranSubProducto: dato
@@ -596,8 +587,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           produccion_Cantidad_fabricada: store.produccion_Cantidad_fabricada
         };
 
-        console.log(data, "data que va a crear piezas del produccion");
-
         getActions().registroDeProduccion("/api/produccion", data);
       },
 
@@ -612,7 +601,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "despues de creado en la produccion");
+
         if (dato.msg) {
           setStore({
             errorCreandoProduccion: dato
@@ -768,7 +757,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "modelar estufas");
 
         if (dato.msg) {
           setStore({
@@ -792,7 +780,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "modelar estufas");
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -819,7 +807,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos de piezas desde el retorno");
 
         if (dato.msg) {
           setStore({
@@ -843,6 +830,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "piezas del retorno de plegado");
 
         if (dato.msg) {
           setStore({
@@ -880,7 +868,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerSubProductosDisponible: async e => {
         const store = getStore();
         let numeroOt = e.target.value;
-        console.log(numeroOt, "numero ot para el subproducto");
 
         const { baseURL } = store;
         const resp = await fetch(
@@ -893,7 +880,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "datos de piezas desde el retorno");
 
         if (dato.msg) {
           setStore({
@@ -944,7 +930,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "todas las lineas disponibles");
 
         if (dato.msg) {
           setStore({
@@ -954,7 +939,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             todoDisponibleLineasCorte: dato[0],
             corteModeloCritico: dato[1],
-            corteNesticCortados: dato[2]
+            corteNesticCortados: dato[2],
+            disponibilidad_fabricacion: dato[3]
           });
         }
       }

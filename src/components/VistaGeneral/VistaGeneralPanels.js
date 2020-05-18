@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 
 import Info from "@material-ui/icons/Info";
-import HelpOutline from "@material-ui/icons/HelpOutline";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -15,6 +14,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
+import CorteTablaDisponEstufas from "components/Corte/VistaGeneral/CorteTablaDisponEstufas";
 
 const styles = {
   cardTitle,
@@ -37,7 +37,9 @@ export default function VistaGeneralPanels() {
     <div>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12} stats>
-          <h3 className={classes.pageSubcategoriesTitle}>Material en Proceso</h3>
+          <h3 className={classes.pageSubcategoriesTitle}>
+            Material en Proceso
+          </h3>
           <br />
           <NavPills
             color="warning"
@@ -50,20 +52,12 @@ export default function VistaGeneralPanels() {
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Description about product
+                        Disponibilidad de estufas Criticas
                       </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
+                      <p className={classes.cardCategory}>Desde Corte</p>
                     </CardHeader>
                     <CardBody>
-                      Collaboratively administrate empowered markets via
-                      plug-and-play networks. Dynamically procrastinate B2C
-                      users after installed base benefits.
-                      <br />
-                      <br />
-                      Dramatically visualize customer directed convergence
-                      without revolutionary ROI.
+                      <CorteTablaDisponEstufas />
                     </CardBody>
                   </Card>
                 )

@@ -51,7 +51,7 @@ export default function PanelOtEnUso() {
               }}
               tabs={[
                 {
-                  tabButton: "Dashboard",
+                  tabButton: "Modelos en Porduccion",
                   tabIcon: Dashboard,
                   tabContent: (
                     <span>

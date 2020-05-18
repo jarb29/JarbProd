@@ -30,7 +30,7 @@ export default function CorteGeneral() {
     "warning",
     "info",
     "danger",
-    "success",
+    "success"
   ];
   return (
     <div>

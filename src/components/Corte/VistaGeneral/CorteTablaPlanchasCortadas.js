@@ -19,24 +19,29 @@ export default function CorteTablaPlanchasCortadas() {
             <TableCell>Modelo:</TableCell>
             <TableCell align="left">Programa de Corte</TableCell>
             <TableCell align="left">OT</TableCell>
-            <TableCell align="left">Total Estufas por OT</TableCell>
+            <TableCell align="left">Total deOT</TableCell>
             <TableCell align="left">Planchas Cortadas</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {store.corteNesticCortados.map(row => (
-              row.map((modelo, index) => {
+            row.map((modelo, index) => {
                   return (
                 <TableRow key={index}>
-                <TableCell component="th">
-                  {modelo.modelo}
-                </TableCell>
-                <TableCell align="left"> {modelo.nestic_produccion}</TableCell>
-                <TableCell align="left"> # {modelo.ot_produccion}</TableCell>
-                <TableCell align="left"> # {modelo.total_ot}</TableCell>
-                <TableCell align="left"> {modelo.total_planchas_cortadas}</TableCell>
-              </TableRow>
-              )})
+                  <TableCell component="th">{modelo.modelo}</TableCell>
+                  <TableCell align="left">
+                    {" "}
+                    {modelo.nestic_produccion}
+                  </TableCell>
+                  <TableCell align="left"> # {modelo.ot_produccion}</TableCell>
+                  <TableCell align="left"> # {modelo.total_ot}</TableCell>
+                  <TableCell align="left">
+                    {" "}
+                    {modelo.total_planchas_cortadas}
+                  </TableCell>
+                </TableRow>
+              );
+            })
           ))}
         </TableBody>
       </Table>

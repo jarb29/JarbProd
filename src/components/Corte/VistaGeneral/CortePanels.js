@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 
 import Info from "@material-ui/icons/Info";
-import HelpOutline from "@material-ui/icons/HelpOutline";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -16,6 +15,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaPlanchasCortadas from "./CorteTablaPlanchasCortadas";
+import CorteTablaDisponEstufas from "./CorteTablaDisponEstufas";
 
 const styles = {
   cardTitle,
@@ -52,9 +52,7 @@ export default function CortePanels() {
                 tabContent: (
                   <Card>
                     <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Plachas Cortadas
-                      </h4>
+                      <h4 className={classes.cardTitle}>Plachas Cortadas</h4>
                       <p className={classes.cardCategory}>
                         Total de planchas cortadas por nestic
                       </p>
@@ -72,20 +70,12 @@ export default function CortePanels() {
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Location of the product
+                        Disponibilidad de estufas Criticas
                       </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
+                      <p className={classes.cardCategory}>Desde Corte</p>
                     </CardHeader>
                     <CardBody>
-                      Efficiently unleash cross-media information without
-                      cross-media value. Quickly maximize timely deliverables
-                      for real-time schemas.
-                      <br />
-                      <br />
-                      Dramatically maintain clicks-and-mortar solutions without
-                      functional solutions.
+                      <CorteTablaDisponEstufas />
                     </CardBody>
                   </Card>
                 )
