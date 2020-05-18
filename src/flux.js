@@ -61,6 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorpiezasPlegado: [],
       registroPiezasPlegado: [],
       piezasPlegadas: [],
+      piezasPlegadasDispoblesProduccion: [],
 
       // Variables del retorno del back Pintura
 
@@ -838,7 +839,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            piezasPlegadas: dato
+            piezasPlegadas: dato[0],
+            piezasPlegadasDispoblesProduccion: dato[1]
           });
         }
       },
@@ -930,7 +932,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-
+        console.log(dato, "retorno de corte")
         if (dato.msg) {
           setStore({
             errortodoDisponibleLineas: dato

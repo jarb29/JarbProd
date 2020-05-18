@@ -1,10 +1,12 @@
 import React from "react";
-import PlegadoResumenLineas from "components/Plegado/PlegadoGeneral/PlegadoResumenLineas";
+import PlegadoGeneral from "components/Plegado/PlegadoGeneral/PlegadoGeneral";
+import PlegadoPiezasDisponibles from "components/Plegado/PlegadoGeneral/PlegadoPiezasDisponible";
 
 function PlegadoVistaGeneral() {
   return (
     <div className="App">
-      <PlegadoResumenLineas />
+      <PlegadoGeneral />
+      <PlegadoPiezasDisponibles />
     </div>
   );
 }
