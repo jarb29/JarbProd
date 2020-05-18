@@ -63,6 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       piezasPlegadas: [],
       piezasPlegadasDispoblesProduccion: [],
       PiezasPlegadasValoresMinimos: [],
+      piezasEstufasAfabrica: [],
 
       // Variables del retorno del back Pintura
 
@@ -842,7 +843,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             piezasPlegadas: dato[0],
             piezasPlegadasDispoblesProduccion: dato[1],
-            PiezasPlegadasValoresMinimos: dato[2]
+            PiezasPlegadasValoresMinimos: dato[2],
+            piezasEstufasAfabrica: dato[3]
           });
         }
       },
