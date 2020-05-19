@@ -70,6 +70,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorpiezasPintura: [],
       registroPiezasPintura: [],
       piezasPintadas: [],
+      piezasPintadasDispoblesProduccion: [],
+      PiezasPintadasValoresMinimos: [],
+      piezasPintaasEstufasAfabrica: [],
 
       // Variables de la linea
       nombre_subproducto: [],
@@ -833,8 +836,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "piezas del retorno de plegado");
-
+        console.log(dato, "retorno plegado")
         if (dato.msg) {
           setStore({
             error: dato
@@ -860,14 +862,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-
+        console.log(dato, "retorno de pintura")
         if (dato.msg) {
           setStore({
             error: dato
           });
         } else {
           setStore({
-            piezasPintadas: dato
+            piezasPintadas: dato[0], 
+            piezasPintadasDispoblesProduccion: dato[1],
+            PiezasPintadasValoresMinimos: dato[2],
+            piezasPintaasEstufasAfabrica: dato[3]
+
           });
         }
       },

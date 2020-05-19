@@ -14,9 +14,8 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import CorteTablaDisponEstufas from "components/Corte/VistaGeneral/CorteTablaDisponEstufas";
-import PlegadoTablaDisponEstufas from "components/Plegado/PlegadoGeneral/PlegadoTablaDisponEstufas";
-import CorteGrafica from "components/Corte/VistaGeneral/CorteGrafica";
+import CorteTablaPlanchasCortadas from "../../Corte/VistaGeneral/CorteTablaPlanchasCortadas";
+import PlegadoTablaDisponEstufas from "./PlegadoTablaDisponEstufas";
 
 const styles = {
   cardTitle,
@@ -33,7 +32,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function VistaGeneralPanels() {
+export default function PinturaPanels() {
   const classes = useStyles();
   return (
     <div>
@@ -48,24 +47,24 @@ export default function VistaGeneralPanels() {
             alignCenter
             tabs={[
               {
-                tabButton: "Corte",
+                tabButton: "Planchas Cortadas",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
                     <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Disponibilidad de estufas Criticas
-                      </h4>
-                      <p className={classes.cardCategory}>Desde Corte</p>
+                      <h4 className={classes.cardTitle}>Plachas Cortadas</h4>
+                      <p className={classes.cardCategory}>
+                        Total de planchas cortadas por nestic
+                      </p>
                     </CardHeader>
                     <CardBody>
-                      <CorteTablaDisponEstufas />
+                      <CorteTablaPlanchasCortadas />
                     </CardBody>
                   </Card>
                 )
               },
               {
-                tabButton: "Plegado",
+                tabButton: "Disponibilidad para fabricacion",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
@@ -82,7 +81,7 @@ export default function VistaGeneralPanels() {
                 )
               },
               {
-                tabButton: "Pintura",
+                tabButton: "Subproductos por modelo",
                 tabIcon: Info,
                 tabContent: (
                   <Card>
@@ -102,25 +101,6 @@ export default function VistaGeneralPanels() {
                       <br />
                       Dynamically innovate resource-leveling customer service
                       for state of the art customer service.
-                    </CardBody>
-                  </Card>
-                )
-              },
-              {
-                tabButton: "Tiempo faltante",
-                tabIcon: Info,
-                tabContent: (
-                  <Card>
-                    <CardHeader>
-                      <h4 className={classes.cardTitle}>
-                        Produccion en tiempo
-                      </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
-                    </CardHeader>
-                    <CardBody>
-                      <CorteGrafica />
                     </CardBody>
                   </Card>
                 )

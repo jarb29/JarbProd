@@ -1,10 +1,13 @@
 import React from "react";
-import PinturaResumenLineas from "components/Pintura/PinturaGeneral/PinturaResumenLineas";
-
+import PinturaGeneral from "../../components/Pintura/PinturaGeneral/PinturaGeneral"
+import PinturaPanels from "../../components/Pintura/PinturaGeneral/PinturaPanels"
+import PinturaPiezasDisponible from "../../components/Pintura/PinturaGeneral/PinturaPiezasDisponible"
 function PinturaVistaGeneral() {
   return (
     <div className="App">
-      <PinturaResumenLineas />
+      <PinturaGeneral />
+      <PinturaPanels />
+      <PinturaPiezasDisponible />
     </div>
   );
 }
