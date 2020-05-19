@@ -4,6 +4,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
 import LineaDetallePorSubProducto from "components/Linea1/Linea1DetallePorPiezas/LineaDetallePorSubProducto";
+import CortePanels from "components/Corte/VistaGeneral/CortePanels";
 
 function Linea1DetallePiezas() {
   return (
@@ -16,6 +17,7 @@ function Linea1DetallePiezas() {
           <PanelOtEnUso />
         </GridItem>
       </GridContainer>
+      <CortePanels />
       <LineaDetallePorSubProducto />
     </div>
   );

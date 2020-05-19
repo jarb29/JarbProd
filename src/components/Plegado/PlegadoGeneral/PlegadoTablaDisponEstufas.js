@@ -29,9 +29,7 @@ export default function PlegadoTablaDisponEstufas() {
           {store.piezasEstufasAfabrica.map((modelo, index) => {
             return (
               <TableRow key={index}>
-                  {console.log(modelo, "dentro del map")}
                 <TableCell component="th">{modelo.modelo}</TableCell>
-
                 <TableCell align="left"> {modelo.ot}</TableCell>
                 <TableCell align="left"> {modelo.pieza}</TableCell>
                 <TableCell align="left"> # {modelo.valor_minimo}</TableCell>

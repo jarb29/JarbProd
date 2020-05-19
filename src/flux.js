@@ -936,7 +936,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "retorno de corte")
+
         if (dato.msg) {
           setStore({
             errortodoDisponibleLineas: dato

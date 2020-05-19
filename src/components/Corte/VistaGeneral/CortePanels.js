@@ -16,6 +16,7 @@ import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaPlanchasCortadas from "./CorteTablaPlanchasCortadas";
 import CorteTablaDisponEstufas from "./CorteTablaDisponEstufas";
+import CorteGrafica from "./CorteGrafica";
 
 const styles = {
   cardTitle,
@@ -87,20 +88,14 @@ export default function CortePanels() {
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Legal info of the product
+                        Produccion en tiempo
                       </h4>
                       <p className={classes.cardCategory}>
                         More information here
                       </p>
                     </CardHeader>
                     <CardBody>
-                      Completely synergize resource taxing relationships via
-                      premier niche markets. Professionally cultivate one-to-one
-                      customer service with robust ideas.
-                      <br />
-                      <br />
-                      Dynamically innovate resource-leveling customer service
-                      for state of the art customer service.
+                      <CorteGrafica />
                     </CardBody>
                   </Card>
                 )
