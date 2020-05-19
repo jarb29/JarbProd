@@ -39,6 +39,8 @@ import CargarPlanchasCortadas from "views/Corte/CargarPlanchasCortadas";
 import PinturaVistaGeneral from "views/Pintura/PinturaVistaGeneral";
 import PinturaDetallePiezas from "views/Pintura/PinturaDetallePiezas";
 import Linea1DetallePiezas from "views/Linea1/Linea1DetallePiezas";
+import ProductoTerminado from "views/ProductoTerminado/ProductoTerminado";
+//import TerminacionDetallePiezas from "views/Terminacion/TerminacionDetallePiezas";
 
 var dashRoutes = [
   {
@@ -132,6 +134,21 @@ var dashRoutes = [
         name: "Cargar Datos Lineas",
         mini: "LP",
         component: Linea1DetallePiezas,
+        layout: "/admin"
+      }
+    ]
+  },
+  {
+    collapse: true,
+    name: "Producto Terminado",
+    icon: Timeline,
+    state: "ProductoTerminadotablesCollapse",
+    views: [
+      {
+        path: "/productoTerminado",
+        name: "Cargar Datos Lineas",
+        mini: "PT",
+        component: ProductoTerminado,
         layout: "/admin"
       }
     ]

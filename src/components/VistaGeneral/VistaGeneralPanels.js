@@ -74,7 +74,7 @@ export default function VistaGeneralPanels() {
                       <h4 className={classes.cardTitle}>
                         Disponibilidad de estufas Criticas
                       </h4>
-                      <p className={classes.cardCategory}>Desde Corte</p>
+                      <p className={classes.cardCategory}>Desde Plegado</p>
                     </CardHeader>
                     <CardBody>
                       <PlegadoTablaDisponEstufas />
@@ -89,11 +89,9 @@ export default function VistaGeneralPanels() {
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Legal info of the product
+                        Disponibilidad de estufas Criticas
                       </h4>
-                      <p className={classes.cardCategory}>
-                        More information here
-                      </p>
+                      <p className={classes.cardCategory}>Desde Pintura</p>
                     </CardHeader>
                     <CardBody>
                       <PinturaTablaDisponEstufas />
@@ -108,10 +106,10 @@ export default function VistaGeneralPanels() {
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Produccion en tiempo
+                        Tiempo falta en corte.
                       </h4>
                       <p className={classes.cardCategory}>
-                        More information here
+                        Para completar el plan
                       </p>
                     </CardHeader>
                     <CardBody>

@@ -23,7 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function PinturaCargarDatos() {
+export default function ProductoTerminadoCargarDatos() {
   const classes = useStyles();
   const [tl, setTL] = React.useState(false);
   const [tc, setTC] = React.useState(false);
@@ -67,7 +67,7 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setClassicModal(true)}
           >
-            Crear Subproducto
+            Agregar Subproducto
           </Button>
           <Dialog
             classes={{
@@ -113,7 +113,7 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setSmallModal(true)}
           >
-            Piezas - Sub-Producto
+            Agregar Produccion
           </Button>
           <Dialog
             classes={{
@@ -143,7 +143,7 @@ export default function PinturaCargarDatos() {
                
                 <Close className={classes.modalClose} /> 
               </Button>
-              <h4 className={classes.modalTitle}>Ingresar pieza que conforma el Sub-Producto</h4>
+              <h4 className={classes.modalTitle}>Ingresar Produccion</h4>
             </DialogTitle>
             <DialogContent
               id="classic-modal-slide-description"
@@ -158,7 +158,7 @@ export default function PinturaCargarDatos() {
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Produccion Soldadura
+            Extra
                     </Button>
           <Dialog
             classes={{
@@ -187,7 +187,7 @@ export default function PinturaCargarDatos() {
               >
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Ingresar Cantidad</h4>
+              <h4 className={classes.modalTitle}>Extra</h4>
             </DialogTitle>
            
             <DialogActions

@@ -1,18 +1,17 @@
 import React from "react";
-import Linea1ModalCargarDatos from "../../components/Linea1/Linea1CargaDeDatos/Linea1ModalCargarDatos";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
 import LineaDetallePorSubProducto from "components/Linea1/Linea1DetallePorPiezas/LineaDetallePorSubProducto";
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
+import ProductoTerminadoModalCargarDatos from "components/ProductoTerminado/ProductoTerminadoCargaDatos/ProductoTerminadoModalCargarDatos"
 
-
-function Linea1DetallePiezas() {
+function ProductoTerminado() {
   return (
     <div className="App">
       <GridContainer>
         <GridItem xs={4} sm={4} md={4}>
-          <Linea1ModalCargarDatos />
+          <ProductoTerminadoModalCargarDatos />
         </GridItem>
         <GridItem xs={8} sm={8} md={8}>
           <PanelOtEnUso />
@@ -24,4 +23,4 @@ function Linea1DetallePiezas() {
   );
 }
 
-export default Linea1DetallePiezas;
+export default ProductoTerminado;

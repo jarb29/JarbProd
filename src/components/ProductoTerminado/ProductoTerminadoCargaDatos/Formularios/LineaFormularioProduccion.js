@@ -15,9 +15,10 @@ import CardBody from "components/Card/CardBody.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/validationFormsStyle.js";
 import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
 import { Context } from '../../../../AppContext';
+import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 const useStyles = makeStyles(styles);
 
-export default function PinturaFormularioPiezas() {
+export default function LineaFormularioProduccion() {
   const { actions, store } = useContext(Context);
   // register form
   const [piezaPlegada, setPiezaPlegada] = React.useState("");
@@ -32,14 +33,6 @@ export default function PinturaFormularioPiezas() {
     }
     return false;
   };
-  const verifyLength = (value, length) => {
-    if (value.length >= length) {
-      return true;
-    }
-    return false;
-  };
-
-
 
 
   const classes = useStyles();
@@ -50,18 +43,19 @@ export default function PinturaFormularioPiezas() {
           <CardBody>
             <form>
               <PlegadoModelosDisponibles />
+              <LineaSubProductosPorModelos />
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
-                labelText="Nombre del Sub-Producto *"
-                id="nombre_subproducto"
-                name="nombre_subproducto"
+                labelText="Incluya la cantidad fabricada *"
+                id="produccion_Cantidad_fabricada"
+                name="produccion_Cantidad_fabricada"
                 formControlProps={{
                   fullWidth: true
                 }}
                 inputProps={{
                   onChange: event => {
-                    if (verifyLength(event.target.value, 6)) {
+                    if (verifyNumber(event.target.value)) {
                       setPiezaPlegadaState("success");
                     } else {
                       setPiezaPlegadaState("error");
@@ -69,21 +63,22 @@ export default function PinturaFormularioPiezas() {
                     setPiezaPlegada(event.target.value);
                     actions.cargarDatosPlegado(event)
                   },
-                  type: "sub_producto",
-                  name: "nombre_subproducto"
+                  type: "pintura",
+                  name: "produccion_Cantidad_fabricada"
                 }}
               />
               <div className={classes.formCategory}>
                 <small>*</small> Campos Requeridos
               </div>
-              {(piezaPlegadaState === "success" &&
-              store.nombre_subproducto )?
+              {store.plegado_modelo_seleccionado&&
+              store.SubProducto_seleccionado&&
+              piezaPlegadaState === "success"?
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.creandoSubProductos()}}
+                  onClick = {() => {actions.creandoProduccion()}}
                 >
-                  Ingresar
+                  Register
               </Button> : null}
             </form>
           </CardBody>
