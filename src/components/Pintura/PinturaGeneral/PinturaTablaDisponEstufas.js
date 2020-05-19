@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Context } from "../../../AppContext";
 
-export default function PlegadoTablaDisponEstufas() {
+export default function PinturaTablaDisponEstufas() {
   const { store } = useContext(Context);
 
   return (
@@ -26,7 +26,7 @@ export default function PlegadoTablaDisponEstufas() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {store.piezasEstufasAfabrica.map((modelo, index) => {
+          {store.piezasPintadasEstufasAfabrica.map((modelo, index) => {
             return (
               <TableRow key={index}>
                 <TableCell component="th">{modelo.modelo}</TableCell>

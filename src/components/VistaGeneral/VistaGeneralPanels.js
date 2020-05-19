@@ -17,6 +17,7 @@ import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
 import CorteTablaDisponEstufas from "components/Corte/VistaGeneral/CorteTablaDisponEstufas";
 import PlegadoTablaDisponEstufas from "components/Plegado/PlegadoGeneral/PlegadoTablaDisponEstufas";
 import CorteGrafica from "components/Corte/VistaGeneral/CorteGrafica";
+import PinturaTablaDisponEstufas from "components/Pintura/PinturaGeneral/PinturaTablaDisponEstufas";
 
 const styles = {
   cardTitle,
@@ -95,13 +96,7 @@ export default function VistaGeneralPanels() {
                       </p>
                     </CardHeader>
                     <CardBody>
-                      Completely synergize resource taxing relationships via
-                      premier niche markets. Professionally cultivate one-to-one
-                      customer service with robust ideas.
-                      <br />
-                      <br />
-                      Dynamically innovate resource-leveling customer service
-                      for state of the art customer service.
+                      <PinturaTablaDisponEstufas />
                     </CardBody>
                   </Card>
                 )

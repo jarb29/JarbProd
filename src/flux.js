@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       piezasPintadas: [],
       piezasPintadasDispoblesProduccion: [],
       PiezasPintadasValoresMinimos: [],
-      piezasPintaasEstufasAfabrica: [],
+      piezasPintadasEstufasAfabrica: [],
 
       // Variables de la linea
       nombre_subproducto: [],
@@ -872,7 +872,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             piezasPintadas: dato[0], 
             piezasPintadasDispoblesProduccion: dato[1],
             PiezasPintadasValoresMinimos: dato[2],
-            piezasPintaasEstufasAfabrica: dato[3]
+            piezasPintadasEstufasAfabrica: dato[3]
 
           });
         }
