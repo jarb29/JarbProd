@@ -125,7 +125,7 @@ var dashRoutes = [
   },
   {
     collapse: true,
-    name: "Lineas",
+    name: "Lineas Soldadura",
     icon: Timeline,
     state: "linea1tablesCollapse",
     views: [
@@ -146,7 +146,7 @@ var dashRoutes = [
     views: [
       {
         path: "/productoTerminado",
-        name: "Cargar Datos Lineas",
+        name: "Producto Terminado",
         mini: "PT",
         component: ProductoTerminado,
         layout: "/admin"

@@ -13,9 +13,8 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
-import Linea1FormularioPiezas from "./Formularios/Linea1FormularioPiezas";
-import LineaFormularioProduccion from "./Formularios/LineaFormularioProduccion";
-import LineaSubProductoDisponible from "./Formularios/LineaSubProductoDisponible";
+import ProductoTerminadoFormularioProduccion from "./Formularios/ProductoTerminadoFormularioProduccion";
+import ProductoSubProductoDisponible from "./Formularios/ProductoSubProductoDisponible";
 
 const useStyles = makeStyles(styles);
 
@@ -25,13 +24,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function ProductoTerminadoCargarDatos() {
   const classes = useStyles();
-  const [tl, setTL] = React.useState(false);
-  const [tc, setTC] = React.useState(false);
-  const [tr, setTR] = React.useState(false);
-  const [bl, setBL] = React.useState(false);
-  const [bc, setBC] = React.useState(false);
-  const [br, setBR] = React.useState(false);
-  const [classicModal, setClassicModal] = React.useState(false);
   const [noticeModal, setNoticeModal] = React.useState(false);
   const [smallModal, setSmallModal] = React.useState(false);
   React.useEffect(() => {
@@ -62,58 +54,12 @@ export default function ProductoTerminadoCargarDatos() {
             <h4 className={classes.cardTitle}>Elija una de las Opciones</h4>
           </div>
           <Button
-            color="primary"
-            round
-            className={classes.marginRight}
-            onClick={() => setClassicModal(true)}
-          >
-            Agregar Subproducto
-          </Button>
-          <Dialog
-            classes={{
-              root: classes.center + " " + classes.modalRoot,
-              paper: classes.modal
-            }}
-            open={classicModal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => setClassicModal(false)}
-            aria-labelledby="classic-modal-slide-title"
-            aria-describedby="classic-modal-slide-description"
-          >
-            <DialogTitle
-              id="classic-modal-slide-title"
-              disableTypography
-              className={classes.modalHeader}
-            >
-              <Button
-                justIcon
-                className={classes.modalCloseButton}
-                key="close"
-                aria-label="Close"
-                color="transparent"
-                onClick={() => setClassicModal(false)}
-              >
-                
-                <Close className={classes.modalClose} />
-              </Button>
-              <h4 className={classes.modalTitle}>Sub-Producto</h4>
-            </DialogTitle>
-            <DialogContent
-              id="classic-modal-slide-description"
-              className={classes.modalBody}
-            >
-               <Linea1FormularioPiezas />
-            </DialogContent>
-          </Dialog>
-          
-          <Button
             color="rose"
             round
             className={classes.marginRight}
             onClick={() => setSmallModal(true)}
           >
-            Agregar Produccion
+            Agregar Subproducto
           </Button>
           <Dialog
             classes={{
@@ -143,13 +89,13 @@ export default function ProductoTerminadoCargarDatos() {
                
                 <Close className={classes.modalClose} /> 
               </Button>
-              <h4 className={classes.modalTitle}>Ingresar Produccion</h4>
+              <h4 className={classes.modalTitle}>Sub-Producto</h4>
             </DialogTitle>
             <DialogContent
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-               <LineaSubProductoDisponible />
+               <ProductoSubProductoDisponible />
             </DialogContent>
           </Dialog>
           <Button
@@ -158,7 +104,7 @@ export default function ProductoTerminadoCargarDatos() {
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Extra
+            Inpresar Produccion
                     </Button>
           <Dialog
             classes={{
@@ -187,7 +133,7 @@ export default function ProductoTerminadoCargarDatos() {
               >
                 <Close className={classes.modalClose} />
               </Button>
-              <h4 className={classes.modalTitle}>Extra</h4>
+              <h4 className={classes.modalTitle}>Produccion</h4>
             </DialogTitle>
            
             <DialogActions
@@ -200,7 +146,7 @@ export default function ProductoTerminadoCargarDatos() {
               id="classic-modal-slide-description"
               className={classes.modalBody}
             >
-               <LineaFormularioProduccion />
+               <ProductoTerminadoFormularioProduccion />
             </DialogContent>
           </Dialog>
         </GridItem>

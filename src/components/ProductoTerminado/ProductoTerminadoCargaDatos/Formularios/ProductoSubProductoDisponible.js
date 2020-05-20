@@ -19,7 +19,7 @@ import { Context } from '../../../../AppContext';
 import PlegadoPiezasDisponiblesModelo from "components/Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 const useStyles = makeStyles(styles);
 
-export default function LineaSubProductoDisponible() {
+export default function ProductoSubProductoDisponible() {
   const { actions, store } = useContext(Context);
   // register form
   const [piezaPlegada, setPiezaPlegada] = React.useState("");
@@ -47,13 +47,12 @@ export default function LineaSubProductoDisponible() {
             <form>
               <PlegadoModelosDisponibles />
               <LineaSubProductosPorModelos />
-              <PlegadoPiezasDisponiblesModelo />   
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
                 labelText="Incluya la cantidad utilizada *"
-                id="cantidad_utilizada"
-                name="cantidad_utilizada_por_subproducto"
+                id="producto_terminado_Cantidad_fabricada"
+                name="producto_terminado_Cantidad_fabricada"
                 formControlProps={{
                   fullWidth: true
                 }}
@@ -68,7 +67,7 @@ export default function LineaSubProductoDisponible() {
                     actions.cargarDatosPlegado(event)
                   },
                   type: "pintura",
-                  name: "cantidad_utilizada_por_subproducto"
+                  name: "producto_terminado_Cantidad_fabricada"
                 }}
               />    
               <div className={classes.formCategory}>
@@ -76,12 +75,11 @@ export default function LineaSubProductoDisponible() {
               </div>
               {store.plegado_modelo_seleccionado&&
               store.SubProducto_seleccionado&&
-              store.plegadoPiezaSeleccionada&&
               piezaPlegadaState === "success"?
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.creandoPiezasIntegranSubProducto()}}
+                  onClick = {() => {actions.creandoProductoTerminado()}}
                 >
                   Ingresar
               </Button> : null}

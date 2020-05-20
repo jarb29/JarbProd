@@ -100,6 +100,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       creandoProduccion: [],
       errorCreandoProduccion: [],
 
+      // Variables Producto Termnado
+      producto_terminado_Cantidad_fabricada: [],
+
       // Produccion disponible
 
       produccionDisponibles: [],
@@ -107,7 +110,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       todoDisponibleLineasCorte: [],
       corteModeloCritico: [],
       corteNesticCortados: [],
-      disponibilidad_fabricacion: []
+      disponibilidad_fabricacion: [],
+
+      // Retorno del back Producto terminado
+      errorCreandoProduccionterminada: [],
+      creandoProduccionTerminada: []
+
     },
 
     actions: {
@@ -235,6 +243,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Plegado
 
       cargarDatosPlegado: e => {
+        console.log(e.target.name);
+        console.log(e.target.value, "en la formula esperada");
         setStore({
           [e.target.name]: e.target.value
         });
@@ -619,6 +629,45 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      creandoProductoTerminado: () => {
+        const store = getStore();
+
+        let data = {
+          ot_seleccionada: store.plegado_modelo_seleccionado,
+          sub_producto_seleccionado: store.SubProducto_seleccionado,
+          producto_terminado_utilizado_estufa:
+            store.producto_terminado_Cantidad_fabricada
+        };
+        console.log(data, "el evento");
+
+        getActions().registroDeProduccion("/api/productoterminado", data);
+      },
+
+      registroProductoTerminado: async (url, data) => {
+        console.log(data, "data para el producto terminado");
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "valore del retorno producto terminado")
+
+        if (dato.msg) {
+          setStore({
+            errorCreandoProduccionterminada: dato
+          });
+        } else {
+          setStore({
+            creandoProduccionTerminada: dato
+          });
+        }
+      },
+
       ////// PARTE PARA OBTENER LA INFORMACION (GET)
 
       obtenerModelosDisponibles: async () => {
@@ -836,7 +885,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno plegado")
+        console.log(dato, "retorno plegado");
         if (dato.msg) {
           setStore({
             error: dato
@@ -862,18 +911,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno de pintura")
+        console.log(dato, "retorno de pintura");
         if (dato.msg) {
           setStore({
             error: dato
           });
         } else {
           setStore({
-            piezasPintadas: dato[0], 
+            piezasPintadas: dato[0],
             piezasPintadasDispoblesProduccion: dato[1],
             PiezasPintadasValoresMinimos: dato[2],
             piezasPintadasEstufasAfabrica: dato[3]
-
           });
         }
       },
