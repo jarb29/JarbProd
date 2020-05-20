@@ -27,13 +27,13 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function LineaDetallePorSubProducto() {
+export default function ProduccionDetallePorSubProducto () {
   const classes = useStyles();
   const { store, actions } = useContext(Context);
-  const modelos = Object.keys(store.produccionDisponibles);
-  const valores = Object.values(store.produccionDisponibles);
+  const modelos = Object.keys(store.produccionProductoTerminadoDisponibles);
+  const valores = Object.values(store.produccionProductoTerminadoDisponibles);
 
- 
+  console.log(store.produccionProductoTerminadoDisponibles, "prooducto final en el componente")
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 

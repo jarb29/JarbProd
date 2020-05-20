@@ -2,7 +2,7 @@ import React from "react";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
-import LineaDetallePorSubProducto from "components/Linea1/Linea1DetallePorPiezas/LineaDetallePorSubProducto";
+import ProduccionDetallePorSubProducto from "components/ProductoTerminado/ProductoTerminadoDetallePiezas/ProduccionDetallePorSubProducto";
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
 import ProductoTerminadoModalCargarDatos from "components/ProductoTerminado/ProductoTerminadoCargaDatos/ProductoTerminadoModalCargarDatos"
 
@@ -18,7 +18,7 @@ function ProductoTerminado() {
         </GridItem>
       </GridContainer>
       <VistaGeneralPanels />
-      <LineaDetallePorSubProducto />
+      <ProduccionDetallePorSubProducto />
     </div>
   );
 }

@@ -76,7 +76,7 @@ export default function ProductoTerminadoFormularioProduccion() {
                 <Button
                   color="rose"
                   className={classes.registerButton}
-                  onClick = {() => {actions.creandoProductoTerminado()}}
+                  onClick = {() => {actions.creandoProduccionProductoTerminado()}}
                 >
                   Register
               </Button> : null}

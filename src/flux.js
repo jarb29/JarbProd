@@ -114,8 +114,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // Retorno del back Producto terminado
       errorCreandoProduccionterminada: [],
-      creandoProduccionTerminada: []
-
+      creandoProduccionTerminada: [],
+      produccionProductoTerminadoDisponibles: []
     },
 
     actions: {
@@ -655,7 +655,49 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "valore del retorno producto terminado")
+        console.log(dato, "valore del retorno producto terminado");
+
+        if (dato.msg) {
+          setStore({
+            errorCreandoProduccionterminada: dato
+          });
+        } else {
+          setStore({
+            creandoProduccionTerminada: dato
+          });
+        }
+      },
+
+      creandoProduccionProductoTerminado: () => {
+        const store = getStore();
+
+        let data = {
+          ot_seleccionada: store.plegado_modelo_seleccionado,
+          sub_producto_seleccionado: store.SubProducto_seleccionado,
+          producto_terminado_utilizado_estufa:
+            store.producto_terminado_Cantidad_fabricada
+        };
+        console.log(data, "el evento");
+
+        getActions().registroProduccionProductoTerminado(
+          "/api/produccionproductoterminado",
+          data
+        );
+      },
+
+      registroProduccionProductoTerminado: async (url, data) => {
+        console.log(data, "data para el producto terminado");
+        const store = getStore();
+        const { baseURL } = store;
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+        console.log(dato, "valore del retorno producto terminado");
 
         if (dato.msg) {
           setStore({
@@ -975,7 +1017,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      //obteniedo lo disponible menos lo usado por cada linea
+      //obteniedo lo disponible menos lo usado por cada linea corte
       obtenerTodoLoDisponibleLineas: async () => {
         const store = getStore();
 
@@ -1001,6 +1043,34 @@ const getState = ({ getStore, getActions, setStore }) => {
             corteModeloCritico: dato[1],
             corteNesticCortados: dato[2],
             disponibilidad_fabricacion: dato[3]
+          });
+        }
+      },
+
+      obtenerProduccionProductoTerminadoDisponible: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(
+          baseURL + `/api/produccionprductoterminadoDisponible`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+
+        console.log(dato, "datos del retorno de la ultima linea");
+
+        if (dato.msg) {
+          setStore({
+            error: dato
+          });
+        } else {
+          setStore({
+            produccionProductoTerminadoDisponibles: dato
           });
         }
       }
