@@ -640,7 +640,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         console.log(data, "el evento");
 
-        getActions().registroDeProduccion("/api/productoterminado", data);
+        getActions().registroProductoTerminado("/api/productoterminado", data);
       },
 
       registroProductoTerminado: async (url, data) => {
