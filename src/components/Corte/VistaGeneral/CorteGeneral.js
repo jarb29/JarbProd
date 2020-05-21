@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 export default function CorteGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
-  console.log(store.corteModeloCritico, "cosola para mostrar");
+
   let colors = [
     "warning",
     "info",

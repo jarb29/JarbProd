@@ -22,7 +22,6 @@ export default function PinturaGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
-  
   let colors = [
     "warning",
     "info",

@@ -21,7 +21,7 @@ const useStyles = makeStyles(styles);
 export default function PlegadoGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
-  console.log(store.PiezasPlegadasValoresMinimos, "cosola para mostrar");
+
   let colors = [
     "warning",
     "info",

@@ -33,7 +33,7 @@ export default function ProduccionDetallePorSubProducto () {
   const modelos = Object.keys(store.produccionProductoTerminadoDisponibles);
   const valores = Object.values(store.produccionProductoTerminadoDisponibles);
 
-  console.log(store.produccionProductoTerminadoDisponibles, "prooducto final en el componente")
+ 
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 

@@ -115,7 +115,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Retorno del back Producto terminado
       errorCreandoProduccionterminada: [],
       creandoProduccionTerminada: [],
-      produccionProductoTerminadoDisponibles: []
+      produccionProductoTerminadoDisponibles: [],
+      produccionDisponibleSoldadura: []
     },
 
     actions: {
@@ -243,8 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Plegado
 
       cargarDatosPlegado: e => {
-        console.log(e.target.name);
-        console.log(e.target.value, "en la formula esperada");
+  
         setStore({
           [e.target.name]: e.target.value
         });
@@ -638,13 +638,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           producto_terminado_utilizado_estufa:
             store.producto_terminado_Cantidad_fabricada
         };
-        console.log(data, "el evento");
+  
 
         getActions().registroProductoTerminado("/api/productoterminado", data);
       },
 
       registroProductoTerminado: async (url, data) => {
-        console.log(data, "data para el producto terminado");
+    
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -655,7 +655,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "valore del retorno producto terminado");
+
 
         if (dato.msg) {
           setStore({
@@ -677,7 +677,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           producto_terminado_utilizado_estufa:
             store.producto_terminado_Cantidad_fabricada
         };
-        console.log(data, "el evento");
+
 
         getActions().registroProduccionProductoTerminado(
           "/api/produccionproductoterminado",
@@ -686,7 +686,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroProduccionProductoTerminado: async (url, data) => {
-        console.log(data, "data para el producto terminado");
+   
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -697,7 +697,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "valore del retorno producto terminado");
+
 
         if (dato.msg) {
           setStore({
@@ -927,7 +927,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno plegado");
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -953,7 +953,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "retorno de pintura");
+
         if (dato.msg) {
           setStore({
             error: dato
@@ -1052,7 +1052,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const { baseURL } = store;
         const resp = await fetch(
-          baseURL + `/api/produccionprductoterminadoDisponible`,
+          baseURL + `/api/produccionProductoTerminadoDisponible`,
           {
             method: "GET",
             headers: {
@@ -1070,7 +1070,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            produccionProductoTerminadoDisponibles: dato
+            produccionProductoTerminadoDisponibles: dato[0],
+            produccionDisponibleSoldadura: dato[3]
           });
         }
       }

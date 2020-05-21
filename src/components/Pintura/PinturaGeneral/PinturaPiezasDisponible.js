@@ -31,14 +31,11 @@ export default function PinturaPiezasDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
 
-  console.log(
-    store.piezasPintadasDispoblesProduccion,
-    "valores disponibles de pintura"
-  );
+
   const modelos = Object.keys(store.piezasPintadasDispoblesProduccion);
   const valores = Object.values(store.piezasPintadasDispoblesProduccion);
   let nombre_piezas_disponibles = [];
-  console.log(nombre_piezas_disponibles, "nombre de las piezas")
+ 
   let valores_piezas = [];
 
   const piezas = valores.map(valor => {

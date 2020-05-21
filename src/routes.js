@@ -40,7 +40,7 @@ import PinturaVistaGeneral from "views/Pintura/PinturaVistaGeneral";
 import PinturaDetallePiezas from "views/Pintura/PinturaDetallePiezas";
 import Linea1DetallePiezas from "views/Linea1/Linea1DetallePiezas";
 import ProductoTerminado from "views/ProductoTerminado/ProductoTerminado";
-//import TerminacionDetallePiezas from "views/Terminacion/TerminacionDetallePiezas";
+import LineaVistaGeneral from "views/Linea1/LineaVistaGeneral";
 
 var dashRoutes = [
   {
@@ -129,6 +129,13 @@ var dashRoutes = [
     icon: Timeline,
     state: "linea1tablesCollapse",
     views: [
+      {
+        path: "/lineageneral",
+        name: "Lineas general",
+        mini: "LG",
+        component: LineaVistaGeneral,
+        layout: "/admin"
+      },
       {
         path: "/lineaunodetalles",
         name: "Cargar Datos Lineas",

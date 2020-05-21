@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import PlegadoPiezasDisponibles from "./PlegadoPiezasDisponibles";
+import LineaPiezasDisponibles from "./LineaPiezasDisponibles";
 
 const styles = {
   cardTitle,
@@ -27,14 +27,14 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function PlegadoPiezasDisponible() {
+export default function PinturaPiezasDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
 
-
-  const modelos = Object.keys(store.piezasPlegadasDispoblesProduccion);
-  const valores = Object.values(store.piezasPlegadasDispoblesProduccion);
+  const modelos = Object.keys(store.produccionDisponibleSoldadura);
+  const valores = Object.values(store.produccionDisponibleSoldadura);
   let nombre_piezas_disponibles = [];
+
   let valores_piezas = [];
 
   const piezas = valores.map(valor => {
@@ -59,7 +59,7 @@ export default function PlegadoPiezasDisponible() {
                   <h4 className={classes.cardTitle}>{valor}</h4>
                 </CardHeader>
                 <CardBody key={index}>
-                  <PlegadoPiezasDisponibles
+                  <LineaPiezasDisponibles
                     piezas={a}
                     valores={b}
                     modelos={modelos}
