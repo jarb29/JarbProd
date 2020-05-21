@@ -245,7 +245,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       //Plegado
 
       cargarDatosPlegado: e => {
-  
         setStore({
           [e.target.name]: e.target.value
         });
@@ -639,13 +638,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           producto_terminado_utilizado_estufa:
             store.producto_terminado_Cantidad_fabricada
         };
-  
 
         getActions().registroProductoTerminado("/api/productoterminado", data);
       },
 
       registroProductoTerminado: async (url, data) => {
-    
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -656,7 +653,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-
 
         if (dato.msg) {
           setStore({
@@ -679,7 +675,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             store.producto_terminado_Cantidad_fabricada
         };
 
-
         getActions().registroProduccionProductoTerminado(
           "/api/produccionproductoterminado",
           data
@@ -687,7 +682,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       registroProduccionProductoTerminado: async (url, data) => {
-   
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -698,7 +692,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-
 
         if (dato.msg) {
           setStore({

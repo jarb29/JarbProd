@@ -31,11 +31,10 @@ export default function PinturaPiezasDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
 
-
   const modelos = Object.keys(store.piezasPintadasDispoblesProduccion);
   const valores = Object.values(store.piezasPintadasDispoblesProduccion);
   let nombre_piezas_disponibles = [];
- 
+
   let valores_piezas = [];
 
   const piezas = valores.map(valor => {
