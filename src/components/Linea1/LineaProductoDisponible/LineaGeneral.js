@@ -22,6 +22,11 @@ export default function PinturaGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
+  console.log(
+    store.produccionLineaTerminacioCritico,
+    "valores dentro del componente"
+  );
+
   let colors = [
     "warning",
     "info",
@@ -35,7 +40,7 @@ export default function PinturaGeneral() {
   return (
     <div>
       <GridContainer>
-        {store.PiezasPintadasValoresMinimos.map((modelos, index) => {
+        {store.produccionLineaTerminacioCritico.map((modelos, index) => {
           return (
             <GridItem xs={4} sm={4} md={4} lg={4} key={index}>
               <Card>

@@ -30,8 +30,8 @@ const useStyles = makeStyles(styles);
 export default function LineaDetallePorSubProducto() {
   const classes = useStyles();
   const { store, actions } = useContext(Context);
-  const modelos = Object.keys(store.produccionDisponibles);
-  const valores = Object.values(store.produccionDisponibles);
+  const modelos = Object.keys(store.produccionDisponibleSoldadura);
+  const valores = Object.values(store.produccionDisponibleSoldadura);
 
  
   let nombre_piezas_disponibles = [];

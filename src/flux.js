@@ -116,7 +116,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorCreandoProduccionterminada: [],
       creandoProduccionTerminada: [],
       produccionProductoTerminadoDisponibles: [],
-      produccionDisponibleSoldadura: []
+      produccionDisponibleSoldadura: [],
+      produccionLineaTerminacioCritico: []
     },
 
     actions: {
@@ -1071,7 +1072,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             produccionProductoTerminadoDisponibles: dato[0],
-            produccionDisponibleSoldadura: dato[3]
+            produccionDisponibleSoldadura: dato[3],
+            produccionLineaTerminacioCritico: dato[4]
           });
         }
       }
