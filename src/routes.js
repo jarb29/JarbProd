@@ -5,7 +5,6 @@ import ErrorPage from "views/Pages/ErrorPage.js";
 import LockScreenPage from "views/Pages/LockScreenPage.js";
 import LoginPage from "views/Pages/LoginPage.js";
 import RegisterPage from "views/Pages/RegisterPage.js";
-import TimelinePage from "views/Pages/Timeline.js";
 import UserProfile from "views/Pages/UserProfile.js";
 import VistaGeneralCorte from "views/Corte/VistaGeneralCorte";
 
@@ -150,13 +149,6 @@ var dashRoutes = [
     icon: Image,
     state: "pageCollapse",
     views: [
-      {
-        path: "/timeline-page",
-        name: "Timeline Page",
-        mini: "T",
-        component: TimelinePage,
-        layout: "/admin"
-      },
       {
         path: "/login-page",
         name: "Login Page",
