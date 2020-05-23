@@ -10,7 +10,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
-import PinturaTablasPiezasPersona from "./LineaTablasPiezasPorModelo"
+import PinturaTablasPiezasPersona from "./LineaTablasPiezasPorModelo";
 
 const styles = {
   cardTitle,
@@ -33,7 +33,6 @@ export default function LineaDetallePorSubProducto() {
   const modelos = Object.keys(store.produccionDisponibles);
   const valores = Object.values(store.produccionDisponibles);
 
- 
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 

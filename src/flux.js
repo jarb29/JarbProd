@@ -122,7 +122,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       //variable plan Produccion
       errorPlanProduccion: [],
-      planProduccion: []
+      planProduccion: [],
+
+      // Error Grafica
+      errorGrafica: [],
+      tiempoEstufa: [],
+      tiempo_diario_estufa: []
     },
 
     actions: {
@@ -710,8 +715,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // Fincio para crear el plan de produccion
 
-      creandoPlanProduccion: (e) => {
-        console.log(e, "even");
+      creandoPlanProduccion: () => {
         const store = getStore();
 
         let data = {
@@ -725,7 +729,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       planProduccion: async (url, data) => {
         const store = getStore();
         const { baseURL } = store;
-        console.log(data, "data del log")
+
         const resp = await fetch(baseURL + url, {
           method: "POST",
           body: JSON.stringify(data),
@@ -734,7 +738,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "datos del retorno plan priduccion")
 
         if (dato.msg) {
           setStore({
@@ -1043,8 +1046,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const dato = await resp.json();
 
-        console.log(dato, "produccion disponible")
-
         if (dato.msg) {
           setStore({
             error: dato
@@ -1100,9 +1101,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-
-        console.log(dato, "datos del retorno de la ultima linea");
-
         if (dato.msg) {
           setStore({
             error: dato
@@ -1112,6 +1110,35 @@ const getState = ({ getStore, getActions, setStore }) => {
             produccionProductoTerminadoDisponibles: dato[0],
             produccionDisponibleSoldadura: dato[3],
             produccionLineaTerminacioCritico: dato[4]
+          });
+        }
+      },
+
+      tiempoEstufa: async () => {
+        const store = getStore();
+
+        const { baseURL } = store;
+        const resp = await fetch(
+          baseURL + "/api/graficaPlanProduccionMensual",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        );
+        const dato = await resp.json();
+
+        console.log(dato, "datos del retorno tiempo");
+
+        if (dato.msg) {
+          setStore({
+            errorGrafica: dato
+          });
+        } else {
+          setStore({
+            tiempoEstufa: dato[0],
+            tiempo_diario_estufa: dato[1]
           });
         }
       }

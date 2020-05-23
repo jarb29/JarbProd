@@ -31,7 +31,6 @@ export default function CorteTablaCorteDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
 
-
   const modelos = Object.keys(store.todoDisponibleLineasCorte);
   const valores = Object.values(store.todoDisponibleLineasCorte);
   let nombre_piezas_disponibles = [];

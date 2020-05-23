@@ -22,11 +22,6 @@ export default function PinturaGeneral() {
   const { store } = useContext(Context);
   const classes = useStyles();
 
-  console.log(
-    store.produccionLineaTerminacioCritico,
-    "valores dentro del componente"
-  );
-
   let colors = [
     "warning",
     "info",

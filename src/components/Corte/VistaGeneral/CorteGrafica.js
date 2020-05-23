@@ -1,49 +1,88 @@
-/*eslint-disable*/
-import React from "react";
-// react plugin for creating charts
+import React, { useContext } from "react";
 import ChartistGraph from "react-chartist";
-
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
-import Timeline from "@material-ui/icons/Timeline";
-
-// core components
-import Heading from "components/Heading/Heading.js";
+import { Context } from "../../../AppContext";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-
-import {
-
-  multipleBarsChart,
-
-} from "variables/charts.js";
-
-import styles from "assets/jss/material-dashboard-pro-react/views/chartsStyle.js";
-
-const useStyles = makeStyles(styles);
 
 export default function CorteGrafica() {
-  const classes = useStyles();
+  const { store } = useContext(Context);
+  var delays2 = 80,
+    durations2 = 500;
+
+  const modelos = Object.keys(store.tiempoEstufa);
+
+  const valores = Object.values(store.tiempoEstufa);
+  const valores_diarios = Object.values(store.tiempo_diario_estufa);
+  const valores_tiempo = [];
+  const valores_diarios_estufa = [];
+
+  const valoresPorPieza = valores.map(valor => {
+    valor.map(val => {
+      valores_tiempo.push(val.total_suma);
+    });
+  });
+
+  const valoresPorPieza_diarios = valores_diarios.map(valor => {
+    valor.map(val => {
+      valores_diarios_estufa.push(val.total_suma);
+    });
+  });
+
+  const multipleBarsChart = {
+    data: {
+      labels: modelos,
+      series: [valores_tiempo, valores_diarios_estufa]
+    },
+    options: {
+      seriesBarDistance: 10,
+      axisX: {
+        showGrid: false
+      },
+      height: "300px"
+    },
+    responsiveOptions: [
+      [
+        "screen and (max-width: 640px)",
+        {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function(value) {
+              return value[0];
+            }
+          }
+        }
+      ]
+    ],
+    animation: {
+      draw: function(data) {
+        if (data.type === "bar") {
+          data.element.animate({
+            opacity: {
+              begin: (data.index + 1) * delays2,
+              dur: durations2,
+              from: 0,
+              to: 1,
+              easing: "ease"
+            }
+          });
+        }
+      }
+    }
+  };
+
   return (
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={12}>
-            <CardBody>
-              <ChartistGraph
-                data={multipleBarsChart.data}
-                type="Bar"
-                options={multipleBarsChart.options}
-                listener={multipleBarsChart.animation}
-              />
-            </CardBody>
-        </GridItem>
-      </GridContainer>
+    <GridContainer>
+      <GridItem xs={12} sm={12} md={12}>
+        <CardBody>
+          <ChartistGraph
+            data={multipleBarsChart.data}
+            type="Bar"
+            options={multipleBarsChart.options}
+            listener={multipleBarsChart.animation}
+          />
+        </CardBody>
+      </GridItem>
+    </GridContainer>
   );
 }

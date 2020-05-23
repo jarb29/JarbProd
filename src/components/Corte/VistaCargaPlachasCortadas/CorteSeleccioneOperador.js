@@ -23,6 +23,7 @@ export default function CorteSeleccioneOperador() {
     actions.obtenerPiezasPintadas();
     actions.obtenerTodoLoDisponibleLineas();
     actions.obtenerProduccionProductoTerminadoDisponible();
+    actions.tiempoEstufa();
   }, []);
 
   return (

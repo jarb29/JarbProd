@@ -1,8 +1,8 @@
 import React from "react";
-import LineaGeneral from "../../components/Linea1/LineaProductoDisponible/LineaGeneral"
+import LineaGeneral from "../../components/Linea1/LineaProductoDisponible/LineaGeneral";
 
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
-import LineaPiezasDisponible from "../../components/Linea1/LineaProductoDisponible/LineaPiezasDisponible"
+import LineaPiezasDisponible from "../../components/Linea1/LineaProductoDisponible/LineaPiezasDisponible";
 
 function LineaVistaGeneral() {
   return (
