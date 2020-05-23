@@ -710,7 +710,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // Fincio para crear el plan de produccion
 
-      creandoPlanProduccion: () => {
+      creandoPlanProduccion: (e) => {
+        console.log(e, "even");
         const store = getStore();
 
         let data = {
@@ -718,7 +719,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           estufas_plan_producc: store.estufas_plan_produccion
         };
 
-        getActions().planProduccion("/api/planproduccion", data);
+        getActions().planProduccion("/api/planProduccionMensual", data);
       },
 
       planProduccion: async (url, data) => {
