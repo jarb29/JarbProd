@@ -128,7 +128,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorGrafica: [],
       tiempoEstufa: [],
       tiempo_diario_estufa: [],
-      estufas_por_plan: []
+      estufas_por_plan: [],
+      estufas_por_dia: []
     },
 
     actions: {
@@ -1140,7 +1141,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             tiempoEstufa: dato[0],
             tiempo_diario_estufa: dato[1],
-            estufas_por_plan: dato[2]
+            estufas_por_plan: dato[2],
+            estufas_por_dia: dato[3]
           });
         }
       }

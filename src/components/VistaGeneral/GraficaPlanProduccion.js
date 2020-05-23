@@ -20,26 +20,27 @@ export default function GraficaPlanProduccion() {
   const modelos = Object.keys(store.estufas_por_plan);
 
   const valores = Object.values(store.estufas_por_plan);
-  //const valores_diarios = Object.values(store.tiempo_diario_estufa);
+  const valores_diarios = Object.values(store.estufas_por_dia);
   const valores_tiempo = [];
+
+  console.log(store.estufas_por_dia, "veamos que llega")
 
   const valores_diarios_estufa = [];
   const nuevo_modelos_usados = [];
-
- // const a = modelos.map((modelo, index) => {
-   // const data = {
-     // modelo: modelo,
- //     tiempo_faltate: valores_tiempo[index] - valores_diarios_estufa[index],
- //     tiempo_total: valores_tiempo[index],
- //     tiempo_cortado: valores_diarios_estufa[index]
- //   };
- //   return nuevo_modelos_usados.push(data);
- // });
+  const a = modelos.map((modelo, index) => {
+    const data = {
+      modelo: modelo,
+      tiempo_faltate: valores[index] - valores_diarios[index],
+      tiempo_total: valores[index],
+      tiempo_cortado: valores_diarios[index]
+    };
+    return nuevo_modelos_usados.push(data);
+  });
 
   const multipleBarsChart = {
     data: {
       labels: modelos,
-      series: [valores]
+      series: [valores, valores_diarios]
     },
     options: {
       seriesBarDistance: 10,
@@ -94,9 +95,9 @@ export default function GraficaPlanProduccion() {
             <TableHead>
               <TableRow>
                 <TableCell align="left">Modelo</TableCell>
-                <TableCell align="left">Tiempo Faltante (minutos)</TableCell>
-                <TableCell align="left">Tiempo total (minutos)</TableCell>
-                <TableCell align="left">Tiempo Consumido (minutos)</TableCell>
+                <TableCell align="left">Estufas por Entregar</TableCell>
+                <TableCell align="left">Estufas En el Plan</TableCell>
+                <TableCell align="left">Estufas Entregadas</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
