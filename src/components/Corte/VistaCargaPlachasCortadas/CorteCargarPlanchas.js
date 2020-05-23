@@ -15,6 +15,7 @@ import Card from "components/Card/Card.js";
 import styles from "assets/jss/material-dashboard-pro-react/views/notificationsStyle.js";
 import CortePlanchasAmodelar from "./CortePlanchasAmodelar";
 import CorteCargarPlanchasCortadas from "./CorteCargarPlanchasCortadas";
+import CortePlanProduccion from "./CortePlanProduccion";
 
 
 
@@ -197,7 +198,7 @@ export default function PlegadoCargarDatos() {
                           classes.modalBody + " " + classes.modalSmallBody
                         }
                       >
-                    <CortePlanchasAmodelar />
+                    <CortePlanProduccion />
                   </DialogContent>
               </Dialog>
            </GridItem>

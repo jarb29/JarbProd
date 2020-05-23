@@ -733,6 +733,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "datos del retorno plan priduccion")
 
         if (dato.msg) {
           setStore({
