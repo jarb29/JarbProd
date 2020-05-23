@@ -57,8 +57,9 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="right">Ot</TableCell>
-                    <TableCell align="right">Programa</TableCell>
+                    <TableCell align="left">Ot</TableCell>
+                    <TableCell align="rigth">Sub_Producto</TableCell>
+                    <TableCell align="right">Cantidad</TableCell>
                     <TableCell align="right">Fecha</TableCell>
                     <TableCell align="left">Total</TableCell>
                   </TableRow>
@@ -66,15 +67,16 @@ function Row(props) {
                 <TableBody>
                   {row.map(historyRow => (
                     <TableRow key={historyRow.OT}>
-                      <TableCell align="rigth">{historyRow.OT}</TableCell>
-                      <TableCell align="right">{historyRow.nest}</TableCell>
+                      <TableCell align="left">{historyRow.ot_produccion}</TableCell>
+                      <TableCell align="left">{historyRow.nombre_subproducto}</TableCell>
+                      <TableCell align="right">{historyRow.cantidad_fabricada_por_dia}</TableCell>
                       <TableCell align="right">
                         {historyRow.fecha === undefined
                           ? null
                           : historyRow.fecha.split("2020")[0]}
                       </TableCell>
                       <TableCell align="left">
-                        {historyRow.total_disponlie}
+                        {historyRow.total_pieza}
                       </TableCell>
                     </TableRow>
                   ))}

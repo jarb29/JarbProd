@@ -31,6 +31,8 @@ export default function PinturaPiezasDisponible() {
   const classes = useStyles();
   const { store } = useContext(Context);
 
+  console.log(store.produccionDisponibleSoldadura, "en el componente");
+
   const modelos = Object.keys(store.produccionDisponibleSoldadura);
   const valores = Object.values(store.produccionDisponibleSoldadura);
   let nombre_piezas_disponibles = [];

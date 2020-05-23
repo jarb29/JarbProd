@@ -1043,6 +1043,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const dato = await resp.json();
 
+        console.log(dato, "produccion disponible")
+
         if (dato.msg) {
           setStore({
             error: dato
