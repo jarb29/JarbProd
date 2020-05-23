@@ -117,6 +117,23 @@ export default function VistaGeneralPanels() {
                     </CardBody>
                   </Card>
                 )
+              },
+              {
+                tabButton: "Plan de Produccion",
+                tabIcon: Info,
+                tabContent: (
+                  <Card>
+                    <CardHeader>
+                      <h4 className={classes.cardTitle}>Estufas por linea.</h4>
+                      <p className={classes.cardCategory}>
+                        Para completar el plan
+                      </p>
+                    </CardHeader>
+                    <CardBody>
+                      <CorteGrafica />
+                    </CardBody>
+                  </Card>
+                )
               }
             ]}
           />
