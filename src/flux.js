@@ -124,10 +124,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       errorPlanProduccion: [],
       planProduccion: [],
 
-      // Error Grafica
+      // retorno del back para las Grafica
       errorGrafica: [],
       tiempoEstufa: [],
-      tiempo_diario_estufa: []
+      tiempo_diario_estufa: [],
+      estufas_por_plan: []
     },
 
     actions: {
@@ -1138,7 +1139,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             tiempoEstufa: dato[0],
-            tiempo_diario_estufa: dato[1]
+            tiempo_diario_estufa: dato[1],
+            estufas_por_plan: dato[2]
           });
         }
       }

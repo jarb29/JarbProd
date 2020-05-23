@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ChartistGraph from "react-chartist";
-import { Context } from "../../../AppContext";
+import { Context } from "../../AppContext";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CardBody from "components/Card/CardBody.js";
@@ -12,47 +12,34 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
-export default function CorteGrafica() {
+export default function GraficaPlanProduccion() {
   const { store } = useContext(Context);
   var delays2 = 80,
     durations2 = 500;
 
-  const modelos = Object.keys(store.tiempoEstufa);
+  const modelos = Object.keys(store.estufas_por_plan);
 
-  const valores = Object.values(store.tiempoEstufa);
-  const valores_diarios = Object.values(store.tiempo_diario_estufa);
+  const valores = Object.values(store.estufas_por_plan);
+  //const valores_diarios = Object.values(store.tiempo_diario_estufa);
   const valores_tiempo = [];
 
   const valores_diarios_estufa = [];
-
-  const valoresPorPieza = valores.map(valor => {
-    valor.map(val => {
-      valores_tiempo.push(val.total_suma);
-    });
-  });
-
-  const valoresPorPieza_diarios = valores_diarios.map(valor => {
-    valor.map(val => {
-      valores_diarios_estufa.push(val.total_suma);
-    });
-  });
-
   const nuevo_modelos_usados = [];
 
-  const a = modelos.map((modelo, index) => {
-    const data = {
-      modelo: modelo,
-      tiempo_faltate: valores_tiempo[index] - valores_diarios_estufa[index],
-      tiempo_total: valores_tiempo[index],
-      tiempo_cortado: valores_diarios_estufa[index]
-    };
-    return nuevo_modelos_usados.push(data);
-  });
+ // const a = modelos.map((modelo, index) => {
+   // const data = {
+     // modelo: modelo,
+ //     tiempo_faltate: valores_tiempo[index] - valores_diarios_estufa[index],
+ //     tiempo_total: valores_tiempo[index],
+ //     tiempo_cortado: valores_diarios_estufa[index]
+ //   };
+ //   return nuevo_modelos_usados.push(data);
+ // });
 
   const multipleBarsChart = {
     data: {
       labels: modelos,
-      series: [valores_tiempo, valores_diarios_estufa]
+      series: [valores]
     },
     options: {
       seriesBarDistance: 10,

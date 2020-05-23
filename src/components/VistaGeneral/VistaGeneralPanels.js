@@ -1,12 +1,6 @@
 import React from "react";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
-
 import Info from "@material-ui/icons/Info";
-
-// core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import NavPills from "components/NavPills/NavPills.js";
@@ -18,6 +12,7 @@ import CorteTablaDisponEstufas from "components/Corte/VistaGeneral/CorteTablaDis
 import PlegadoTablaDisponEstufas from "components/Plegado/PlegadoGeneral/PlegadoTablaDisponEstufas";
 import CorteGrafica from "components/Corte/VistaGeneral/CorteGrafica";
 import PinturaTablaDisponEstufas from "components/Pintura/PinturaGeneral/PinturaTablaDisponEstufas";
+import GraficaPlanProduccion from "./GraficaPlanProduccion";
 
 const styles = {
   cardTitle,
@@ -130,7 +125,7 @@ export default function VistaGeneralPanels() {
                       </p>
                     </CardHeader>
                     <CardBody>
-                      <CorteGrafica />
+                      <GraficaPlanProduccion />
                     </CardBody>
                   </Card>
                 )
