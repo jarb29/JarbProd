@@ -55,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       modeloAModelar: [],
       estufasEnProduccion_datos_totales: [],
       estufasEnProduccion_datos_diarios: [],
+      estufas_plan_produccion: [],
 
       // Variables retorno del back Plegado
       piezasDisponiblesPlegado: [],
@@ -117,7 +118,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       creandoProduccionTerminada: [],
       produccionProductoTerminadoDisponibles: [],
       produccionDisponibleSoldadura: [],
-      produccionLineaTerminacioCritico: []
+      produccionLineaTerminacioCritico: [],
+
+      //variable plan Produccion
+      errorPlanProduccion: [],
+      planProduccion: []
     },
 
     actions: {
@@ -700,6 +705,42 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             creandoProduccionTerminada: dato
+          });
+        }
+      },
+      // Fincio para crear el plan de produccion
+
+      creandoPlanProduccion: () => {
+        const store = getStore();
+
+        let data = {
+          ot_en_produccion: store.ot_cortada,
+          estufas_plan_producc: store.estufas_plan_produccion
+        };
+
+        getActions().planProduccion("/api/planproduccion", data);
+      },
+
+      planProduccion: async (url, data) => {
+        const store = getStore();
+        const { baseURL } = store;
+        console.log(data, "data del log")
+        const resp = await fetch(baseURL + url, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const dato = await resp.json();
+
+        if (dato.msg) {
+          setStore({
+            errorPlanProduccion: dato
+          });
+        } else {
+          setStore({
+            planProduccion: dato
           });
         }
       },

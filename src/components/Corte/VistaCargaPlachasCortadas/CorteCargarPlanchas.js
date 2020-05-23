@@ -161,7 +161,7 @@ export default function PlegadoCargarDatos() {
                       className={classes.marginRight}
                       onClick={() => setSmallModal(true)}
                     >
-                      Extra
+                      Plan de Produccion
                     </Button>
                     <Dialog
                       classes={{
