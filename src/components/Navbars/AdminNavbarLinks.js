@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 // import { Manager, Target, Popper } from "react-popper";
@@ -46,29 +47,28 @@ export default function HeaderLinks(props) {
   });
   return (
     <div className={wrapper}>
-      <Button
-        color="transparent"
-        simple
-        aria-label="Dashboard"
-        justIcon
-        className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
-        muiClasses={{
-          label: rtlActive ? classes.labelRTL : ""
-        }}
-      >
-        <Dashboard
-          className={
-            classes.headerLinksSvg +
-            " " +
-            (rtlActive ? classes.links + " " + classes.linksRTL : classes.links)
-          }
-        />
-        <Hidden mdUp implementation="css">
-          <span className={classes.linkText}>
-            {rtlActive ? "لوحة القيادة" : "Dashboard"}
-          </span>
-        </Hidden>
-      </Button>
+      <Link to="/dashboard" style={{ color: 'black' }}>
+        <Button
+          color="black"
+          simple
+          aria-label="Dashboard"
+          justIcon
+          className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
+          muiClasses={{
+            label: rtlActive ? classes.labelRTL : ""
+          }}
+        >
+          <Dashboard
+            className={
+              classes.headerLinksSvg +
+              " " +
+              (rtlActive
+                ? classes.links + " " + classes.linksRTL
+                : classes.links)
+            }
+          />
+        </Button>
+      </Link>
       <div className={managerClasses}>
         <Button
           color="transparent"
@@ -91,11 +91,6 @@ export default function HeaderLinks(props) {
                 : classes.links)
             }
           />
-          <Hidden mdUp implementation="css">
-            <span onClick={handleClickProfile} className={classes.linkText}>
-              {rtlActive ? "الملف الشخصي" : "Profile"}
-            </span>
-          </Hidden>
         </Button>
         <Popper
           open={Boolean(openProfile)}
