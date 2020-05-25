@@ -21,11 +21,9 @@ export default function GraficaPlanProduccion() {
 
   const valores = Object.values(store.estufas_por_plan);
   const valores_diarios = Object.values(store.estufas_por_dia);
-  const valores_tiempo = [];
 
-  console.log(store.estufas_por_dia, "veamos que llega")
+  console.log(store.estufas_por_dia, "veamos que llega");
 
-  const valores_diarios_estufa = [];
   const nuevo_modelos_usados = [];
   const a = modelos.map((modelo, index) => {
     const data = {

@@ -11,7 +11,6 @@ import MenuList from "@material-ui/core/MenuList";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Paper from "@material-ui/core/Paper";
 import Grow from "@material-ui/core/Grow";
-import Hidden from "@material-ui/core/Hidden";
 import Popper from "@material-ui/core/Popper";
 import Divider from "@material-ui/core/Divider";
 import Person from "@material-ui/icons/Person";
@@ -47,7 +46,7 @@ export default function HeaderLinks(props) {
   });
   return (
     <div className={wrapper}>
-      <Link to="/dashboard" style={{ color: 'black' }}>
+      <Link to="/admin/dashboard" style={{ color: "black" }}>
         <Button
           color="black"
           simple
