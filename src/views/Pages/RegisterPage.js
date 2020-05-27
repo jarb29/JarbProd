@@ -38,6 +38,8 @@ export default function RegisterPage() {
     }
     setChecked(newChecked);
   };
+  console.log(checked, "valor del checked");
+
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -128,11 +130,13 @@ export default function RegisterPage() {
                         </span>
                       }
                     />
+                    {checked == 1 ? 
                     <div className={classes.center}>
                       <Button round color="primary">
                         Get started
-                      </Button>
-                    </div>
+                        </Button>
+                      </div>
+                    : null }
                   </form>
                 </GridItem>
               </GridContainer>
