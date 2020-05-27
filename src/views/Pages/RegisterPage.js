@@ -8,9 +8,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
-import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
-import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
 // import LockOutline from "@material-ui/icons/LockOutline";
@@ -21,7 +18,6 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 
@@ -51,42 +47,7 @@ export default function RegisterPage() {
             <h2 className={classes.cardTitle}>Register</h2>
             <CardBody>
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={5}>
-                  <InfoArea
-                    title="Marketing"
-                    description="We've created the marketing campaign of the website. It was a very interesting collaboration."
-                    icon={Timeline}
-                    iconColor="rose"
-                  />
-                  <InfoArea
-                    title="Fully Coded in HTML5"
-                    description="We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
-                    icon={Code}
-                    iconColor="primary"
-                  />
-                  <InfoArea
-                    title="Built Audience"
-                    description="There is also a Fully Customizable CMS Admin Dashboard for this product."
-                    icon={Group}
-                    iconColor="info"
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={8} md={5}>
-                  <div className={classes.center}>
-                    <Button justIcon round color="twitter">
-                      <i className="fab fa-twitter" />
-                    </Button>
-                    {` `}
-                    <Button justIcon round color="dribbble">
-                      <i className="fab fa-dribbble" />
-                    </Button>
-                    {` `}
-                    <Button justIcon round color="facebook">
-                      <i className="fab fa-facebook-f" />
-                    </Button>
-                    {` `}
-                    <h4 className={classes.socialTitle}>or be classical</h4>
-                  </div>
+                <GridItem xs={8} sm={8} md={8}>
                   <form className={classes.form}>
                     <CustomInput
                       formControlProps={{

@@ -18,8 +18,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Menu from "@material-ui/icons/Menu";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Fingerprint from "@material-ui/icons/Fingerprint";
-import LockOpen from "@material-ui/icons/LockOpen";
-import MonetizationOn from "@material-ui/icons/MonetizationOn";
 
 // core components
 import Button from "components/CustomButtons/Button";
@@ -45,21 +43,6 @@ export default function AuthNavbar(props) {
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <NavLink
-          to={"/auth/pricing-page"}
-          className={cx(classes.navLink, {
-            [classes.navLinkActive]: activeRoute("/auth/pricing-page")
-          })}
-        >
-          <MonetizationOn className={classes.listItemIcon} />
-          <ListItemText
-            primary={"Pricing"}
-            disableTypography={true}
-            className={classes.listItemText}
-          />
-        </NavLink>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <NavLink
           to={"/auth/register-page"}
           className={cx(classes.navLink, {
             [classes.navLinkActive]: activeRoute("/auth/register-page")
@@ -83,21 +66,6 @@ export default function AuthNavbar(props) {
           <Fingerprint className={classes.listItemIcon} />
           <ListItemText
             primary={"Login"}
-            disableTypography={true}
-            className={classes.listItemText}
-          />
-        </NavLink>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <NavLink
-          to={"/auth/lock-screen-page"}
-          className={cx(classes.navLink, {
-            [classes.navLinkActive]: activeRoute("/auth/lock-screen-page")
-          })}
-        >
-          <LockOpen className={classes.listItemIcon} />
-          <ListItemText
-            primary={"Lock"}
             disableTypography={true}
             className={classes.listItemText}
           />

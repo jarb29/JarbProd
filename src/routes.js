@@ -1,7 +1,6 @@
 import Calendar from "views/Calendar/Calendar.js";
 import Charts from "views/Charts/Charts.js";
 import Dashboard from "views/Dashboard/Dashboard.js";
-import LockScreenPage from "views/Pages/LockScreenPage.js";
 import LoginPage from "views/Pages/LoginPage.js";
 import RegisterPage from "views/Pages/RegisterPage.js";
 import VistaGeneralCorte from "views/Corte/VistaGeneralCorte";
@@ -159,13 +158,6 @@ var dashRoutes = [
         name: "Register Page",
         mini: "R",
         component: RegisterPage,
-        layout: "/auth"
-      },
-      {
-        path: "/lock-screen-page",
-        name: "Lock Screen Page",
-        mini: "LS",
-        component: LockScreenPage,
         layout: "/auth"
       }
     ]
