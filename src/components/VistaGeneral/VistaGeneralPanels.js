@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { Context } from "../../AppContext";
 import { makeStyles } from "@material-ui/core/styles";
 import Info from "@material-ui/icons/Info";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -30,7 +31,27 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function VistaGeneralPanels() {
+
   const classes = useStyles();
+  const { actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.obtenerOtEnProduccion();
+    actions.obtenerPiezasPlegadas();
+    actions.obtenerPiezasPintadas();
+    actions.obtenerProduccionDisponible();
+    actions.obtenerTodoLoDisponibleLineas();
+    actions.obtenerModelosDisponibles();
+    actions.obtenerNesticsDisponibles();
+    actions.obtenerProduccionProductoTerminadoDisponible();
+    actions.tiempoEstufa();
+    actions.estufasEnProduccion();
+  }, []);
+
+
+
+
+
   return (
     <div>
       <GridContainer justify="center">
