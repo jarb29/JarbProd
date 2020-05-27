@@ -17,8 +17,8 @@ function App() {
       <Switch>
         <Route path="/auth" component={AuthLayout} />
         <Route path="/admin" component={AdminLayout} />
-        <Route component={ErrorPage} />
         <Redirect from="/" to="/admin/dashboard" />
+        <Route component={ErrorPage} />
       </Switch>
     </Router>
   );

@@ -1,11 +1,9 @@
 import Calendar from "views/Calendar/Calendar.js";
 import Charts from "views/Charts/Charts.js";
 import Dashboard from "views/Dashboard/Dashboard.js";
-import ErrorPage from "views/Pages/ErrorPage.js";
 import LockScreenPage from "views/Pages/LockScreenPage.js";
 import LoginPage from "views/Pages/LoginPage.js";
 import RegisterPage from "views/Pages/RegisterPage.js";
-import UserProfile from "views/Pages/UserProfile.js";
 import VistaGeneralCorte from "views/Corte/VistaGeneralCorte";
 
 // @material-ui/icons
@@ -168,20 +166,6 @@ var dashRoutes = [
         name: "Lock Screen Page",
         mini: "LS",
         component: LockScreenPage,
-        layout: "/auth"
-      },
-      {
-        path: "/user-page",
-        name: "User Profile",
-        mini: "UP",
-        component: UserProfile,
-        layout: "/admin"
-      },
-      {
-        path: "/error-page",
-        name: "Error Page",
-        mini: "E",
-        component: ErrorPage,
         layout: "/auth"
       }
     ]
