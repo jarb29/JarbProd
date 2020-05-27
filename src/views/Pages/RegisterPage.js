@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Context } from "../../AppContext";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -25,8 +25,9 @@ import styles from "assets/jss/material-dashboard-pro-react/views/registerPageSt
 
 const useStyles = makeStyles(styles);
 
-export default function RegisterPage() {
+export default function RegisterPage(props) {
   const [checked, setChecked] = React.useState([]);
+  const { actions } = useContext(Context);
   const handleToggle = value => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -50,13 +51,20 @@ export default function RegisterPage() {
             <CardBody>
               <GridContainer justify="center">
                 <GridItem xs={8} sm={8} md={8}>
-                  <form className={classes.form}>
+                  <form
+                    className={classes.form}
+                    onSubmit={e => actions.registroUsuario(e, props.history)}
+                  >
                     <CustomInput
                       formControlProps={{
                         fullWidth: true,
                         className: classes.customFormControlClasses
                       }}
                       inputProps={{
+                        onChange: event => {
+                          actions.cargarPlanchasCortadas(event);
+                        },
+                        name: "nombre",
                         startAdornment: (
                           <InputAdornment
                             position="start"
@@ -74,6 +82,10 @@ export default function RegisterPage() {
                         className: classes.customFormControlClasses
                       }}
                       inputProps={{
+                        onChange: event => {
+                          actions.cargarPlanchasCortadas(event);
+                        },
+                        name: "email",
                         startAdornment: (
                           <InputAdornment
                             position="start"
@@ -91,6 +103,10 @@ export default function RegisterPage() {
                         className: classes.customFormControlClasses
                       }}
                       inputProps={{
+                        onChange: event => {
+                          actions.cargarPlanchasCortadas(event);
+                        },
+                        name: "clave",
                         startAdornment: (
                           <InputAdornment
                             position="start"
@@ -130,13 +146,13 @@ export default function RegisterPage() {
                         </span>
                       }
                     />
-                    {checked == 1 ? 
-                    <div className={classes.center}>
-                      <Button round color="primary">
-                        Get started
+                    {checked == 1 ? (
+                      <div className={classes.center}>
+                        <Button type="submit" round color="primary">
+                          Get started
                         </Button>
                       </div>
-                    : null }
+                    ) : null}
                   </form>
                 </GridItem>
               </GridContainer>

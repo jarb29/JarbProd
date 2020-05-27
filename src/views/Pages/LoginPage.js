@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../../AppContext";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,9 +24,14 @@ import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle
 
 const useStyles = makeStyles(styles);
 
-export default function LoginPage() {
+export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
+  console.log(store.isAuthenticated, "el valor de la autenticacion");
+
+  useEffect(() => {
+    if (store.isAuthenticated) props.history.push("/admin/dashboard");
+  });
 
   setTimeout(function() {
     setCardAnimation("");
@@ -36,7 +41,7 @@ export default function LoginPage() {
     <div className={classes.container}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
-          <form>
+          <form /*onSubmit={e => actions.logingUsuario(e, props.history)}*/>
             <Card login className={classes[cardAnimaton]}>
               <CardHeader
                 className={`${classes.cardHeader} ${classes.textCenter}`}
@@ -105,7 +110,15 @@ export default function LoginPage() {
                 />
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
-                <Button color="rose" simple size="lg" block>
+                <Button
+                  /*type="submit"*/ color="rose"
+                  simple
+                  size="lg"
+                  block
+                  onClick={e => {
+                    actions.logingUsuario(e, props.history);
+                  }}
+                >
                   Let{"'"}s Go
                 </Button>
               </CardFooter>

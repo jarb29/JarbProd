@@ -2,12 +2,13 @@ import React, { useEffect, useContext } from "react";
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
 import LineaGeneral from "../../components/Linea1/LineaProductoDisponible/LineaGeneral";
 import { Context } from "../../AppContext";
+import { withRouter } from "react-router-dom";
 
-export default function Dashboard(props) {
+function Dashboard(props) {
   const { store } = useContext(Context);
 
   useEffect(() => {
-    if (!store.isAthenticated) props.history.push("/auth/login-page");
+    if (!store.isAuthenticated) props.history.push("/auth/login-page");
   });
 
   return (
@@ -17,3 +18,5 @@ export default function Dashboard(props) {
     </div>
   );
 }
+
+export default withRouter(Dashboard);
