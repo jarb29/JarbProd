@@ -5,6 +5,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////URL
       baseURL: "http://127.0.0.1:5000",
 
+      // claves de usuario
+      nombre: "",
+      email: "",
+      clave: "",
+      currenUser: null,
+      isAuthenticated: false,
+      error: null,
+
       //Variables para crear el Modelo
       numero_ot: [],
       nombre_programa: [],
@@ -249,6 +257,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // cargando numero de planchas cortadas
       cargarPlanchasCortadas: e => {
+        console.log(e.target.name);
+        console.log(e.target.value);
         setStore({
           [e.target.name]: e.target.value
         });

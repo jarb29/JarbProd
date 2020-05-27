@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Context } from "../../AppContext";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -26,6 +26,8 @@ const useStyles = makeStyles(styles);
 
 export default function LoginPage() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const { actions } = useContext(Context);
+
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
@@ -41,33 +43,19 @@ export default function LoginPage() {
                 color="rose"
               >
                 <h4 className={classes.cardTitle}>Log in</h4>
-                <div className={classes.socialLine}>
-                  {[
-                    "fab fa-facebook-square",
-                    "fab fa-twitter",
-                    "fab fa-google-plus"
-                  ].map((prop, key) => {
-                    return (
-                      <Button
-                        color="transparent"
-                        justIcon
-                        key={key}
-                        className={classes.customButtonClass}
-                      >
-                        <i className={prop} />
-                      </Button>
-                    );
-                  })}
-                </div>
               </CardHeader>
               <CardBody>
                 <CustomInput
-                  labelText="First Name.."
+                  labelText="Nombre  .."
                   id="firstname"
                   formControlProps={{
                     fullWidth: true
                   }}
                   inputProps={{
+                    onChange: event => {
+                      actions.cargarPlanchasCortadas(event);
+                    },
+                    name: "nombre",
                     endAdornment: (
                       <InputAdornment position="end">
                         <Face className={classes.inputAdornmentIcon} />
@@ -82,6 +70,10 @@ export default function LoginPage() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    onChange: event => {
+                      actions.cargarPlanchasCortadas(event);
+                    },
+                    name: "email",
                     endAdornment: (
                       <InputAdornment position="end">
                         <Email className={classes.inputAdornmentIcon} />
@@ -96,6 +88,10 @@ export default function LoginPage() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    onChange: event => {
+                      actions.cargarPlanchasCortadas(event);
+                    },
+                    name: "clave",
                     endAdornment: (
                       <InputAdornment position="end">
                         <Icon className={classes.inputAdornmentIcon}>
