@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../AppContext";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 // import { Manager, Target, Popper } from "react-popper";
@@ -27,6 +28,8 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const [openProfile, setOpenProfile] = React.useState(null);
+  const { actions } = useContext(Context);
+
   const activeRoute = routeName => {
     return window.location.href.indexOf(routeName) > -1 ? true : false;
   };
@@ -37,9 +40,7 @@ export default function HeaderLinks(props) {
       setOpenProfile(event.currentTarget);
     }
   };
-  const handleCloseProfile = () => {
-    setOpenProfile(null);
-  };
+
   const classes = useStyles();
   const { rtlActive } = props;
   const dropdownItem = classNames(classes.dropdownItem, classes.primaryHover, {
@@ -101,10 +102,10 @@ export default function HeaderLinks(props) {
             style={{ transformOrigin: "0 0 0" }}
           >
             <Paper className={classes.dropdown}>
-              <ClickAwayListener onClickAway={handleCloseProfile}>
+              <ClickAwayListener >
                 <MenuList role="menu">
                   <MenuItem
-                    onClick={handleCloseProfile}
+                    onClick={e => actions.logout(e, props.history)}
                     className={dropdownItem}
                   >
                     <NavLink

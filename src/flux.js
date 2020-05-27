@@ -1251,6 +1251,15 @@ const getState = ({ getStore, getActions, setStore }) => {
             error: null
           });
         }
+      },
+      logout: (e, history) => {
+        sessionStorage.removeItem("currentUser");
+        sessionStorage.removeItem("isAuthenticated");
+        setStore({
+          currentUser: null,
+          isAuthenticated: false
+        });
+
       }
     }
   };
