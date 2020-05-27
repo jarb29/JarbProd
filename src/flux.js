@@ -569,6 +569,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       registroSubProducto: async (url, data) => {
         const store = getStore();
         const { baseURL } = store;
+        console.log(data, "para ver si esta llamando la data");
         const resp = await fetch(baseURL + url, {
           method: "POST",
           body: JSON.stringify(data),
@@ -577,6 +578,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "retorno para ver que hay");
 
         if (dato.msg) {
           setStore({
@@ -610,6 +612,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       registroPiezasIntegranSubProducto: async (url, data) => {
         const store = getStore();
         const { baseURL } = store;
+        console.log(data, "para ver si pide la data");
         const resp = await fetch(baseURL + url, {
           method: "POST",
           body: JSON.stringify(data),
@@ -618,6 +621,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "para ver que regresa");
 
         if (dato.msg) {
           setStore({
@@ -653,6 +657,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "quiero ver que llega en produccion");
 
         if (dato.msg) {
           setStore({
@@ -1062,15 +1067,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       obtenerProduccionDisponible: async () => {
         const store = getStore();
+        let data = JSON.parse(sessionStorage.getItem("currentUser"));
 
         const { baseURL } = store;
         const resp = await fetch(baseURL + `/api/produccionDisponible`, {
           method: "GET",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + data.access_token
           }
         });
         const dato = await resp.json();
+        console.log(dato, "veamos que regresa en la produccionDisponible");
 
         if (dato.msg) {
           setStore({
@@ -1086,6 +1094,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       //obteniedo lo disponible menos lo usado por cada linea corte
       obtenerTodoLoDisponibleLineas: async () => {
         const store = getStore();
+        let data = JSON.parse(sessionStorage.getItem("currentUser"));
 
         const { baseURL } = store;
         const resp = await fetch(
@@ -1093,12 +1102,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           {
             method: "GET",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + data.access_token
             }
           }
         );
         const dato = await resp.json();
-
+        console.log(dato, "para ver que retorna produccion");
         if (dato.msg) {
           setStore({
             errortodoDisponibleLineas: dato
@@ -1117,12 +1127,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
 
         const { baseURL } = store;
+        let data = JSON.parse(sessionStorage.getItem("currentUser"));
         const resp = await fetch(
           baseURL + `/api/produccionProductoTerminadoDisponible`,
           {
             method: "GET",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + data.access_token
             }
           }
         );
@@ -1259,7 +1271,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           currentUser: null,
           isAuthenticated: false
         });
-
       }
     }
   };
