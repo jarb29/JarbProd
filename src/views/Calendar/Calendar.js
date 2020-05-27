@@ -1,7 +1,8 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect, useContext } from "react";
 // react components used to create a calendar with events on it
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
+import { Context } from "../../AppContext";
 // dependency plugin for react-big-calendar
 import moment from "moment";
 // react component used to create alerts
@@ -25,10 +26,15 @@ const localizer = momentLocalizer(moment);
 
 const useStyles = makeStyles(styles);
 
-export default function Calendar() {
+export default function Calendar(props) {
   const classes = useStyles();
   const [events, setEvents] = React.useState(calendarEvents);
+  const { store } = useContext(Context);
   const [alert, setAlert] = React.useState(null);
+  
+  useEffect(() => {
+    if (!store.isAuthenticated) props.history.push("/auth/login-page");
+  });
   const selectedEvent = event => {
     window.alert(event.title);
   };

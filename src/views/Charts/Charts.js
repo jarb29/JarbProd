@@ -1,7 +1,8 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect, useContext } from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
+import { Context } from "../../AppContext";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -34,40 +35,14 @@ import styles from "assets/jss/material-dashboard-pro-react/views/chartsStyle.js
 
 const useStyles = makeStyles(styles);
 
-export default function Charts() {
+export default function Charts(props) {
   const classes = useStyles();
+  const { store } = useContext(Context);
+  useEffect(() => {
+    if (!store.isAuthenticated) props.history.push("/auth/login-page");
+  });
   return (
     <div>
-      <Heading
-        textAlign="center"
-        title="React Chartist"
-        category={
-          <span>
-            A react wrapper for{" "}
-            <a
-              target="_blank"
-              href="https://gionkunz.github.io/chartist-js/?ref=creativetim"
-            >
-              Chartist.js
-            </a>
-            . Please checkout the{" "}
-            <a
-              href="https://gionkunz.github.io/chartist-js/getting-started.html?ref=creativetim"
-              target="_blank"
-            >
-              full documentation of Chartist.js
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://fraserxu.me/react-chartist/?ref=creativetim"
-              target="_blank"
-            >
-              full documentation of react-chartist
-            </a>
-            .
-          </span>
-        }
-      />
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart>

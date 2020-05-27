@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CorteCargarProgramas from "components/Corte/VistaCargaProgramas/CorteCargarProgramas";
 import CorteTablasModelosDisponibles from "components/Corte/VistaCargaProgramas/CorteTablasModelosDisponibles";
 import CorteTablasModeloSeleccionados from "components/Corte/VistaCargaProgramas/CorteTablasModeloSeleccionados";
 import CorteTablaNesticTiempo from "components/Corte/VistaCargaProgramas/CorteTablaNesticTiempo";
+import { Context } from "../../AppContext";
 
-function CargarPrograma() {
+function CargarPrograma(props) {
+  const { store } = useContext(Context);
+  useEffect(() => {
+    if (!store.isAuthenticated) props.history.push("/auth/login-page");
+  });
   return (
     <div className="App">
       <GridContainer>
