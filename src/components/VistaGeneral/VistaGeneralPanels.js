@@ -31,7 +31,6 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function VistaGeneralPanels() {
-
   const classes = useStyles();
   const { actions } = useContext(Context);
 
@@ -47,10 +46,6 @@ export default function VistaGeneralPanels() {
     actions.tiempoEstufa();
     actions.estufasEnProduccion();
   }, []);
-
-
-
-
 
   return (
     <div>

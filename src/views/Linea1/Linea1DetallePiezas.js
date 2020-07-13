@@ -7,7 +7,6 @@ import LineaDetallePorSubProducto from "components/Linea1/Linea1DetallePorPiezas
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
 import { Context } from "../../AppContext";
 
-
 function Linea1DetallePiezas(props) {
   const { store } = useContext(Context);
   useEffect(() => {

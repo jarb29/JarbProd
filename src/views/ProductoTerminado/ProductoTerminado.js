@@ -4,9 +4,8 @@ import GridItem from "components/Grid/GridItem.js";
 import PanelOtEnUso from "components/VistaGeneral/PanelOtEnUso";
 import ProduccionDetallePorSubProducto from "components/ProductoTerminado/ProductoTerminadoDetallePiezas/ProduccionDetallePorSubProducto";
 import VistaGeneralPanels from "components/VistaGeneral/VistaGeneralPanels";
-import ProductoTerminadoModalCargarDatos from "components/ProductoTerminado/ProductoTerminadoCargaDatos/ProductoTerminadoModalCargarDatos"
+import ProductoTerminadoModalCargarDatos from "components/ProductoTerminado/ProductoTerminadoCargaDatos/ProductoTerminadoModalCargarDatos";
 import { Context } from "../../AppContext";
-
 
 function ProductoTerminado(props) {
   const { store } = useContext(Context);
