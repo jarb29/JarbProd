@@ -17,6 +17,7 @@ import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Form
 import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 import { Context } from '../../../../AppContext';
 import PlegadoPiezasDisponiblesModelo from "components/Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
+import CorteSeleccioneNesti from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneNesti";
 const useStyles = makeStyles(styles);
 
 export default function ProductoSubProductoDisponible() {

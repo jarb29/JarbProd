@@ -88,6 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       linea1CantidadPiezas: [],
       SubProducto_seleccionado: [],
       produccion_Cantidad_fabricada: [],
+      piezasDisponiblesSubProducto: [],
 
       //  variables de la logica del toda la aplicacion
       modeloFiltrado: [],
@@ -972,15 +973,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       obtenerPiezas: async e => {
         const store = getStore();
         let nesticSeleccionado = e.target.value;
+        let ot_seleccionada =  store.plegado_modelo_seleccionado;
 
         const { baseURL } = store;
-        const resp = await fetch(baseURL + `/api/plegadopiezas/${nesticSeleccionado}`, {
+
+        const resp = await fetch(baseURL + `/api/plegadopiezas/${ot_seleccionada}/${nesticSeleccionado}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
           }
         });
         const dato = await resp.json();
+        console.log(dato, "retorno de sub piezas")
 
         if (dato.msg) {
           setStore({
@@ -988,7 +992,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         } else {
           setStore({
-            piezasDisponiblesPlegado: dato
+            piezasDisponiblesPlegado: dato[0],
+            piezasDisponiblesSubProducto: dato[1]
           });
         }
       },
