@@ -20,7 +20,7 @@ import CorteSeleccioneModelo from "./CorteSeleccioneModelo";
 
 const useStyles = makeStyles(styles);
 
-export default function CorteFormularioPiezas() {
+export default function CorteFormularioPiezas(props) {
   const { actions, store } = useContext(Context);
   // register form
   const [nombrePieza, setNombrePieza] = React.useState("");
@@ -63,7 +63,7 @@ export default function CorteFormularioPiezas() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardBody>
-            <form onSubmit={e => actions.creandoPiezas(e)}>
+            <form onSubmit={e => actions.creandoPiezas(e,  props.history)}>
               <CorteSeleccioneModelo />
               <CorteSeleccioneNestic />
               <CustomInput

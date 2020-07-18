@@ -371,8 +371,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      creandoPiezas: () => {
+      creandoPiezas: (e, history) => {
         const store = getStore();
+        console.log(history, "historia")
 
         let data = {
           nombre_pieza: store.nombre_pieza,
@@ -381,10 +382,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           nesticElegido: store.nesticElegido
         };
 
-        getActions().registroNestic("/api/crearpieza", data);
+        getActions().registroPiezas("/api/crearpieza", data, history);
       },
 
-      registroPiezas: async (url, data) => {
+      registroPiezas: async (url, data, history) => {
+        
         const store = getStore();
         const { baseURL } = store;
         const resp = await fetch(baseURL + url, {
@@ -395,10 +397,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
+        console.log(dato, "retorno del pieza")
         if (dato.msg) {
           setStore({
             errorModelo: dato
           });
+          history.push("admin/cargarprograma");
         } else {
           setStore({
             piezasDisponiles: dato
@@ -835,6 +839,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const { baseURL } = store;
         let nestic_elegido = e.target.value;
+        console.log(nestic_elegido, "otra vez no se lo que es")
 
         const resp = await fetch(
           baseURL + `/api/nesticsmodelar/${nestic_elegido}`,
@@ -913,6 +918,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         let numeroOt = store.ot_cortada;
         let estufas = store.estufas_modelar;
+        console.log(estufas, "nose lo que es")
 
         const { baseURL } = store;
         const resp = await fetch(
@@ -965,10 +971,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       obtenerPiezas: async e => {
         const store = getStore();
-        let numeroOt = e.target.value;
+        let nesticSeleccionado = e.target.value;
 
         const { baseURL } = store;
-        const resp = await fetch(baseURL + `/api/plegadopiezas/${numeroOt}`, {
+        const resp = await fetch(baseURL + `/api/plegadopiezas/${nesticSeleccionado}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -1078,8 +1084,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
         const dato = await resp.json();
-        console.log(dato, "veamos que regresa en la produccionDisponible");
-
         if (dato.msg) {
           setStore({
             error: dato
@@ -1108,7 +1112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         );
         const dato = await resp.json();
-        console.log(dato, "para ver que retorna produccion");
+        console.log(dato, "para ver que llega de disponible")
         if (dato.msg) {
           setStore({
             errortodoDisponibleLineas: dato

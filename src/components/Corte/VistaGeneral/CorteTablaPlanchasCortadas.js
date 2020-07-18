@@ -19,7 +19,7 @@ export default function CorteTablaPlanchasCortadas() {
             <TableCell>Modelo:</TableCell>
             <TableCell align="left">Programa de Corte</TableCell>
             <TableCell align="left">OT</TableCell>
-            <TableCell align="left">Total deOT</TableCell>
+            <TableCell align="left">Total de OT</TableCell>
             <TableCell align="left">Planchas Cortadas</TableCell>
           </TableRow>
         </TableHead>

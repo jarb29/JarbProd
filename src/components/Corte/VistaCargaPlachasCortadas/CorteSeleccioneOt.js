@@ -34,8 +34,9 @@ export default function CorteSeleccioneOt() {
         >
           <option aria-label="None" value="" />
           {store.OtDisponiblesProduccion.map((ot, index) => {
+   
             return (
-              <option value={ot.ot_produccion} key={index} name="ot_cortada">
+              <option value={ot.ot_produccion} key={index} name="ot_cortada" >
                 Programa:{ot.modelo_produccion}, Numero Ot:{ot.ot_produccion}
               </option>
             );

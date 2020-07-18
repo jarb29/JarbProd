@@ -33,6 +33,7 @@ export default function CorteTablaCorteDisponible() {
 
   const modelos = Object.keys(store.todoDisponibleLineasCorte);
   const valores = Object.values(store.todoDisponibleLineasCorte);
+  console.log(modelos, "modelos para imprimir")
   let nombre_piezas_disponibles = [];
   let valores_piezas = [];
 

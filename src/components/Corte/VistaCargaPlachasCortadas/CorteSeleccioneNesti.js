@@ -29,10 +29,12 @@ export default function CorteSeleccioneNesti() {
           name="nestic_cortado"
           onChange={e => {
             actions.cargarPlanchasCortadas(e);
+            actions.obtenerPiezas(e);
           }}
         >
           <option aria-label="None" value="" />
           {store.nesticDisponiblesProduccion.map((nestic, index) => {
+            console.log(nestic, "what the fuck is this")
             return (
               <option value={nestic.programa_nestic} key={index}>
                 {nestic.programa_nestic}

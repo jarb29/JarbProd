@@ -7,7 +7,10 @@ import AuthLayout from "layouts/Auth.js";
 import AdminLayout from "layouts/Admin.js";
 import ErrorPage from "../src/views/Pages/ErrorPage";
 
+
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
+import CargarProgramas from "views/Corte/CargarProgramas";
+
 
 const hist = createBrowserHistory();
 
