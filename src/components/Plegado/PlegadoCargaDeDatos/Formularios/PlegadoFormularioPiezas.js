@@ -19,7 +19,7 @@ import PlegadoMaquinasDisponibles from "./PlegadoMaquinasDisponibles";
 import PlegadoraOperadores from "./PlegadoraOperadores";
 import { Context } from '../../../../AppContext';
 import CorteSeleccioneNesti from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneNesti";
-import CorteSeleccioneOt from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneOt";
+
 
 const useStyles = makeStyles(styles);
 

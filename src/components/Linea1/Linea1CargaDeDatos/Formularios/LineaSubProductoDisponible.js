@@ -18,6 +18,7 @@ import LineaSubProductosPorModelos from "./LineaSubProductosPorModelos";
 import { Context } from '../../../../AppContext';
 import PlegadoPiezasDisponiblesModelo from "components/Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 import CorteSeleccioneNesti from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneNesti";
+import PiezasDisponiblesSubProducto from "./PiezasDisponiblesSubProducto";
 
 
 const useStyles = makeStyles(styles);
@@ -51,7 +52,8 @@ export default function LineaSubProductoDisponible() {
               <PlegadoModelosDisponibles />
               <CorteSeleccioneNesti />
               <LineaSubProductosPorModelos />
-              <PlegadoPiezasDisponiblesModelo />   
+              {/* <PlegadoPiezasDisponiblesModelo />    */}
+              <PiezasDisponiblesSubProducto />
               <CustomInput
                 success={piezaPlegadaState === "success"}
                 error={piezaPlegadaState === "error"}
