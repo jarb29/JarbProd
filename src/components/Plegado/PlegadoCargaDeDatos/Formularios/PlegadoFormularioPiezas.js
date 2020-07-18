@@ -20,6 +20,7 @@ import PlegadoraOperadores from "./PlegadoraOperadores";
 import { Context } from '../../../../AppContext';
 import CorteSeleccioneNesti from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneNesti";
 import CorteSeleccioneOt from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneOt";
+
 const useStyles = makeStyles(styles);
 
 export default function PlegadoFormularioPiezas() {
@@ -46,8 +47,7 @@ export default function PlegadoFormularioPiezas() {
         <Card>
           <CardBody>
             <form>
-              {/* <PlegadoModelosDisponibles /> */}
-              <CorteSeleccioneOt />
+              <PlegadoModelosDisponibles />
               <CorteSeleccioneNesti />
               <PlegadoPiezasDisponiblesModelo />
               <PlegadoMaquinasDisponibles />

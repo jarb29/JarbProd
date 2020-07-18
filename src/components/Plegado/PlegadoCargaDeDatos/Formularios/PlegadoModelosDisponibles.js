@@ -35,6 +35,7 @@ export default function PlegadoModelosDisponibles() {
           id="grouped-native-select"
           name="plegado_modelo_seleccionado"
           onChange={e => {
+            actions.obtenerNesticEnProduccion(e);
             actions.obtenerPiezas(e);
             actions.cargarDatosPlegado(e);
             actions.obtenerSubProductosDisponible(e);

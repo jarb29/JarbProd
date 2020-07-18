@@ -16,6 +16,7 @@ import styles from "assets/jss/material-dashboard-pro-react/views/validationForm
 import PlegadoModelosDisponibles from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoModelosDisponibles";
 import PlegadoPiezasDisponiblesModelo from "../../../Plegado/PlegadoCargaDeDatos/Formularios/PlegadoPiezasDisponiblesModelo";
 import { Context } from '../../../../AppContext';
+import CorteSeleccioneNesti from "components/Corte/VistaCargaPlachasCortadas/CorteSeleccioneNesti";
 const useStyles = makeStyles(styles);
 
 export default function PinturaFormularioPiezas() {
@@ -43,6 +44,7 @@ export default function PinturaFormularioPiezas() {
           <CardBody>
             <form>
               <PlegadoModelosDisponibles />
+              <CorteSeleccioneNesti />
               <PlegadoPiezasDisponiblesModelo />
               <CustomInput
                 success={piezaPlegadaState === "success"}
