@@ -104,7 +104,7 @@ export default function ProductoTerminadoCargarDatos() {
             className={classes.marginRight}
             onClick={() => setNoticeModal(true)}
           >
-            Inpresar Produccion
+            Ingresar Produccion
                     </Button>
           <Dialog
             classes={{

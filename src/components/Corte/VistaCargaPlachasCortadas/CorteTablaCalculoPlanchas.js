@@ -16,6 +16,11 @@ export default function CorteTablaCalculoPlanchas() {
       ? "Seleccione modelo"
       : store.nesticDisponiblesProduccion[0].modelo_elegido;
 
+
+  var result_time = store.modeloAModelar.reduce(function(sum, item){
+    return sum = sum+item.tiempo_para_esas_planchas;
+  },0);
+  
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
@@ -23,21 +28,29 @@ export default function CorteTablaCalculoPlanchas() {
           <TableRow>
             <TableCell>Nestic: (Modelo: {a})</TableCell>
             <TableCell align="left">Cantidad Planchas</TableCell>
-            <TableCell align="left">Tiempo (min)</TableCell>
+            <TableCell align="left">Tiempo (Horas)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {store.modeloAModelar.map(row => (
+          {store.modeloAModelar.map(row => {
+            return (
             <TableRow key={row.id}>
               <TableCell component="th">{row.nestic}</TableCell>
               <TableCell align="left">{row.plancha}</TableCell>
               <TableCell align="left">
-                {row.tiempo_para_esas_planchas}
+                {Math.round(row.tiempo_para_esas_planchas/60, 2)}
               </TableCell>
             </TableRow>
-          ))}
+          )})}
         </TableBody>
-      </Table>
+        {result_time?
+        <TableRow>
+          <TableCell></TableCell>
+          <TableCell>Total</TableCell>
+          <TableCell align="left">{Math.round(result_time/60, 2)} Horas </TableCell>
+        </TableRow>:
+        null}
+      </Table>  
     </TableContainer>
   );
 }
