@@ -27,6 +27,17 @@ export default function CortePruebaTiempo(props) {
     customHeadClassesForCells
   } = props;
 
+  console.log(tableData, "para ver que es el table data")
+
+  var result_time = tableData.reduce(function(sum, item) {
+    console.log(item.length, "cual es el item");
+    if (item.length > 5 ) {
+      return (sum = sum + item[item.length-1]);
+    }
+  }, 0);
+
+
+
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
@@ -85,7 +96,11 @@ export default function CortePruebaTiempo(props) {
               </TableRow>
             );
           })}
-        </TableBody>
+          <TableRow> 
+            <TableCell>Total en horas:</TableCell>
+            <TableCell>{result_time}</TableCell>
+          </TableRow>
+      </TableBody>
       </Table>
     </div>
   );
