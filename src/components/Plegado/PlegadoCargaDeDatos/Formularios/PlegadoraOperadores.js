@@ -32,10 +32,18 @@ export default function PlegadoraOperadores() {
           onChange={e => actions.cargarDatosPlegado(e)}
         >
           <option aria-label="None" value="" />
-          <option value="Luis">Luis</option>
-          <option value="Lucho">Lucho</option>
-          <option value="Francisco">Francisco</option>
-          <option value="Carlos">Carlos</option>
+          <option value="Raul oliva">Raul oliva</option>
+          <option value="Ganllo">Ganllo</option>
+          <option value="Andres Huala">Andres Huala</option>
+          <option value="Rodrigo Hernandez">Rodrigo Hernandez</option>
+          <option value="Sergio Valdez">Sergio Valdez</option>
+          <option value="Marco Fuentes">Marco Fuentes</option>
+          <option value="Brian Guarda">Brian Guarda</option>
+          <option value="Roberto Diaz">Roberto Diaz</option>
+          <option value="Joaquin Morales">Joaquin Morales</option>
+          <option value="Hugo Toledo">Hugo Toledo</option>
+          <option value="Luiz Diaz">Luiz Diaz</option>
+          <option value="Victor Ribera">Victor Ribera</option>
         </Select>
       </FormControl>
     </div>

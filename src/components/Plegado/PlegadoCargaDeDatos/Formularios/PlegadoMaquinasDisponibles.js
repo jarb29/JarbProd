@@ -31,13 +31,19 @@ export default function PlegadoMaquinasDisponibles() {
           name="plegadoMaquinaSeleccionada"
           onChange={e => actions.cargarDatosPlegado(e)}
         >
-          <option aria-label="None" value="" />
-          <option value="Plegadora 1">Plegadora 1</option>
-          <option value="Plegadora 2">Plegadora 2</option>
-          <option value="Plegadora 3">Plegadora 3</option>
+         <option aria-label="None" value="" />
+          <option value="HJO 52">HJO 52</option>
+          <option value="HJO 53">HJO 53</option>
+          <option value="Plegadora CHINA CNC">Plegadora CHINA CNC</option>
+          <option value="Plegadora CHINA 3">Plegadora CHINA 3</option>
+          <option value="Plegadora CHINA 2">Plegadora CHINA 2</option>
+          <option value="Plegadora CHINA 41">Plegadora CHINA 41</option>
+          <option value="Plegadora HJO 13">Plegadora 11</option>
+          <option value="Plegadora HJO 13">Plegadora HJO 13</option>
           <option value="Durman">Durman</option>
-          <option value="Plegadora 4">Plegadora 4</option>
-          <option value="Plegadora 5">Plegadora 5</option>
+          <option value="Plegadora 8">Plegadora 8</option>
+          <option value="Plegadora 9">Plegadora 9</option>
+          <option value="Paneladora">Paneladora</option>
         </Select>
       </FormControl>
     </div>

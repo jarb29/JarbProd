@@ -16,10 +16,9 @@ export default function CorteTablaCalculoPlanchas() {
       ? "Seleccione modelo"
       : store.nesticDisponiblesProduccion[0].modelo_elegido;
 
-
-  var result_time = store.modeloAModelar.reduce(function(sum, item){
-    return sum = sum+item.tiempo_para_esas_planchas;
-  },0);
+  var result_time = store.modeloAModelar.reduce(function(sum, item) {
+    return (sum = sum + item.tiempo_para_esas_planchas);
+  }, 0);
   
   return (
     <TableContainer component={Paper}>
