@@ -24,7 +24,7 @@ const useRowStyles = makeStyles({
 });
 
 function Row(props) {
-  const { row, nombre, total } = props;
+  const { row, nombre, total, value } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
 
@@ -42,6 +42,9 @@ function Row(props) {
         </TableCell>
         <TableCell component="th" scope="row">
           {nombre}
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {value}
         </TableCell>
         <TableCell component="th" scope="row" align="left">
           {total}
@@ -99,6 +102,7 @@ export default function PinturaPiezasDisponibles(props) {
           <TableRow>
             <TableCell />
             <TableCell>Nombre de la Pieza</TableCell>
+            <TableCell>ID</TableCell>
             <TableCell align="left">Disponible</TableCell>
           </TableRow>
         </TableHead>
@@ -109,7 +113,13 @@ export default function PinturaPiezasDisponibles(props) {
             let total_por_pieza = b[largo - 1].total_disponlie;
 
             return (
-              <Row key={row} nombre={row} row={b} total={total_por_pieza} />
+              <Row
+                key={row}
+                value={index}
+                nombre={row}
+                row={b}
+                total={total_por_pieza}
+              />
             );
           })}
         </TableBody>
@@ -130,5 +140,6 @@ Row.propTypes = {
   modelos: PropTypes.array,
   row: PropTypes.array,
   total: PropTypes.number,
+  value: PropTypes.number,
   nombre: PropTypes.array
 };
